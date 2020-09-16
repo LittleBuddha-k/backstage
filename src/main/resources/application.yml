@@ -1,0 +1,36 @@
+server:
+  port: 8080
+  spring:
+spring:
+  profiles:
+    active: dev
+---
+server:
+  port: 8887
+  servlet:
+    context-path: /backstage
+spring:
+  profiles: dev
+  thymeleaf:
+#    禁用模板引擎的缓存
+    cache: false
+#  自定义静态资源路径
+#  resources:
+#    static-locations: classpath:/webpage
+
+---
+server:
+  port: 8081
+spring:
+  profiles: pro
+
+#person:
+#  id: 1
+#  name: admin
+#  sex: 男
+#  cars:
+#    - name: QQ
+#      color: red
+#    - name: BT
+#      color: black
+#  position: {k1: v1,k2: v2}

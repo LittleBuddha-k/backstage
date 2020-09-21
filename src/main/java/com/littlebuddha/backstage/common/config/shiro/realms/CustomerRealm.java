@@ -14,11 +14,13 @@ import org.apache.shiro.subject.PrincipalCollection;
 public class CustomerRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
+        System.out.println("执行了授权");
         return null;
     }
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
+        System.out.println("执行了认证");
         return null;
     }
 }

@@ -28,16 +28,17 @@
     <a class="hiddenanchor" id="signin"></a>
 
     <a th:href="@{/add}">添加</a> | <a th:href="@{/edit}">编辑</a>
+    <p th:text="${message}"></p>
     <div class="login_wrapper">
         <div class="animate form login_form">
             <section class="login_content">
-                <form>
+                <form th:action="@{/backstage/login}">
                     <h1>Login Form</h1>
                     <div>
-                        <input type="text" class="form-control" placeholder="Username" required=""/>
+                        <input type="text" class="form-control" name="username" placeholder="Username" required=""/>
                     </div>
                     <div>
-                        <input type="password" class="form-control" placeholder="Password" required=""/>
+                        <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
                     </div>
                     <div>
                         <a class="btn btn-default submit" href="index.html">Log in</a>
@@ -64,7 +65,7 @@
             </section>
         </div>
 
-        <div id="register" class="animate form registration_form">
+        <!--<div id="register" class="animate form registration_form">
             <section class="login_content">
                 <form>
                     <h1>Create Account</h1>
@@ -99,7 +100,7 @@
                     </div>
                 </form>
             </section>
-        </div>
+        </div>-->
     </div>
 </div>
 </body>

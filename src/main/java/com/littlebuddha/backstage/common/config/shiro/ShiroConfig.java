@@ -30,6 +30,7 @@ public class ShiroConfig {
 //        map.put("/index","authc");
         map.put("/add","authc");
         map.put("/edit","authc");
+        map.put("/index","authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
         //配置系统公共资源
         return shiroFilterFactoryBean;

@@ -1,0 +1,10 @@
+package com.littlebuddha.backstage.system.service;
+
+import com.littlebuddha.backstage.common.base.CrudService;
+import com.littlebuddha.backstage.system.entity.Operator;
+import com.littlebuddha.backstage.system.mapper.OperatorMapper;
+import org.springframework.stereotype.Service;
+
+@Service
+public class OperatorService extends CrudService<Operator, OperatorMapper> {
+}

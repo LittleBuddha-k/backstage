@@ -1,4 +1,4 @@
-package com.littlebuddha.backstage.sys.controller;
+package com.littlebuddha.backstage.system;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

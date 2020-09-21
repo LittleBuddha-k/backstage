@@ -1,4 +1,4 @@
-package com.littlebuddha.backstage.config.shiro.realms;
+package com.littlebuddha.backstage.common.config.shiro.realms;
 
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;

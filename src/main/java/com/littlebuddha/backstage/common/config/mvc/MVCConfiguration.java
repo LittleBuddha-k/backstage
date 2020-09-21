@@ -1,4 +1,4 @@
-package com.littlebuddha.backstage.config.mvc;
+package com.littlebuddha.backstage.common.config.mvc;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

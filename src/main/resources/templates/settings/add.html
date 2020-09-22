@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:shiro="http:www.thymeleaf.org/thymeleaf-extras-shiro">
 <head>
     <meta charset="UTF-8">
     <title>add</title>
 </head>
 <body>
-<div>超级管理员显示</div>
-<div>一级管理员显示</div>
-<div>二级管理员显示</div>
+<div shiro:hasPermission="system:province:list">超级管理员显示</div>
+<div shiro:hasPermission="b:c">一级管理员显示</div>
+<div shiro:hasPermission="c:d">二级管理员显示</div>
 </body>
 </html>

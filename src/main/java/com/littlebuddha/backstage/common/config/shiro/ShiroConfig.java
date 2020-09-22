@@ -1,6 +1,6 @@
 package com.littlebuddha.backstage.common.config.shiro;
 
-import com.littlebuddha.backstage.common.config.redis.ShiroRedisConfig;
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import com.littlebuddha.backstage.common.config.shiro.realms.CustomerRealm;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -51,12 +51,18 @@ public class ShiroConfig {
         CustomerRealm customerRealm = new CustomerRealm();
 
         //开启缓存管理
-        customerRealm.setCacheManager(new ShiroRedisConfig());
-        customerRealm.setCachingEnabled(true);//开启全局缓存
-        customerRealm.setAuthenticationCachingEnabled(true);
-        customerRealm.setAuthenticationCacheName("authenticationCache");
-        customerRealm.setAuthorizationCachingEnabled(true);
-        customerRealm.setAuthorizationCacheName("authorizationCache");
+        //customerRealm.setCacheManager(new ShiroRedisConfig());
+        //customerRealm.setCachingEnabled(true);//开启全局缓存
+        //customerRealm.setAuthenticationCachingEnabled(true);
+        //customerRealm.setAuthenticationCacheName("authenticationCache");
+        //customerRealm.setAuthorizationCachingEnabled(true);
+        //customerRealm.setAuthorizationCacheName("authorizationCache");
         return customerRealm;
+    }
+
+    //整合ShiroDialect,用来整合Shiro和Thymeleaf
+    @Bean
+    public ShiroDialect getShiroDialect(){
+        return new ShiroDialect();
     }
 }

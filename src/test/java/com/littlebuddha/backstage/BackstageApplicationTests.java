@@ -1,5 +1,12 @@
 package com.littlebuddha.backstage;
 
+import com.littlebuddha.backstage.system.entity.Area;
+import com.littlebuddha.backstage.system.entity.Menu;
+import com.littlebuddha.backstage.system.entity.Operator;
+import com.littlebuddha.backstage.system.mapper.AreaMapper;
+import com.littlebuddha.backstage.system.mapper.MenuMapper;
+import com.littlebuddha.backstage.system.mapper.OperatorMapper;
+import com.littlebuddha.backstage.system.mapper.ProvinceMapper;
 import com.littlebuddha.backstage.test.Person;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 
 @SpringBootTest
@@ -18,6 +26,18 @@ class BackstageApplicationTests {
 
     @Autowired
     DataSource dataSource;
+
+    @Autowired
+    private OperatorMapper operatorMapper;
+
+    @Autowired
+    private AreaMapper areaMapper;
+
+    @Autowired
+    private ProvinceMapper provinceMapper;
+
+    @Autowired
+    private MenuMapper menuMapper;
 
     @Test
     void contextLoads() {
@@ -35,4 +55,29 @@ class BackstageApplicationTests {
         }
     }
 
+    @Test
+    public void testOperatorMapper(){
+        Operator entity = new Operator();
+        entity.setName("admin");
+        List<Operator> byName = operatorMapper.findByName(entity);
+        for (Operator operator : byName) {
+            System.out.println(operator.getName());
+        }
+    }
+
+    @Test
+    public void testAreaMapper(){
+        List<Area> all = areaMapper.findAll(new Area());
+        for (Area area : all) {
+            System.out.println(area.getName());
+        }
+    }
+
+    @Test
+    public void testMenuMapper(){
+        List<Menu> menus = menuMapper.findAllList(new Menu());
+        for (Menu menu : menus) {
+            System.out.println(menu.getName());
+        }
+    }
 }

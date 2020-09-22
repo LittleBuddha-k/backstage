@@ -28,16 +28,18 @@ public class LoginController {
                         @RequestParam("password") String password,
                         Model model) {
         System.out.println("开始login");
+        System.out.println("密码："+password);
+        System.out.println("用户："+username);
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username, password);
         Subject subject = SecurityUtils.getSubject();
         try {
             subject.login(usernamePasswordToken);
             return "system/index";
         } catch (UnknownAccountException uae) {
-            model.addAttribute("message", uae.getMessage());
+            model.addAttribute("message", "账户错误");
             return "system/login";
         } catch (IncorrectCredentialsException ice) {
-            model.addAttribute("message", ice.getMessage());
+            model.addAttribute("message", "密码错误");
             return "system/login";
         }
     }

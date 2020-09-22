@@ -1,5 +1,6 @@
 package com.littlebuddha.backstage.common.config.shiro;
 
+import com.littlebuddha.backstage.common.config.redis.ShiroRedisConfig;
 import com.littlebuddha.backstage.common.config.shiro.realms.CustomerRealm;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -23,8 +24,6 @@ public class ShiroConfig {
     public ShiroFilterFactoryBean getShiroFilterFactoryBean(@Qualifier("getDefaultWebSecurityManager")DefaultWebSecurityManager defaultWebSecurityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(defaultWebSecurityManager);
-        //默认认证资源路径
-        shiroFilterFactoryBean.setLoginUrl("/loginPage");
         //配置系统受限资源
         Map<String,String> map = new HashMap<>();
 //        map.put("/index","authc");
@@ -33,6 +32,8 @@ public class ShiroConfig {
         map.put("/index","authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
         //配置系统公共资源
+        //默认认证资源路径
+        shiroFilterFactoryBean.setLoginUrl("/loginPage");
         return shiroFilterFactoryBean;
     }
 
@@ -48,6 +49,14 @@ public class ShiroConfig {
     @Bean
     public Realm getRealm(){
         CustomerRealm customerRealm = new CustomerRealm();
+
+        //开启缓存管理
+        customerRealm.setCacheManager(new ShiroRedisConfig());
+        customerRealm.setCachingEnabled(true);//开启全局缓存
+        customerRealm.setAuthenticationCachingEnabled(true);
+        customerRealm.setAuthenticationCacheName("authenticationCache");
+        customerRealm.setAuthorizationCachingEnabled(true);
+        customerRealm.setAuthorizationCacheName("authorizationCache");
         return customerRealm;
     }
 }

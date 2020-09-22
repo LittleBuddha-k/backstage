@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.littlebuddha.housekeeping.mapper.system.OperatorMapper">
+<mapper namespace="com.littlebuddha.backstage.system.mapper.OperatorMapper">
     <sql id="operatorColumns">
         id AS "id",
         name AS "name",
@@ -34,28 +34,28 @@
         remarks AS "remarks"
     </sql>
 
-    <select id="get" resultType="com.littlebuddha.housekeeping.entity.system.Operator">
+    <select id="get" resultType="com.littlebuddha.backstage.system.entity.Operator">
         SELECT
         <include refid="operatorColumns"/>
         FROM system_operator
         WHERE id=#{id}
     </select>
 
-    <select id="selectByNameAndPassword" resultType="com.littlebuddha.housekeeping.entity.system.Operator">
+    <select id="selectByNameAndPassword" resultType="com.littlebuddha.backstage.system.entity.Operator">
         SELECT
         <include refid="operatorColumns"/>
         FROM system_operator
         WHERE name=#{name} AND password=#{password}
     </select>
 
-    <select id="selectByName" resultType="com.littlebuddha.housekeeping.entity.system.Operator">
+    <select id="findByName" resultType="com.littlebuddha.backstage.system.entity.Operator">
         SELECT
         <include refid="operatorColumns"/>
         FROM system_operator
         WHERE name=#{name}
     </select>
 
-    <select id="findList" resultType="com.littlebuddha.housekeeping.entity.system.Operator">
+    <select id="findList" resultType="com.littlebuddha.backstage.system.entity.Operator">
         SELECT
         <include refid="operatorColumns"/>
         FROM system_operator a
@@ -93,7 +93,7 @@
         </choose>
     </select>
 
-    <select id="findAllList" resultType="com.littlebuddha.housekeeping.entity.system.Operator">
+    <select id="findAllList" resultType="com.littlebuddha.backstage.system.entity.Operator">
         SELECT
         <include refid="operatorColumns"/>
         FROM system_operator a

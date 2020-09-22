@@ -47,6 +47,13 @@ public interface BaseMapper<E> {
     E get(E entity);
 
     /**
+     * 通过名称查询
+     * @param entity
+     * @return
+     */
+    List<E> findByName(E entity);
+
+    /**
      * 有条件的查询数据列表
      * @param entity
      * @return

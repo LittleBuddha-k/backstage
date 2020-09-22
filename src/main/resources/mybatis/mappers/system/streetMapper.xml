@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.littlebuddha.backstage.system.mapper.AreaMapper">
-    <sql id="areaColumns">
+<mapper namespace="com.littlebuddha.backstage.system.mapper.StreetMapper">
+    <sql id="streetColumns">
         id AS "id",
         code AS "code",
         name AS "name",
         short_name AS "shortName",
-        city_code AS "cityCode",
+        area_code AS "areaCode",
         lng AS "lng",
         lat AS "lat",
         sort AS "sort",
@@ -17,24 +17,24 @@
         tenant_code AS "tenantCode"
     </sql>
 
-    <select id="get" resultType="com.littlebuddha.backstage.system.entity.Area">
+    <select id="get" resultType="com.littlebuddha.backstage.system.entity.Street">
         SELECT
-        <include refid="areaColumns"/>
-        FROM system_area
+        <include refid="streetColumns"/>
+        FROM system_street
+        WHERE area_code=#{areaCode}
+    </select>
+
+    <select id="findByAreaCode" resultType="com.littlebuddha.backstage.system.entity.Street">
+        SELECT
+        <include refid="streetColumns"/>
+        FROM system_street
         WHERE id=#{id}
     </select>
 
-    <select id="findByCityCode" resultType="com.littlebuddha.backstage.system.entity.Area">
+    <select id="findList" resultType="com.littlebuddha.backstage.system.entity.Street">
         SELECT
-        <include refid="areaColumns"/>
-        FROM system_area
-        WHERE city_code=#{cityCode}
-    </select>
-
-    <select id="findList" resultType="com.littlebuddha.backstage.system.entity.Area">
-        SELECT
-        <include refid="areaColumns"/>
-        FROM system_area a
+        <include refid="streetColumns"/>
+        FROM system_street a
         <where>
             <!-- 判断条件参数是否为空 -->
             <if test="code != null and code != ''">
@@ -59,10 +59,10 @@
         </choose>
     </select>
 
-    <select id="findAllList" resultType="com.littlebuddha.housekeeping.entity.system.Area">
+    <select id="findAllList" resultType="com.littlebuddha.backstage.system.entity.Street">
         SELECT
-        <include refid="areaColumns"/>
-        FROM system_area a
+        <include refid="streetColumns"/>
+        FROM system_street a
         <where>
             <!-- 判断条件参数是否为空 -->
             <!--<if test="name != null and name != ''">
@@ -80,12 +80,11 @@
     </select>
 
     <insert id="insert">
-        INSERT INTO system_area(
+        INSERT INTO system_street(
             id,
             code,
             name,
             short_name,
-            city_code,
             lng,
             lat,
             sort,
@@ -98,7 +97,6 @@
             #{code},
             #{name},
             #{shortName},
-            #{cityCode},
             #{lng},
             #{lat},
             #{sort},
@@ -110,12 +108,11 @@
     </insert>
 
     <update id="update">
-        UPDATE system_area SET
+        UPDATE system_street SET
             id = #{id},
             code = #{code},
             name = #{name},
             short_name = #{shortName},
-            city_code = #{cityCode},
             lng = #{lng},
             lat = #{lat},
             sort = #{sort},
@@ -127,17 +124,17 @@
     </update>
 
     <update id="deleteByLogic">
-        UPDATE system_area SET is_delete = 1
+        UPDATE system_street SET is_delete = 1
         WHERE id=#{id}
     </update>
 
     <update id="recover">
-        UPDATE system_area SET is_delete = 0
+        UPDATE system_street SET is_delete = 0
         WHERE id=#{id}
     </update>
 
     <delete id="deleteByPhysics">
-        DELETE FROM system_area
+        DELETE FROM system_street
         WHERE id=#{id}
     </delete>
 </mapper>

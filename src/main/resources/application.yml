@@ -4,6 +4,12 @@ server:
 spring:
   profiles:
     active: dev
+
+
+
+
+
+
 ---
 server:
   port: 8887
@@ -37,6 +43,10 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+  redis:
+    port: 6379
+    host: localhost
+    database: 0
 #  自定义静态资源路径
 #  resources:
 #    static-locations: classpath:/webpage
@@ -46,6 +56,26 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
   mapper-locations: classpath:mybatis/mappers/*/*.xml
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ---
 server:
   port: 8081

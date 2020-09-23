@@ -1,6 +1,6 @@
 package com.littlebuddha.backstage.common.utils;
 
-import org.springframework.util.DigestUtils;
+import org.apache.shiro.crypto.hash.Md5Hash;
 
 /**
  * MD5加密
@@ -10,13 +10,9 @@ import org.springframework.util.DigestUtils;
 public class MD5Encryption {
 
     public static String getEncryptionPassword(String password,String salt){
-        // 拼接原密码与盐值
-        String str = salt + password;
-        // 循环加密5次
-        for (int i = 0; i < 5; i++) {
-            str = DigestUtils.md5DigestAsHex(
-                    str.getBytes()).toUpperCase();
-        }
-        return str;
+        Md5Hash md5Hash = new Md5Hash(password,salt,1024);
+        String encryptionPassword = md5Hash.toHex();
+        return encryptionPassword;
     }
+
 }

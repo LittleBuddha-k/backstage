@@ -49,7 +49,7 @@ public class CustomerRealm extends AuthorizingRealm {
         //返回的信息是从数据库中取出的的信息-----密码认证由shiro自身去做
         Operator loginPrinciple = operators.get(0);
         String salt = loginPrinciple.getSalt();
-        return new SimpleAccount(loginPrinciple,password, ByteSource.Util.bytes(salt),operator.getName());
+        return new SimpleAccount(loginPrinciple,loginPrinciple.getPassword(), ByteSource.Util.bytes(salt),operator.getName());
     }
 
     @Override
@@ -62,7 +62,6 @@ public class CustomerRealm extends AuthorizingRealm {
         //查询权限列表
         Set<String> permissions = menuMapper.findPermissionsByOperator(principal);
         //todo查询权限,根据user的id查询权限表的权限
-
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
         //将上面查询到的权限列表赋值给SimpleAuthorizationInfo并返回
         simpleAuthorizationInfo.setRoles(roles);

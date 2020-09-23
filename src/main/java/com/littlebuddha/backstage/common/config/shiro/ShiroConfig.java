@@ -2,6 +2,7 @@ package com.littlebuddha.backstage.common.config.shiro;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import com.littlebuddha.backstage.common.config.shiro.realms.CustomerRealm;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
@@ -26,12 +27,12 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setSecurityManager(defaultWebSecurityManager);
         //配置系统受限资源
         Map<String,String> map = new HashMap<>();
-//        map.put("/index","authc");
         map.put("/add","authc");
         map.put("/edit","authc");
         map.put("/index","authc");
-        shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
         //配置系统公共资源
+
+        shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
         //默认认证资源路径
         shiroFilterFactoryBean.setLoginUrl("/loginPage");
         return shiroFilterFactoryBean;
@@ -57,6 +58,14 @@ public class ShiroConfig {
         //customerRealm.setAuthenticationCacheName("authenticationCache");
         //customerRealm.setAuthorizationCachingEnabled(true);
         //customerRealm.setAuthorizationCacheName("authorizationCache");
+
+        //设置realm使用hash凭证器
+        HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
+        //设置加密方法
+        hashedCredentialsMatcher.setHashAlgorithmName("MD5");
+        //设置散列次数
+        hashedCredentialsMatcher.setHashIterations(1024);
+        customerRealm.setCredentialsMatcher(hashedCredentialsMatcher);
         return customerRealm;
     }
 

@@ -34,13 +34,20 @@ public class LoginController {
         Subject subject = SecurityUtils.getSubject();
         try {
             subject.login(usernamePasswordToken);
-            return "system/index";
+            return "redirect:/index";
         } catch (UnknownAccountException uae) {
             model.addAttribute("message", "账户错误");
-            return "system/login";
+            return "redirect:/loginPage";
         } catch (IncorrectCredentialsException ice) {
             model.addAttribute("message", "密码错误");
-            return "system/login";
+            return "redirect:/loginPage";
         }
+    }
+
+    @GetMapping("/logOut")
+    public String logOut(){
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+        return "redirect:/logOut";
     }
 }

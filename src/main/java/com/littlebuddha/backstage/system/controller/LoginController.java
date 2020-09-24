@@ -48,6 +48,6 @@ public class LoginController {
     public String logOut(){
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
-        return "redirect:/logOut";
+        return "redirect:/loginPage";
     }
 }

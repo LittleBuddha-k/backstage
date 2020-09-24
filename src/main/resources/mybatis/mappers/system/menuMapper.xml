@@ -93,11 +93,11 @@
         </choose>
     </select>
 
-    <select id="findTheBiggestMenu" resultType="com.littlebuddha.backstage.system.entity.Menu">
+    <select id="findByParentId" resultType="com.littlebuddha.backstage.system.entity.Menu">
         SELECT
         <include refid="menuColumns"/>
         FROM system_menu a
-        WHERE a.is_delete = #{DEL_FLAG_NORMAL} and a.parent_id = '0'
+        WHERE a.is_delete = #{DEL_FLAG_NORMAL} and a.parent_id = #{id}
     </select>
 
     <insert id="insert">

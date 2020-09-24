@@ -12,6 +12,7 @@ public class IndexController {
 
     @GetMapping(value = {"/index"})
     public String index(){
+
         return "system/index";
     }
 }

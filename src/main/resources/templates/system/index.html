@@ -110,6 +110,22 @@
                 <div class="nav toggle">
                     <a id="menu_toggle"><i class="fa fa-bars"></i></a>
                 </div>
+
+                <div id="levelOneMenus">
+                    <div class="nav toggle" style="margin-left: 10px">
+                        <a>
+                            <div id="setting" onclick="levelOneMenusClick()" class="count"
+                                 style="width: 100px;font-size: 18px;">系统设置
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <script type="application/javascript">
+                    function levelOneMenusClick(data) {
+                        console.log("纯过来的参数"+data.name)
+                    }
+                </script>
+
                 <nav class="nav navbar-nav">
                     <ul class=" navbar-right">
                         <li class="nav-item dropdown open" style="padding-left: 15px;">
@@ -124,7 +140,8 @@
                                     <span>Settings</span>
                                 </a>
                                 <a class="dropdown-item" href="javascript:;">Help</a>
-                                <a class="dropdown-item" href="/logOut"><i class="fa fa-sign-out pull-right"></i>退出登录</a>
+                                <a class="dropdown-item" href="/backstage/logOut"><i
+                                        class="fa fa-sign-out pull-right"></i>退出登录</a>
                             </div>
                         </li>
 
@@ -295,5 +312,28 @@
 <!-- Custom Theme Scripts -->
 <script src="gentelella/build/js/custom.min.js"></script>
 
+<!--引入自定义的js文件-->
+<script src="common/hk.js"></script>
+
+<script type="application/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            url: "/backstage/system/menu/levelOneMenus",
+            method: "get",
+            success: function (data) {
+                var html = "";
+                for (var i = 0; i < data.length; i++) {
+                    console.log(data[i].name)
+                    html += "<div class=\"nav toggle\" style=\"margin-left: 40px\">\n" +
+                        "    <a>\n" +
+                        "        <div id='" + data[i].id + "' onclick=\"levelOneMenusClick('" + data[i] + "')\" class=\"count\" style=\"width: 200px;font-size: 18px;\">" + data[i].name + "</div>\n" +
+                        "    </a>\n" +
+                        "</div>";
+                }
+                $("#levelOneMenus").append(html);
+            }
+        });
+    })
+</script>
 </body>
 </html>

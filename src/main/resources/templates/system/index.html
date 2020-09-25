@@ -11,23 +11,23 @@
     <title>后台管理系统</title>
 
     <!-- Bootstrap -->
-    <link href="gentelella/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/backstage/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="gentelella/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/backstage/gentelella/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="gentelella/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="/backstage/gentelella/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="gentelella/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="/backstage/gentelella/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 
     <!-- bootstrap-progressbar -->
-    <link href="gentelella/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="/backstage/gentelella/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
-    <link href="gentelella/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link href="/backstage/gentelella/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
-    <link href="gentelella/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="/backstage/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="gentelella/build/css/custom.min.css" rel="stylesheet">
+    <link href="/backstage/gentelella/build/css/custom.min.css" rel="stylesheet">
 </head>
 
 <body class="nav-md">
@@ -61,27 +61,34 @@
                     <div class="menu_section">
                         <h3>菜单二级</h3>
                         <ul class="nav side-menu">
-                            <li><a><i class="fa fa-sitemap"></i> Multilevel Menu <span
+                            <li><a><i class="fa fa-sitemap"></i>一级菜单</a>
+                            </li>
+                            <li><a><i class="fa fa-sitemap"></i>系统设置<span
                                     class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="#level1_1">Level One</a>
-                                    <li><a>Level One<span class="fa fa-chevron-down"></span></a>
+                                    <li><a href="/backstage/system/menu/list">菜单管理</a>
+                                    </li>
+                                    <li><a href="/backstage/system/operator/list">用户管理</a>
+                                    </li>
+                                    <li><a href="/backstage/system/role/list">角色管理</a>
+                                    <li><a>地域管理<span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
-                                            <li class="sub_menu"><a href="level2.html">Level Two</a>
+                                            <li><a href="/backstage/system/province/list">省级管理</a>
                                             </li>
-                                            <li><a href="#level2_1">Level Two</a>
+                                            <li><a href="/backstage/system/city/list">市级管理</a>
                                             </li>
-                                            <li><a href="#level2_2">Level Two</a>
+                                            <li><a href="/backstage/system/area/list">区级管理</a>
+                                            </li>
+                                            <li><a href="/backstage/system/street/list">街道管理</a>
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a href="#level1_2">Level One</a>
-                                    </li>
                                 </ul>
+                            </li>
+                            <li><a><i class="fa fa-sitemap"></i>一级菜单</a>
                             </li>
                         </ul>
                     </div>
-
                 </div>
                 <!-- /sidebar menu -->
 
@@ -111,18 +118,13 @@
                     <a id="menu_toggle"><i class="fa fa-bars"></i></a>
                 </div>
 
+                <!--存放一级菜单-->
                 <div id="levelOneMenus">
-                    <div class="nav toggle" style="margin-left: 10px">
-                        <a>
-                            <div id="setting" onclick="levelOneMenusClick()" class="count"
-                                 style="width: 100px;font-size: 18px;">系统设置
-                            </div>
-                        </a>
-                    </div>
+
                 </div>
                 <script type="application/javascript">
-                    function levelOneMenusClick(data) {
-                        console.log("纯过来的参数"+data.name)
+                    function menusClick(data) {
+                        console.log("传过来的参数" + data)
                     }
                 </script>
 
@@ -272,45 +274,45 @@
 </div>
 
 <!-- jQuery -->
-<script src="gentelella/vendors/jquery/dist/jquery.min.js"></script>
+<script src="/backstage/gentelella/vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="gentelella/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/backstage/gentelella/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <!-- FastClick -->
-<script src="gentelella/vendors/fastclick/lib/fastclick.js"></script>
+<script src="/backstage/gentelella/vendors/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->
-<script src="gentelella/vendors/nprogress/nprogress.js"></script>
+<script src="/backstage/gentelella/vendors/nprogress/nprogress.js"></script>
 <!-- Chart.js -->
-<script src="gentelella/vendors/Chart.js/dist/Chart.min.js"></script>
+<script src="/backstage/gentelella/vendors/Chart.js/dist/Chart.min.js"></script>
 <!-- gauge.js -->
-<script src="gentelella/vendors/gauge.js/dist/gauge.min.js"></script>
+<script src="/backstage/gentelella/vendors/gauge.js/dist/gauge.min.js"></script>
 <!-- bootstrap-progressbar -->
-<script src="gentelella/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+<script src="/backstage/gentelella/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
 <!-- iCheck -->
-<script src="gentelella/vendors/iCheck/icheck.min.js"></script>
+<script src="/backstage/gentelella/vendors/iCheck/icheck.min.js"></script>
 <!-- Skycons -->
-<script src="gentelella/vendors/skycons/skycons.js"></script>
+<script src="/backstage/gentelella/vendors/skycons/skycons.js"></script>
 <!-- Flot -->
-<script src="gentelella/vendors/Flot/jquery.flot.js"></script>
-<script src="gentelella/vendors/Flot/jquery.flot.pie.js"></script>
-<script src="gentelella/vendors/Flot/jquery.flot.time.js"></script>
-<script src="gentelella/vendors/Flot/jquery.flot.stack.js"></script>
-<script src="gentelella/vendors/Flot/jquery.flot.resize.js"></script>
+<script src="/backstage/gentelella/vendors/Flot/jquery.flot.js"></script>
+<script src="/backstage/gentelella/vendors/Flot/jquery.flot.pie.js"></script>
+<script src="/backstage/gentelella/vendors/Flot/jquery.flot.time.js"></script>
+<script src="/backstage/gentelella/vendors/Flot/jquery.flot.stack.js"></script>
+<script src="/backstage/gentelella/vendors/Flot/jquery.flot.resize.js"></script>
 <!-- Flot plugins -->
-<script src="gentelella/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-<script src="gentelella/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-<script src="gentelella/vendors/flot.curvedlines/curvedLines.js"></script>
+<script src="/backstage/gentelella/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+<script src="/backstage/gentelella/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+<script src="/backstage/gentelella/vendors/flot.curvedlines/curvedLines.js"></script>
 <!-- DateJS -->
-<script src="gentelella/vendors/DateJS/build/date.js"></script>
+<script src="/backstage/gentelella/vendors/DateJS/build/date.js"></script>
 <!-- JQVMap -->
-<script src="gentelella/vendors/jqvmap/dist/jquery.vmap.js"></script>
-<script src="gentelella/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-<script src="gentelella/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+<script src="/backstage/gentelella/vendors/jqvmap/dist/jquery.vmap.js"></script>
+<script src="/backstage/gentelella/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+<script src="/backstage/gentelella/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
 <!-- bootstrap-daterangepicker -->
-<script src="gentelella/vendors/moment/min/moment.min.js"></script>
-<script src="gentelella/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="/backstage/gentelella/vendors/moment/min/moment.min.js"></script>
+<script src="/backstage/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
 <!-- Custom Theme Scripts -->
-<script src="gentelella/build/js/custom.min.js"></script>
+<script src="/backstage/gentelella/build/js/custom.min.js"></script>
 
 <!--引入自定义的js文件-->
 <script src="common/hk.js"></script>
@@ -326,7 +328,7 @@
                     console.log(data[i].name)
                     html += "<div class=\"nav toggle\" style=\"margin-left: 40px\">\n" +
                         "    <a>\n" +
-                        "        <div id='" + data[i].id + "' onclick=\"levelOneMenusClick('" + data[i] + "')\" class=\"count\" style=\"width: 200px;font-size: 18px;\">" + data[i].name + "</div>\n" +
+                        "        <div id='" + data[i].id + "' onclick=\"menusClick('" + data[i].name + "')\" class=\"count\" style=\"width: 200px;font-size: 18px;\">" + data[i].name + "</div>\n" +
                         "    </a>\n" +
                         "</div>";
                 }

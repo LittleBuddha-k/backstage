@@ -47,6 +47,8 @@ spring:
     port: 6379
     host: localhost
     database: 0
+  resources:
+    static-locations: classpath:/static/,classpath:/templates/
 #  自定义静态资源路径
 #  resources:
 #    static-locations: classpath:/webpage
@@ -56,6 +58,7 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
   mapper-locations: classpath:mybatis/mappers/*/*.xml
+
 
 
 

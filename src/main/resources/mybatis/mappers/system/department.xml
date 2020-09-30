@@ -16,6 +16,25 @@
         update_date AS "updateDate"
     </sql>
 
+    <select id="get" resultType="com.littlebuddha.backstage.system.entity.Department">
+        SELECT
+        <include refid="departmentColumns"/>
+        FROM system_department
+        WHERE id=#{id}
+    </select>
+
+    <select id="findByParentId" resultType="com.littlebuddha.backstage.system.entity.Department">
+        SELECT
+        <include refid="departmentColumns"/>
+        FROM system_department a
+        <where>
+            <!-- 判断条件参数是否为空 -->
+            <if test="parentId != null and parentId != ''">
+                and a.parent_id = #{id}
+            </if>
+        </where>
+    </select>
+
     <select id="findAllList" resultType="com.littlebuddha.backstage.system.entity.Department">
         SELECT
         <include refid="departmentColumns"/>

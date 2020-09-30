@@ -49,7 +49,7 @@
         },
         {
           "title": "部门管理",
-          "href": "/backstage/page/department.html",
+          "href": "/backstage/system/department.html",
           "icon": "fa fa-window-maximize",
           "target": "_self"
         },

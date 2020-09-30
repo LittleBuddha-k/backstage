@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>menu</title>
-    <link rel="stylesheet" th:href="@{/backstage/lib/layui-v2.5.5/css/layui.css}" media="all">
+    <link rel="stylesheet" href="/backstage/lib/layui-v2.5.5/css/layui.css" media="all">
     <link rel="stylesheet" href="/backstage/css/public.css" media="all">
     <style>
         .layui-btn:not(.layui-btn-lg ):not(.layui-btn-sm):not(.layui-btn-xs) {
@@ -51,12 +51,12 @@
             treeIdName: 'authorityId',
             treePidName: 'parentId',
             elem: '#department-table',
-            url: '../api/menus.json',
+            url: '/backstage/system/department/findAllList',
             page: false,
             cols: [[
                 {type: 'numbers'},
-                {field: 'authorityName', minWidth: 200, title: '权限名称'},
-                {field: 'authority', title: '权限标识'},
+                {field: 'name', minWidth: 200, title: '部门名称'},
+                /*{field: 'authority', title: '权限标识'},
                 {field: 'menuUrl', title: '菜单url'},
                 {field: 'orderNumber', width: 80, align: 'center', title: '排序号'},
                 {
@@ -70,7 +70,7 @@
                             return '<span class="layui-badge-rim">菜单</span>';
                         }
                     }, title: '类型'
-                },
+                },*/
                 {templet: '#auth-state', width: 120, align: 'center', title: '操作'}
             ]],
             done: function () {

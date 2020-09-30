@@ -2,6 +2,9 @@ package com.littlebuddha.backstage.system.entity;
 
 import com.littlebuddha.backstage.common.base.DataEntity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author ck
  * @date 2020/9/29 14:24
@@ -14,6 +17,8 @@ public class Department extends DataEntity<Department> {
     private Integer type;//类型 公司、部门及部门以下所设立的
     private Integer status;//数据是否启用
     private Integer sort;//排序
+
+    private List<Department> childrenList = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -61,5 +66,13 @@ public class Department extends DataEntity<Department> {
 
     public void setSort(Integer sort) {
         this.sort = sort;
+    }
+
+    public List<Department> getChildrenList() {
+        return childrenList;
+    }
+
+    public void setChildrenList(List<Department> childrenList) {
+        this.childrenList = childrenList;
     }
 }

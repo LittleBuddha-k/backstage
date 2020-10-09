@@ -1,7 +1,6 @@
 package com.littlebuddha.backstage.system.service;
 
 import com.littlebuddha.backstage.common.base.CrudService;
-import com.littlebuddha.backstage.common.utils.TreeDataUtil;
 import com.littlebuddha.backstage.system.entity.Department;
 import com.littlebuddha.backstage.system.mapper.DepartmentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +32,8 @@ public class DepartmentService extends CrudService<Department, DepartmentMapper>
     public List<Department> findAllList(Department department) {
         Department theBiggestDepartment = findTheBiggestDepartment();
         List<Department> allList = super.findAllList(department);
-        sortDepartmentList(allList,new ArrayList(),theBiggestDepartment.getId());
-        TreeDataUtil.setDepartmentChildrenList(allList);
+        //List afterSort = sortDepartmentList(allList, new ArrayList(), theBiggestDepartment.getId());
+        /*TreeDataUtil.setDepartmentChildrenList(allList);*/
         return allList;
     }
 

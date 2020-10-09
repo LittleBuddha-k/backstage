@@ -2,6 +2,7 @@ package com.littlebuddha.backstage.system.controller;
 
 import com.littlebuddha.backstage.common.utils.resultresponse.JsonResult;
 import com.littlebuddha.backstage.system.entity.Department;
+import com.littlebuddha.backstage.system.mapper.DepartmentMapper;
 import com.littlebuddha.backstage.system.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,8 +24,16 @@ public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;
 
+    @Autowired
+    private DepartmentMapper departmentMapper;
+
+    @GetMapping(value = {"/list",""})
+    public String list(){
+        return "system/department";
+    }
+
     @ResponseBody
-    @GetMapping("/findAllList")
+    @GetMapping("/data")
     public JsonResult<List<Department>> findAll(Department department){
         List<Department> all = departmentService.findAllList(department);
         JsonResult jsonResult = new JsonResult();

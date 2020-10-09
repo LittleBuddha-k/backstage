@@ -39,5 +39,6 @@
         SELECT
         <include refid="departmentColumns"/>
         FROM system_department
+        ORDER BY sort asc
     </select>
 </mapper>

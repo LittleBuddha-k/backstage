@@ -2,18 +2,17 @@ package com.littlebuddha.backstage.system.controller;
 
 import com.littlebuddha.backstage.common.utils.resultresponse.JsonResult;
 import com.littlebuddha.backstage.system.entity.Department;
-import com.littlebuddha.backstage.system.mapper.DepartmentMapper;
 import com.littlebuddha.backstage.system.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 /**
  * 部门管理controller类
+ *
  * @author ck
  * @date 2020/8/12 13:48
  */
@@ -24,23 +23,68 @@ public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;
 
-    @Autowired
-    private DepartmentMapper departmentMapper;
-
-    @GetMapping(value = {"/list",""})
-    public String list(){
+    @GetMapping(value = {"/list", ""})
+    public String list() {
         return "system/department";
     }
 
     @ResponseBody
     @GetMapping("/data")
-    public JsonResult<List<Department>> findAll(Department department){
+    public JsonResult<List<Department>> findAll(Department department) {
         List<Department> all = departmentService.findAllList(department);
         JsonResult jsonResult = new JsonResult();
         jsonResult.setCode(0);
         jsonResult.setMsg("ok");
         jsonResult.setCount(all.size());
         jsonResult.setData(all);
+        return jsonResult;
+    }
+
+    /**
+     * 隐藏域中传送一个parentId
+     *
+     * @param department
+     * @param mode
+     * @param model
+     * @return
+     */
+    @GetMapping("/form/{mode}")
+    public String form(Department department, @PathVariable(name = "mode") String mode, Model model) {
+        model.addAttribute("mode", mode);
+        model.addAttribute("department", department);
+        return "system/departmentForm";
+    }
+
+    @ResponseBody
+    @PostMapping("/save")
+    public JsonResult save(Department department) {
+        departmentService.save(department);
+        JsonResult jsonResult = new JsonResult();
+        jsonResult.setCode(200);
+        jsonResult.setMsg("保存成功！！！");
+        return jsonResult;
+    }
+
+    @ResponseBody
+    @PostMapping("/delete")
+    public JsonResult delete(Department department) {
+        departmentService.deleteByPhysics(department);
+        JsonResult jsonResult = new JsonResult();
+        jsonResult.setCode(200);
+        jsonResult.setMsg("删除成功！！！");
+        return jsonResult;
+    }
+
+    @ResponseBody
+    @PostMapping("/deleteAll")
+    public JsonResult deleteAll(String ids) {
+        String idArray[] =ids.split(",");
+        for (String id : idArray) {
+            departmentService.deleteByPhysics(departmentService.get(id));
+        }
+        JsonResult jsonResult = new JsonResult();
+        jsonResult.setCode(200);
+        jsonResult.setMsg("删除成功！！！");
         return jsonResult;
     }
 }

@@ -24,6 +24,7 @@
             <div class="layui-btn-group">
                 <button class="layui-btn" id="btn-expand">全部展开</button>
                 <button class="layui-btn layui-btn-normal" id="btn-fold">全部折叠</button>
+                <button type="button" class="layui-btn layui-btn-normal" id="add">新建</button>
             </div>
             <table id="department-table" class="layui-table" lay-filter="department-table"></table>
         </div>
@@ -31,8 +32,10 @@
 </div>
 <!-- 操作列 -->
 <script type="text/html" id="auth-state">
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="add">添加下级菜单</a>
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="view">查看</a>
 </script>
 
 <script src="/backstage/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
@@ -51,14 +54,37 @@
             treeIdName: 'id',
             treePidName: 'parentId',
             elem: '#department-table',
-            url: '/backstage/api/department.json',
+            url: '/backstage/system/department/data',
             page: false,
             cols: [
                 [
-                {type: 'numbers'},
-                {field: 'name', minWidth: 200, title: '部门名称'},
-                {templet: '#auth-state', width: 120, align: 'center', title: '操作'}
-            ]
+                    {type: 'numbers'},
+                    {field: 'name', minWidth: 200, title: '部门名称'},
+                    {
+                        field: 'type', width: 200, align: 'center', templet: function (d) {
+                            if (d.type == 0) {
+                                return '<span class="layui-badge layui-bg-gray">头目</span>';
+                            }
+                            if (d.type == 1) {
+                                return '<span class="layui-badge layui-bg-blue">一级</span>';
+                            } else {
+                                return '<span class="layui-badge-rim">二级</span>';
+                            }
+                        }, title: '部门类型'
+                    },
+                    {
+                        field: 'status', minWidth: 200, align: 'center', templet: function (d) {
+                            if (d.status == 0) {
+                                return '<span class="layui-badge layui-bg-gray">未启用</span>';
+                            }
+                            if (d.status == 1) {
+                                return '<span class="layui-badge layui-bg-blue">已启用</span>';
+                            }
+                        }, title: '部门状态'
+                    },
+                    {field: 'sort', minWidth: 200, title: '部门排序'},
+                    {templet: '#auth-state', width: 120, align: 'center', title: '操作'}
+                ]
             ],
             done: function () {
                 layer.closeAll('loading');
@@ -66,22 +92,35 @@
         });
 
         $('#btn-expand').click(function () {
-            treetable.expandAll('#munu-table');
+            treetable.expandAll('#department-table');
         });
 
         $('#btn-fold').click(function () {
-            treetable.foldAll('#munu-table');
+            treetable.foldAll('#department-table');
         });
 
         //监听工具条
-        table.on('tool(munu-table)', function (obj) {
+        table.on('tool(department-table)', function (obj) {
             var data = obj.data;
             var layEvent = obj.event;
 
-            if (layEvent === 'del') {
-                layer.msg('删除' + data.id);
+            if (layEvent === 'add') {
+                layer.msg('添加' + data.id);
+                var index = layer.open({
+                    type : 2,
+                    title : title,
+                    maxmin : true,
+                    offset: '100px',
+                    area : [ '600px', '500px' ],
+                    content : "/backstage/system/department/form/add"    /*iframe的url*/
+                });
+                layer.full(index);    //最小化
             } else if (layEvent === 'edit') {
                 layer.msg('修改' + data.id);
+            } else if (layEvent === 'del') {
+                 layer.msg('删除' + data.id);
+            } else if (layEvent === 'view') {
+                layer.msg('查看' + data.id);
             }
         });
     });

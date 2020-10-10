@@ -6,7 +6,7 @@
     {
       "id": "1",
       "name": "总公司",
-      "parentId": "0",
+      "parentId": "-1",
       "parentIds": "0",
       "type": "0",
       "status": "1",
@@ -17,10 +17,10 @@
       "updateDate": "2020-09-29 14:46:53"
     },
     {
-      "id": "9e3dd5fba54d42bbaa3713dda628d1d9",
+      "id": "2",
       "name": "部门一",
       "parentId": "1",
-      "parentIds": "4e70fd585b3d494dbb7e4308599e41bd,0",
+      "parentIds": "1",
       "type": "1",
       "status": "1",
       "sort": "1",
@@ -29,111 +29,12 @@
       "updateBy": "1",
       "updateDate": "2020-09-29 14:46:53"
     },
-
     {
-      "id": "9e3dd5fba54d42bbaa3713dda628d1d9",
+      "id": "3",
       "name": "部门一一",
-      "parentId": "9e3dd5fba54d42bbaa3713dda628d1d9",
+      "parentId": "2",
       "parentIds": "9e3dd5fba54d42bbaa3713dda628d1d9,4e70fd585b3d494dbb7e4308599e41bd,0",
       "type": "2",
-      "status": "1",
-      "sort": "0",
-      "createBy.id": "1",
-      "createDate": "2020-09-29 14:46:53",
-      "updateBy": "1",
-      "updateDate": "2020-09-29 14:46:53"
-    },
-
-    {
-      "id": "9e3dd5fba54d42bbaa3713dda628d1d9",
-      "name": "部门一二",
-      "parentId": "9e3dd5fba54d42bbaa3713dda628d1d9",
-      "parentIds": "9e3dd5fba54d42bbaa3713dda628d1d9,4e70fd585b3d494dbb7e4308599e41bd,0",
-      "type": "2",
-      "status": "1",
-      "sort": "0",
-      "createBy.id": "1",
-      "createDate": "2020-09-29 14:46:53",
-      "updateBy": "1",
-      "updateDate": "2020-09-29 14:46:53"
-    },
-
-    {
-      "id": "9e3dd5fba54d42bbaa3713dda628d1d9",
-      "name": "部门一三",
-      "parentId": "9e3dd5fba54d42bbaa3713dda628d1d9",
-      "parentIds": "9e3dd5fba54d42bbaa3713dda628d1d9,4e70fd585b3d494dbb7e4308599e41bd,0",
-      "type": "2",
-      "status": "1",
-      "sort": "0",
-      "createBy.id": "1",
-      "createDate": "2020-09-29 14:46:53",
-      "updateBy": "1",
-      "updateDate": "2020-09-29 14:46:53"
-    },
-
-    {
-      "id": "9e3dd5fba54d42bbaa3713dda628d1d9",
-      "name": "部门一四",
-      "parentId": "9e3dd5fba54d42bbaa3713dda628d1d9",
-      "parentIds": "9e3dd5fba54d42bbaa3713dda628d1d9,4e70fd585b3d494dbb7e4308599e41bd,0",
-      "type": "2",
-      "status": "1",
-      "sort": "0",
-      "createBy.id": "1",
-      "createDate": "2020-09-29 14:46:53",
-      "updateBy": "1",
-      "updateDate": "2020-09-29 14:46:53"
-    },
-
-    {
-      "id": "9e3dd5fba54d42bbaa3713dda628d1d9",
-      "name": "部门一五",
-      "parentId": "9e3dd5fba54d42bbaa3713dda628d1d9",
-      "parentIds": "9e3dd5fba54d42bbaa3713dda628d1d9,4e70fd585b3d494dbb7e4308599e41bd,0",
-      "type": "2",
-      "status": "1",
-      "sort": "0",
-      "createBy.id": "1",
-      "createDate": "2020-09-29 14:46:53",
-      "updateBy": "1",
-      "updateDate": "2020-09-29 14:46:53"
-    },
-
-    {
-      "id": "4ab28ad069cd4282b314f1e8ed2ade81",
-      "name": "部门二",
-      "parentId": "1",
-      "parentIds": "4e70fd585b3d494dbb7e4308599e41bd,0",
-      "type": "1",
-      "status": "1",
-      "sort": "0",
-      "createBy.id": "1",
-      "createDate": "2020-09-29 14:46:53",
-      "updateBy": "1",
-      "updateDate": "2020-09-29 14:46:53"
-    },
-
-    {
-      "id": "d3549f86b59045209c29e0e2dbf5df1f",
-      "name": "部门二一",
-      "parentId": "4ab28ad069cd4282b314f1e8ed2ade81",
-      "parentIds": "4ab28ad069cd4282b314f1e8ed2ade81,4e70fd585b3d494dbb7e4308599e41bd,0",
-      "type": "0",
-      "status": "1",
-      "sort": "0",
-      "createBy.id": "1",
-      "createDate": "2020-09-29 14:46:53",
-      "updateBy": "1",
-      "updateDate": "2020-09-29 14:46:53"
-    },
-
-    {
-      "id": "d343149cab254914b605ee7155a47732",
-      "name": "部门二二",
-      "parentId": "4ab28ad069cd4282b314f1e8ed2ade81",
-      "parentIds": "4ab28ad069cd4282b314f1e8ed2ade81,4e70fd585b3d494dbb7e4308599e41bd,0",
-      "type": "0",
       "status": "1",
       "sort": "0",
       "createBy.id": "1",

@@ -35,10 +35,90 @@
         </where>
     </select>
 
+    <select id="findList" resultType="com.littlebuddha.backstage.system.entity.Department">
+        SELECT
+        <include refid="departmentColumns"/>
+        FROM system_department
+        <where>
+            <!-- 判断条件参数是否为空 -->
+            <if test="name != null and name != ''">
+                and a.name = #{name}
+            </if>
+        </where>
+        <choose>
+            <when test="page !=null and page.orderBy != null and page.orderBy != ''">
+                ORDER BY ${page.orderBy}
+                LIMIT #{page.start},#{page.length}
+            </when>
+            <otherwise>
+                ORDER BY a.create_date DESC
+                LIMIT #{page.start},#{page.length}
+            </otherwise>
+        </choose>
+    </select>
+
     <select id="findAllList" resultType="com.littlebuddha.backstage.system.entity.Department">
         SELECT
         <include refid="departmentColumns"/>
         FROM system_department
         ORDER BY sort asc
     </select>
+
+    <insert id="insert">
+        INSERT INTO system_department(
+            id,
+            name,
+            parent_id,
+            parent_ids,
+            type,
+            status,
+            sort,
+            create_by,
+            create_date,
+            update_by,
+            update_date
+        )VALUES (
+            #{id},
+            #{name},
+            #{parentId},
+            #{parentIds},
+            #{type},
+            #{status},
+            #{sort},
+            #{createBy.id},
+            #{createDate},
+            #{updateBy.id},
+            #{updateDate}
+        )
+    </insert>
+
+    <update id="update">
+        UPDATE system_department SET
+            name = #{name},
+            parent_id = #{parentId},
+            parent_ids = #{parentIds},
+            type = #{type},
+            status = #{status},
+            sort = #{sort},
+            create_by = #{createBy.id},
+            create_date = #{createDate},
+            update_by = #{updateBy.id},
+            update_date = #{updateDate}
+        WHERE id=#{id}
+    </update>
+
+    <update id="deleteByLogic">
+        UPDATE system_department SET is_delete = 1
+        WHERE id=#{id}
+    </update>
+
+    <update id="recover">
+        UPDATE system_department SET is_delete = 0
+        WHERE id=#{id}
+    </update>
+
+    <delete id="deleteByPhysics">
+        DELETE FROM system_department
+        WHERE id=#{id}
+    </delete>
 </mapper>

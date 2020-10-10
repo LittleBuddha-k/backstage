@@ -29,12 +29,32 @@ public class DepartmentService extends CrudService<Department, DepartmentMapper>
     }
 
     @Override
+    public List<Department> findList(Department entity) {
+        return super.findList(entity);
+    }
+
+    @Override
     public List<Department> findAllList(Department department) {
         Department theBiggestDepartment = findTheBiggestDepartment();
         List<Department> allList = super.findAllList(department);
         //List afterSort = sortDepartmentList(allList, new ArrayList(), theBiggestDepartment.getId());
         /*TreeDataUtil.setDepartmentChildrenList(allList);*/
         return allList;
+    }
+
+    @Override
+    public int save(Department entity) {
+        return super.save(entity);
+    }
+
+    @Override
+    public int deleteByPhysics(Department entity) {
+        return super.deleteByPhysics(entity);
+    }
+
+    @Override
+    public int deleteByLogic(Department entity) {
+        return super.deleteByLogic(entity);
     }
 
     public Department findTheBiggestDepartment(){

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>menu</title>
+    <link rel="stylesheet" href="/backstage/lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="/backstage/css/public.css" media="all">
+    <style>
+        .layui-btn:not(.layui-btn-lg ):not(.layui-btn-sm):not(.layui-btn-xs) {
+            height: 34px;
+            line-height: 34px;
+            padding: 0 8px;
+        }
+    </style>
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <form:form class="layui-form layui-form-pane" action="">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">用户姓名</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="username" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">用户性别</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="sex" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">用户城市</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="city" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">用户职业</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="classify" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </form:form>
+    </div>
+</div>
+</body>
+</html>

@@ -10,10 +10,14 @@
         type AS "type",
         status AS "status",
         sort AS "sort",
+        fzr AS "fzr",
+        level AS "level",
+        phone AS "phone",
         create_by AS "createBy.id",
         create_date AS "createDate",
         update_by AS "updateBy.id",
-        update_date AS "updateDate"
+        update_date AS "updateDate",
+        remarks AS "remarks"
     </sql>
 
     <select id="get" resultType="com.littlebuddha.backstage.system.entity.Department">
@@ -73,10 +77,14 @@
             type,
             status,
             sort,
+            fzr,
+            level,
+            phone,
             create_by,
             create_date,
             update_by,
-            update_date
+            update_date,
+            remarks
         )VALUES (
             #{id},
             #{name},
@@ -85,10 +93,14 @@
             #{type},
             #{status},
             #{sort},
+            #{fzr},
+            #{level},
+            #{phone},
             #{createBy.id},
             #{createDate},
             #{updateBy.id},
-            #{updateDate}
+            #{updateDate},
+            #{remarks}
         )
     </insert>
 
@@ -100,10 +112,14 @@
             type = #{type},
             status = #{status},
             sort = #{sort},
+            fzr = #{fzr},
+            level = #{level},
+            phone = #{phone},
             create_by = #{createBy.id},
             create_date = #{createDate},
             update_by = #{updateBy.id},
-            update_date = #{updateDate}
+            update_date = #{updateDate},
+            remarks = #{remarks}
         WHERE id=#{id}
     </update>
 

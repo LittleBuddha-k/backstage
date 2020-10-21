@@ -3,6 +3,7 @@ package com.littlebuddha.backstage.system.controller;
 import com.littlebuddha.backstage.common.utils.resultresponse.JsonResult;
 import com.littlebuddha.backstage.system.entity.Department;
 import com.littlebuddha.backstage.system.service.DepartmentService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,18 @@ public class DepartmentController {
 
     @Autowired
     private DepartmentService departmentService;
+
+    @ModelAttribute
+    public Department get(@RequestParam(name = "id",required = false) String id){
+        Department department = null;
+        if(StringUtils.isBlank(id)){
+            department = new Department();
+        }
+        if(department != null){
+            department = departmentService.get(id);
+        }
+        return department;
+    }
 
     @GetMapping(value = {"/list", ""})
     public String list() {
@@ -58,7 +71,10 @@ public class DepartmentController {
     @ResponseBody
     @PostMapping("/save")
     public JsonResult save(Department department) {
-        departmentService.save(department);
+        //departmentService.save(department);
+        System.out.println("检验传值name"+department.getName());
+        System.out.println("检验传值type"+department.getType());
+        System.out.println("检验传值status"+department.getStatus());
         JsonResult jsonResult = new JsonResult();
         jsonResult.setCode(200);
         jsonResult.setMsg("保存成功！！！");

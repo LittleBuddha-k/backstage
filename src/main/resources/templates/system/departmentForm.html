@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html"
+      xmlns:hidden="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>menu</title>
+    <title>菜单表单</title>
     <link rel="stylesheet" href="/backstage/lib/layui-v2.5.5/css/layui.css" media="all">
     <link rel="stylesheet" href="/backstage/css/public.css" media="all">
     <style>
@@ -16,35 +17,65 @@
 <body>
 <div class="layuimini-container">
     <div class="layuimini-main">
-        <form:form class="layui-form layui-form-pane" action="">
+        <form class="layui-form layui-form-pane">
+            <input type="hidden" name="parentId" value="111">
             <div class="layui-form-item">
                 <div class="layui-inline">
-                    <label class="layui-form-label">用户姓名</label>
+                    <label class="layui-form-label">部门名称</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="username" autocomplete="off" class="layui-input">
+                        <input type="text" name="name" autocomplete="off" class="layui-input" path="name">
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <label class="layui-form-label">用户性别</label>
+                    <label class="layui-form-label">部门类型（这里做一个下拉菜单选择几级部门）</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="sex" autocomplete="off" class="layui-input">
+                        <input type="text" name="type" autocomplete="off" class="layui-input" path="type">
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <label class="layui-form-label">用户城市</label>
+                    <label class="layui-form-label">启用状态</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="city" autocomplete="off" class="layui-input">
+                        <input type="text" name="status" autocomplete="off" class="layui-input" path="status">
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <label class="layui-form-label">用户职业</label>
+                    <label class="layui-form-label">负责人</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="classify" autocomplete="off" class="layui-input">
+                        <input type="text" name="fzr" autocomplete="off" class="layui-input" path="fzr">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">部门级别</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="level" autocomplete="off" class="layui-input" path="level">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">部门电话</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="phone" autocomplete="off" class="layui-input" path="phone">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">备注</label>
+                    <div class="layui-input-block">
+                        <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
                     </div>
                 </div>
             </div>
-        </form:form>
+
+            <div class="layui-form-item">
+                <button class="layui-btn" lay-submit="" lay-filter="demo2" id="submit">提 交</button>
+            </div>
+        </form>
     </div>
 </div>
+<script type="application/javascript">
+    layui.use(['form'], function () {
+        $(document).on('click', '#submit', function () {
+            layer.msg('hello');
+        });
+    })
+</script>
 </body>
 </html>

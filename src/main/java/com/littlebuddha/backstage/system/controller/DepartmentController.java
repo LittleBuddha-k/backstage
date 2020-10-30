@@ -70,11 +70,11 @@ public class DepartmentController {
 
     @ResponseBody
     @PostMapping("/save")
-    public JsonResult save(Department department) {
+    public JsonResult save(String name,String type,String status) {
         //departmentService.save(department);
-        System.out.println("检验传值name"+department.getName());
-        System.out.println("检验传值type"+department.getType());
-        System.out.println("检验传值status"+department.getStatus());
+        System.out.println("检验传值name"+name);
+        System.out.println("检验传值type"+type);
+        System.out.println("检验传值status"+status);
         JsonResult jsonResult = new JsonResult();
         jsonResult.setCode(200);
         jsonResult.setMsg("保存成功！！！");

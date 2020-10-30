@@ -23,59 +23,74 @@
                 <div class="layui-inline">
                     <label class="layui-form-label">部门名称</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="name" autocomplete="off" class="layui-input" path="name">
+                        <input type="text" name="name" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">部门类型（这里做一个下拉菜单选择几级部门）</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="type" autocomplete="off" class="layui-input" path="type">
+                        <input type="text" name="type" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">启用状态</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="status" autocomplete="off" class="layui-input" path="status">
+                        <input type="text" name="status" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">负责人</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="fzr" autocomplete="off" class="layui-input" path="fzr">
+                        <input type="text" name="fzr" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">部门级别</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="level" autocomplete="off" class="layui-input" path="level">
+                        <input type="text" name="level" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">部门电话</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="phone" autocomplete="off" class="layui-input" path="phone">
+                        <input type="text" name="phone" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">备注</label>
                     <div class="layui-input-block">
-                        <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                        <textarea placeholder="请输入内容" name="remarks" class="layui-textarea"></textarea>
                     </div>
                 </div>
             </div>
 
             <div class="layui-form-item">
-                <button class="layui-btn" lay-submit="" lay-filter="demo2" id="submit">提 交</button>
+                <button class="layui-btn" lay-submit="" lay-filter="submit">提 交</button>
             </div>
         </form>
     </div>
 </div>
+
+<script src="/backstage/lib/jquery-3.4.1/jquery-3.4.1.min.js" charset="utf-8"></script>
+<script src="/backstage/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script src="/backstage/js/lay-config.js?v=1.0.4" charset="utf-8"></script>
 <script type="application/javascript">
-    layui.use(['form'], function () {
-        $(document).on('click', '#submit', function () {
-            layer.msg('hello');
+    layui.use('form', function () {
+        var form = layui.form;
+        form.on('submit(submit)', function(data){
+            //layer.msg(JSON.stringify(data.field));
+            layer.msg(data.field);
+            $.ajax({
+                url:"/backstage/system/department/save",
+                type:"POST",
+                dataType: "json",
+                data:data.field,
+                success: function(data){
+                }
+            })
+            return false;
         });
-    })
+    });
 </script>
 </body>
 </html>

@@ -17,7 +17,7 @@
 <body>
 <div class="layuimini-container">
     <div class="layuimini-main">
-        <form class="layui-form layui-form-pane">
+        <form class="layui-form layui-form-pane" id="departmentForm">
             <input type="hidden" name="parentId" value="111">
             <div class="layui-form-item">
                 <div class="layui-inline">
@@ -65,7 +65,7 @@
             </div>
 
             <div class="layui-form-item">
-                <button class="layui-btn" lay-submit="" lay-filter="submit">提 交</button>
+                <button id="submit">提 交</button>
             </div>
         </form>
     </div>
@@ -75,22 +75,9 @@
 <script src="/backstage/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 <script src="/backstage/js/lay-config.js?v=1.0.4" charset="utf-8"></script>
 <script type="application/javascript">
-    layui.use('form', function () {
-        var form = layui.form;
-        form.on('submit(submit)', function(data){
-            //layer.msg(JSON.stringify(data.field));
-            layer.msg(data.field);
-            $.ajax({
-                url:"/backstage/system/department/save",
-                type:"POST",
-                dataType: "json",
-                data:data.field,
-                success: function(data){
-                }
-            })
-            return false;
-        });
-    });
+    $("#submit").click(function () {
+        alert("按钮点击");
+    })
 </script>
 </body>
 </html>

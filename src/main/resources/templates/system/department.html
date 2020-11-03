@@ -105,14 +105,13 @@
             var layEvent = obj.event;
 
             if (layEvent === 'add') {
-                layer.msg('添加' + data.id);
                 var index = layer.open({
                     type : 2,
-                    title : title,
+                    title : "添加部门",
                     maxmin : true,
                     offset: '100px',
-                    area : [ '600px', '500px' ],
-                    content : "/backstage/system/department/form/add"    /*iframe的url*/
+                    area : [ '50%', '50%' ],
+                    content : "/backstage/system/department/form/add?id="+data.id    /*iframe的url*/
                 });
                 layer.full(index);    //最小化
             } else if (layEvent === 'edit') {

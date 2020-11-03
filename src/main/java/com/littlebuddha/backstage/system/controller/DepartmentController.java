@@ -27,11 +27,11 @@ public class DepartmentController {
     @ModelAttribute
     public Department get(@RequestParam(name = "id",required = false) String id){
         Department department = null;
-        if(StringUtils.isBlank(id)){
-            department = new Department();
+        if(StringUtils.isNotBlank(id)){
+            department = departmentService.get(id);
         }
         if(department != null){
-            department = departmentService.get(id);
+            department = new Department();
         }
         return department;
     }
@@ -70,11 +70,9 @@ public class DepartmentController {
 
     @ResponseBody
     @PostMapping("/save")
-    public JsonResult save(String name,String type,String status) {
+    public JsonResult save(Department department) {
         //departmentService.save(department);
-        System.out.println("检验传值name"+name);
-        System.out.println("检验传值type"+type);
-        System.out.println("检验传值status"+status);
+        System.out.println(department);
         JsonResult jsonResult = new JsonResult();
         jsonResult.setCode(200);
         jsonResult.setMsg("保存成功！！！");

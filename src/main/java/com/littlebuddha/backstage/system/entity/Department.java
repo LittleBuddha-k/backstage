@@ -102,4 +102,9 @@ public class Department extends DataEntity<Department> {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

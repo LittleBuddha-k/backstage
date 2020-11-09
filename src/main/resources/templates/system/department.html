@@ -30,7 +30,7 @@
         </div>
     </div>
 </div>
-<!-- 操作列 -->
+<!-- 操作列模板 -->
 <script type="text/html" id="auth-state">
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="add">添加下级菜单</a>
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
@@ -38,6 +38,7 @@
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="view">查看</a>
 </script>
 
+<script src="/backstage/lib/jquery-3.4.1/jquery-3.4.1.min.js" charset="utf-8"></script>
 <script src="/backstage/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 <script src="/backstage/js/lay-config.js?v=1.0.4" charset="utf-8"></script>
 <script>
@@ -82,7 +83,7 @@
                             }
                         }, title: '部门状态'
                     },
-                    {field: 'sort', minWidth: 200, title: '部门排序'},
+                    {field: 'sort', minWidth: 50, title: '部门排序'},
                     {templet: '#auth-state', width: 120, align: 'center', title: '操作'}
                 ]
             ],
@@ -91,15 +92,30 @@
             }
         });
 
+        //展开
         $('#btn-expand').click(function () {
             treetable.expandAll('#department-table');
         });
 
+        //折叠
         $('#btn-fold').click(function () {
             treetable.foldAll('#department-table');
         });
 
-        //监听工具条
+        /*建立一级菜单*/
+        $("#add").click(function () {
+            var index = layer.open({
+                type : 2,
+                title : "新建部门",
+                maxmin : true,
+                offset: '100px',
+                area : [ '50%', '50%' ],
+                content : "/backstage/system/department/form/add"    /*iframe的url*/
+            });
+            layer.full(index);    //最小化
+        })
+
+        //表格监听工具条
         table.on('tool(department-table)', function (obj) {
             var data = obj.data;
             var layEvent = obj.event;
@@ -111,15 +127,39 @@
                     maxmin : true,
                     offset: '100px',
                     area : [ '50%', '50%' ],
-                    content : "/backstage/system/department/form/add?id="+data.id    /*iframe的url*/
+                    content : "/backstage/system/department/form/add"    /*iframe的url*/
                 });
                 layer.full(index);    //最小化
             } else if (layEvent === 'edit') {
-                layer.msg('修改' + data.id);
+                var index = layer.open({
+                    type : 2,
+                    title : "编辑部门",
+                    maxmin : true,
+                    offset: '100px',
+                    area : [ '50%', '50%' ],
+                    content : "/backstage/system/department/form/edit?id="+data.id    /*iframe的url*/
+                });
+                layer.full(index);    //最小化
             } else if (layEvent === 'del') {
-                 layer.msg('删除' + data.id);
+                var index = layer.open({
+                    type : 2,
+                    title : "删除部门",
+                    maxmin : true,
+                    offset: '100px',
+                    area : [ '50%', '50%' ],
+                    content : "/backstage/system/department/form/del?id="+data.id    /*iframe的url*/
+                });
+                layer.full(index);    //最小化
             } else if (layEvent === 'view') {
-                layer.msg('查看' + data.id);
+                var index = layer.open({
+                    type : 2,
+                    title : "查看部门",
+                    maxmin : true,
+                    offset: '100px',
+                    area : [ '50%', '50%' ],
+                    content : "/backstage/system/department/form/view?id="+data.id    /*iframe的url*/
+                });
+                layer.full(index);    //最小化
             }
         });
     });

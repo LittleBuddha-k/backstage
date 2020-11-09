@@ -18,48 +18,48 @@
 <div class="layuimini-container">
     <div class="layuimini-main">
         <form class="layui-form layui-form-pane" id="departmentForm">
-            <input type="hidden" name="parentId" value="111">
+            <input type="hidden" name="parentId" th:value="${department.getId()}">
             <div class="layui-form-item">
                 <div class="layui-inline">
                     <label class="layui-form-label">部门名称</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="name" autocomplete="off" class="layui-input">
+                        <input type="text" name="name" autocomplete="off" class="layui-input" th:value="${department.getName()}">
                     </div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">部门类型（这里做一个下拉菜单选择几级部门）</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="type" autocomplete="off" class="layui-input">
+                        <input type="text" name="type" autocomplete="off" class="layui-input" th:value="${department.getType()}">
                     </div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">启用状态</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="status" autocomplete="off" class="layui-input">
+                        <input type="text" name="status" autocomplete="off" class="layui-input" th:value="${department.getStatus()}">
                     </div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">负责人</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="fzr" autocomplete="off" class="layui-input">
+                        <input type="text" name="fzr" autocomplete="off" class="layui-input" th:value="${department.getFzr()}">
                     </div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">部门级别</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="level" autocomplete="off" class="layui-input">
+                        <input type="text" name="level" autocomplete="off" class="layui-input" th:value="${department.getLevel()}">
                     </div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">部门电话</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="phone" autocomplete="off" class="layui-input">
+                        <input type="text" name="phone" autocomplete="off" class="layui-input" th:value="${department.getPhone()}">
                     </div>
                 </div>
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">备注</label>
                     <div class="layui-input-block">
-                        <textarea placeholder="请输入内容" name="remarks" class="layui-textarea"></textarea>
+                        <textarea placeholder="请输入内容" name="remarks" class="layui-textarea" th:value="${department.getRemarks()}"></textarea>
                     </div>
                 </div>
             </div>

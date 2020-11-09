@@ -30,7 +30,7 @@ public class DepartmentController {
         if(StringUtils.isNotBlank(id)){
             department = departmentService.get(id);
         }
-        if(department != null){
+        if(department == null){
             department = new Department();
         }
         return department;

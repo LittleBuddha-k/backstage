@@ -64,9 +64,8 @@
                 </div>
             </div>
 
-            <div class="layui-form-item">
-                <button id="submit">提 交</button>
-            </div>
+                <button type="button" id="submit">提 交</button>
+
         </form>
     </div>
 </div>
@@ -76,7 +75,14 @@
 <script src="/backstage/js/lay-config.js?v=1.0.4" charset="utf-8"></script>
 <script type="application/javascript">
     $("#submit").click(function () {
-        alert("按钮点击");
+        $.ajax({
+            url:"/backstage/system/department/save?"+$("#departmentForm").serialize(),
+            type:"post",
+            dataType:"json",
+            success:function () {
+                alert("成功")
+            }
+        })
     })
 </script>
 </body>

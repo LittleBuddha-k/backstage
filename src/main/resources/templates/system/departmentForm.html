@@ -74,13 +74,18 @@
 <script src="/backstage/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 <script src="/backstage/js/lay-config.js?v=1.0.4" charset="utf-8"></script>
 <script type="application/javascript">
+    var layer;
+    layui.use("layer", function () {
+        layer = layui.layer;
+    });
+
     $("#submit").click(function () {
         $.ajax({
             url:"/backstage/system/department/save?"+$("#departmentForm").serialize(),
             type:"post",
             dataType:"json",
             success:function () {
-                alert("成功")
+                layer.msg("大家好，这是最简单的弹层");
             }
         })
     })

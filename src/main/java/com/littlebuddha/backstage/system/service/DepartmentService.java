@@ -3,6 +3,7 @@ package com.littlebuddha.backstage.system.service;
 import com.littlebuddha.backstage.common.base.CrudService;
 import com.littlebuddha.backstage.system.entity.Department;
 import com.littlebuddha.backstage.system.mapper.DepartmentMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,7 @@ public class DepartmentService extends CrudService<Department, DepartmentMapper>
         return super.get(department);
     }
 
-    public List<Department> findByParentId(Department department){
+    public List<Department> findByParentId(Department department) {
         List<Department> departments = departmentMapper.findByParentId(department);
         return departments;
     }
@@ -44,6 +45,20 @@ public class DepartmentService extends CrudService<Department, DepartmentMapper>
 
     @Override
     public int save(Department entity) {
+        //1.如果前端传值id没有值，那么就是创建的一级菜单，其parentId为-1
+        if (StringUtils.isBlank(entity.getId())) {
+            entity.setParentId("-1");
+            entity.setParentIds("-1");
+        } else {
+
+            //2.如果前端传值id有值，根据id查询对应id实体则为父节点
+            Department department = departmentMapper.get(entity);
+
+            //3.设置父节点
+            entity.setParentId(department.getId());
+            entity.setParentIds(department.getParentIds() + "," + department.getId());
+        }
+
         return super.save(entity);
     }
 
@@ -57,11 +72,11 @@ public class DepartmentService extends CrudService<Department, DepartmentMapper>
         return super.deleteByLogic(entity);
     }
 
-    public Department findTheBiggestDepartment(){
+    public Department findTheBiggestDepartment() {
         Department department = new Department();
         List<Department> allList = departmentMapper.findAllList(new Department());
         for (Department entity : allList) {
-            if (entity.getParentId().equals("0")){
+            if (entity.getParentId().equals("0")) {
                 department = entity;
                 break;
             }

@@ -46,19 +46,16 @@ public class DepartmentService extends CrudService<Department, DepartmentMapper>
     @Override
     public int save(Department entity) {
         //1.如果前端传值id没有值，那么就是创建的一级菜单，其parentId为-1
-        if (StringUtils.isBlank(entity.getId())) {
+        if (StringUtils.isBlank(entity.getParentId())) {
             entity.setParentId("-1");
             entity.setParentIds("-1");
         } else {
-
             //2.如果前端传值id有值，根据id查询对应id实体则为父节点
-            Department department = departmentMapper.get(entity);
-
+            Department department = departmentMapper.getByParentId(entity);
             //3.设置父节点
             entity.setParentId(department.getId());
             entity.setParentIds(department.getParentIds() + "," + department.getId());
         }
-
         return super.save(entity);
     }
 

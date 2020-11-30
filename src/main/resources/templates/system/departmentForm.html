@@ -18,7 +18,7 @@
 <div class="layuimini-container">
     <div class="layuimini-main">
         <form class="layui-form layui-form-pane" id="departmentForm">
-            <input type="hidden" name="id" th:value="${department.getId()}">
+            <input type="hidden" name="parentId" th:value="${department.getParentId()}">
             <div class="layui-form-item">
                 <div class="layui-inline">
                     <label class="layui-form-label">部门名称</label>
@@ -59,12 +59,12 @@
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">备注</label>
                     <div class="layui-input-block">
-                        <textarea placeholder="请输入内容" name="remarks" class="layui-textarea" th:value="${department.getRemarks()}"></textarea>
+                        <textarea placeholder="请输入内容" name="remarks" class="layui-textarea" th:text="${department.getRemarks()}"></textarea>
                     </div>
                 </div>
             </div>
 
-                <button type="button" id="submit">提 交</button>
+                <button type="button" class="layui-btn layui-btn-normal" id="submit">提 交</button>
 
         </form>
     </div>
@@ -79,13 +79,23 @@
         layer = layui.layer;
     });
 
+    let index = parent.layer.getFrameIndex(window.name);
+
     $("#submit").click(function () {
         $.ajax({
             url:"/backstage/system/department/save?"+$("#departmentForm").serialize(),
             type:"post",
             dataType:"json",
-            success:function () {
-                layer.msg("大家好，这是最简单的弹层");
+            success:function (data) {
+                //todo成功过后关闭当前form表单，并刷新当前list展现页面
+                parent.layer.close(index);
+                layer.msg(data.msg);
+                //重新加载父页面
+                parent.location.reload();
+            }, error: function(data){
+                //todo成功过后关闭当前form表单，并刷新当前list展现页面
+                parent.layer.close(index);
+                layer.msg(data.msg);
             }
         })
     })

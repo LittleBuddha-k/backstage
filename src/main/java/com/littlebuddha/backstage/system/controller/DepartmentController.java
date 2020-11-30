@@ -72,7 +72,6 @@ public class DepartmentController {
     @PostMapping("/save")
     public JsonResult save(Department department) {
         departmentService.save(department);
-        department.setParentId(department.getId());
         JsonResult jsonResult = new JsonResult();
         jsonResult.setCode(200);
         jsonResult.setMsg("保存成功！！！");

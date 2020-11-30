@@ -34,7 +34,7 @@
 <script type="text/html" id="auth-state">
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="add">添加下级菜单</a>
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="view">查看</a>
 </script>
 
@@ -63,7 +63,7 @@
                     {type: 'numbers'},
                     {field: 'name', minWidth: 200, title: '部门名称'},
                     {
-                        field: 'type', width: 200, align: 'center', templet: function (d) {
+                        field: 'type', minWidth: 100, align: 'center', templet: function (d) {
                             if (d.type == 0) {
                                 return '<span class="layui-badge layui-bg-gray">头目</span>';
                             }
@@ -75,7 +75,7 @@
                         }, title: '部门类型'
                     },
                     {
-                        field: 'status', minWidth: 200, align: 'center', templet: function (d) {
+                        field: 'status', minWidth: 100, align: 'center', templet: function (d) {
                             if (d.status == 0) {
                                 return '<span class="layui-badge layui-bg-gray">未启用</span>';
                             }
@@ -84,8 +84,8 @@
                             }
                         }, title: '部门状态'
                     },
-                    {field: 'sort', minWidth: 50, title: '部门排序'},
-                    {templet: '#auth-state', width: 120, align: 'center', title: '操作'}
+                    {field: 'sort', minWidth: 10, align: 'center',title: '部门排序'},
+                    {templet: '#auth-state', minWidth: 120, align: 'center', title: '操作'}
                 ]
             ],
             done: function () {
@@ -106,12 +106,12 @@
         /*建立一级菜单*/
         $("#add").click(function () {
             var index = layer.open({
-                type : 2,
-                title : "新建部门",
-                maxmin : true,
+                type: 2,
+                title: "新建部门",
+                maxmin: true,
                 offset: '100px',
-                area : [ '50%', '50%' ],
-                content : "/backstage/system/department/form/add"    /*iframe的url*/
+                area: ['50%', '50%'],
+                content: "/backstage/system/department/form/add"    /*iframe的url*/
             });
             layer.full(index);    //最小化
         })
@@ -123,42 +123,56 @@
 
             if (layEvent === 'add') {
                 var index = layer.open({
-                    type : 2,
-                    title : "添加部门",
-                    maxmin : true,
+                    type: 2,
+                    title: "添加部门",
+                    maxmin: true,
                     offset: '100px',
-                    area : [ '50%', '50%' ],
-                    content : "/backstage/system/department/form/add"    //iframe的url
+                    area: ['50%', '50%'],
+                    content: "/backstage/system/department/form/add?id=" + data.id    //iframe的url
                 });
                 layer.full(index);    //最小化
             } else if (layEvent === 'edit') {
                 var index = layer.open({
-                    type : 2,
-                    title : "编辑部门",
-                    maxmin : true,
+                    type: 2,
+                    title: "编辑部门",
+                    maxmin: true,
                     offset: '100px',
-                    area : [ '50%', '50%' ],
-                    content : "/backstage/system/department/form/edit?id="+data.id    //iframe的url
+                    area: ['50%', '50%'],
+                    content: "/backstage/system/department/form/edit?id=" + data.id    //iframe的url
                 });
                 layer.full(index);    //最小化
-            } else if (layEvent === 'del') {
-                var index = layer.open({
-                    type : 2,
-                    title : "删除部门",
-                    maxmin : true,
-                    offset: '100px',
-                    area : [ '50%', '50%' ],
-                    content : "/backstage/system/department/form/del?id="+data.id    //iframe的url
+            } else if (layEvent === 'delete') {
+                //询问框
+                layer.confirm('确定要删除当前选项吗？', {
+                    btn: ['确定', '取消'] //按钮
+                }, function () {
+                    //点击确定的回调
+                    $.ajax({
+                        url: "/backstage/system/department/delete?id=" + data.id,
+                        type: "post",
+                        dataType: "json",
+                        success: function (data) {
+                            layer.msg(data.msg, {icon: 6, time: 1000, end: function () {
+                                    //重新加载页面
+                                    location.reload();
+                                }
+                            });
+                        }, error: function (data) {
+                            //todo成功过后关闭当前form表单，并刷新当前list展现页面
+                            layer.msg('数据删除失败');
+                        }
+                    })
+                }, function () {
+                    layer.msg('操作已取消' + data.id);
                 });
-                layer.full(index);    //最小化
             } else if (layEvent === 'view') {
                 var index = layer.open({
-                    type : 2,
-                    title : "查看部门",
-                    maxmin : true,
+                    type: 2,
+                    title: "查看部门",
+                    maxmin: true,
                     offset: '100px',
-                    area : [ '50%', '50%' ],
-                    content : "/backstage/system/department/form/view?id="+data.id    //iframe的url
+                    area: ['50%', '50%'],
+                    content: "/backstage/system/department/form/view?id=" + data.id    //iframe的url
                 });
                 layer.full(index);    //最小化
             }

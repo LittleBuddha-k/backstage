@@ -24,8 +24,8 @@ public class DepartmentService extends CrudService<Department, DepartmentMapper>
         return super.get(department);
     }
 
-    public List<Department> findByParentId(Department department) {
-        List<Department> departments = departmentMapper.findByParentId(department);
+    public Department findByParentId(Department department) {
+        Department departments = departmentMapper.getByParentIdAndName(department);
         return departments;
     }
 
@@ -45,13 +45,13 @@ public class DepartmentService extends CrudService<Department, DepartmentMapper>
 
     @Override
     public int save(Department entity) {
-        //1.如果前端传值id没有值，那么就是创建的一级菜单，其parentId为-1
+        //1.如果前端传值parentId没有值，那么就是创建的一级菜单，其parentId为-1
         if (StringUtils.isBlank(entity.getParentId())) {
             entity.setParentId("-1");
             entity.setParentIds("-1");
         } else {
-            //2.如果前端传值id有值，根据id查询对应id实体则为父节点
-            Department department = departmentMapper.getByParentId(entity);
+            //2.如果前端传值parentId有值，根据parentId查询对应parentId实体则为父节点
+            Department department = departmentMapper.getByParentIdAndName(new Department());
             //3.设置父节点
             entity.setParentId(department.getId());
             entity.setParentIds(department.getParentIds() + "," + department.getId());

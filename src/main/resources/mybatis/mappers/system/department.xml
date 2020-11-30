@@ -27,11 +27,11 @@
         WHERE id=#{id}
     </select>
 
-    <select id="getByParentId" resultType="com.littlebuddha.backstage.system.entity.Department">
+    <select id="getByParentIdAndName" resultType="com.littlebuddha.backstage.system.entity.Department">
         SELECT
         <include refid="departmentColumns"/>
         FROM system_department
-        WHERE id=#{parentId}
+        WHERE id=#{parentId} AND name=#{name}
     </select>
 
     <select id="findByParentId" resultType="com.littlebuddha.backstage.system.entity.Department">

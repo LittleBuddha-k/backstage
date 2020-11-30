@@ -16,5 +16,5 @@ public interface DepartmentMapper extends BaseMapper<Department> {
      * @param department
      * @return
      */
-    Department getByParentId(Department department);
+    Department getByParentIdAndName(Department department);
 }

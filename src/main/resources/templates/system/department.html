@@ -24,7 +24,7 @@
             <div class="layui-btn-group">
                 <button class="layui-btn" id="btn-expand">全部展开</button>
                 <button class="layui-btn layui-btn-normal" id="btn-fold">全部折叠</button>
-                <button type="button" class="layui-btn layui-btn-normal" id="add">新建</button>
+                <button type="button" class="layui-btn layui-btn-normal" id="addNew">新建</button>
             </div>
             <table id="department-table" class="layui-table" lay-filter="department-table"></table>
         </div>
@@ -32,7 +32,7 @@
 </div>
 <!-- 操作列模板 -->
 <script type="text/html" id="auth-state">
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="add">添加下级菜单</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="addChildren">添加下级菜单</a>
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="view">查看</a>
@@ -104,7 +104,7 @@
         });
 
         /*建立一级菜单*/
-        $("#add").click(function () {
+        $("#addNew").click(function () {
             var index = layer.open({
                 type: 2,
                 title: "新建部门",
@@ -121,14 +121,14 @@
             var data = obj.data;
             var layEvent = obj.event;
 
-            if (layEvent === 'add') {
+            if (layEvent === 'addChildren') {
                 var index = layer.open({
                     type: 2,
                     title: "添加部门",
                     maxmin: true,
                     offset: '100px',
                     area: ['50%', '50%'],
-                    content: "/backstage/system/department/form/add?id=" + data.id    //iframe的url
+                    content: "/backstage/system/department/form/add?parent=" + data.id    //iframe的url
                 });
                 layer.full(index);    //最小化
             } else if (layEvent === 'edit') {

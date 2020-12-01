@@ -7,7 +7,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,7 +24,7 @@ public class DepartmentService extends CrudService<Department, DepartmentMapper>
     }
 
     public Department findByParentId(Department department) {
-        Department departments = departmentMapper.getByParentIdAndName(department);
+        Department departments = departmentMapper.get(department);
         return departments;
     }
 
@@ -36,27 +35,25 @@ public class DepartmentService extends CrudService<Department, DepartmentMapper>
 
     @Override
     public List<Department> findAllList(Department department) {
-        Department theBiggestDepartment = findTheBiggestDepartment();
         List<Department> allList = super.findAllList(department);
-        //List afterSort = sortDepartmentList(allList, new ArrayList(), theBiggestDepartment.getId());
-        /*TreeDataUtil.setDepartmentChildrenList(allList);*/
         return allList;
     }
 
     @Override
-    public int save(Department entity) {
-        //1.如果前端传值parentId没有值，那么就是创建的一级菜单，其parentId为-1
-        if (StringUtils.isBlank(entity.getParentId())) {
-            entity.setParentId("-1");
-            entity.setParentIds("-1");
-        } else {
-            //2.如果前端传值parentId有值，根据parentId查询对应parentId实体则为父节点
-            Department department = departmentMapper.getByParentIdAndName(new Department());
-            //3.设置父节点
-            entity.setParentId(department.getId());
-            entity.setParentIds(department.getParentIds() + "," + department.getId());
+    public int save(Department department) {
+        if(StringUtils.isBlank(department.getParentId())){
+            department.setParentId("-1");
+            department.setParentIds("-1");
         }
-        return super.save(entity);
+
+        if(StringUtils.isNotBlank(department.getId())){
+            Department parentDepartment = departmentMapper.get(department.getId());
+            department.setParentId(parentDepartment.getId());
+            department.setParentIds(parentDepartment.getParentIds() + "," + parentDepartment.getId());
+        }
+
+        super.save(department);
+        return 0;
     }
 
     @Override
@@ -86,7 +83,7 @@ public class DepartmentService extends CrudService<Department, DepartmentMapper>
     @param targetList 排序后的集合
     @param parentId 当前的父级类目 ID
     */
-    public List<Department> sortDepartmentList(List<Department> sourceList, List<Department> targetList, String parentId) {
+    /*public List<Department> sortDepartmentList(List<Department> sourceList, List<Department> targetList, String parentId) {
         List<Department> childrenList = null;
         for (Department source : sourceList) {
             if (source.getParentId().equals(parentId)) {
@@ -107,5 +104,5 @@ public class DepartmentService extends CrudService<Department, DepartmentMapper>
             }
         }
         return targetList;
-    }
+    }*/
 }

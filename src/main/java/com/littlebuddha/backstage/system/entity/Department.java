@@ -13,10 +13,10 @@ public class Department extends DataEntity<Department> {
 
     private String name;//部门名称
     private String parentId;//上级部门id
-    private String parentIds;//上级所有部门id集合
-    private Integer type;//类型 公司、部门及部门以下所设立的机构
-    private Integer status;//数据是否启用
-    private Integer sort;//排序
+    private String parentIds;//所有上级部门id集合
+    private String type;//类型 公司、部门及部门以下所设立的机构
+    private String status;//数据是否启用
+    private String sort;//排序
     private String fzr;//机构主管
     private String level;//机构级别
     private String phone;//电话
@@ -47,27 +47,27 @@ public class Department extends DataEntity<Department> {
         this.parentIds = parentIds;
     }
 
-    public Integer getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(Integer type) {
+    public void setType(String type) {
         this.type = type;
     }
 
-    public Integer getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public Integer getSort() {
+    public String getSort() {
         return sort;
     }
 
-    public void setSort(Integer sort) {
+    public void setSort(String sort) {
         this.sort = sort;
     }
 

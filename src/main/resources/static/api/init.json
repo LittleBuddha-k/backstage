@@ -10,7 +10,7 @@
   },
   "menuInfo": [
     {
-      "title": "常规管理",
+      "title": "系统设置",
       "icon": "fa fa-address-book",
       "href": "",
       "target": "_self",
@@ -50,6 +50,12 @@
         {
           "title": "部门管理",
           "href": "/backstage/system/department/list",
+          "icon": "fa fa-window-maximize",
+          "target": "_self"
+        },
+        {
+          "title": "用户管理",
+          "href": "/backstage/system/operator/list",
           "icon": "fa fa-window-maximize",
           "target": "_self"
         },
@@ -148,7 +154,7 @@
       ]
     },
     {
-      "title": "组件管理",
+      "title": "业务管理",
       "icon": "fa fa-lemon-o",
       "href": "",
       "target": "_self",
@@ -198,7 +204,7 @@
       ]
     },
     {
-      "title": "其它管理",
+      "title": "数据统计",
       "icon": "fa fa-slideshare",
       "href": "",
       "target": "_self",

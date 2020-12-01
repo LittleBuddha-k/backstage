@@ -27,23 +27,18 @@
         WHERE id=#{id}
     </select>
 
-    <select id="getByParentIdAndName" resultType="com.littlebuddha.backstage.system.entity.Department">
+    <select id="findByParentId" resultType="com.littlebuddha.backstage.system.entity.Department">
+        SELECT
+        <include refid="departmentColumns"/>
+        FROM system_department
+        WHERE id=#{parentId}
+    </select>
+
+    <select id="findByParentIdAndName" resultType="com.littlebuddha.backstage.system.entity.Department">
         SELECT
         <include refid="departmentColumns"/>
         FROM system_department
         WHERE id=#{parentId} AND name=#{name}
-    </select>
-
-    <select id="findByParentId" resultType="com.littlebuddha.backstage.system.entity.Department">
-        SELECT
-        <include refid="departmentColumns"/>
-        FROM system_department a
-        <where>
-            <!-- 判断条件参数是否为空 -->
-            <if test="parentId != null and parentId != ''">
-                and a.parent_id = #{id}
-            </if>
-        </where>
     </select>
 
     <select id="findList" resultType="com.littlebuddha.backstage.system.entity.Department">

@@ -9,12 +9,17 @@ import java.util.List;
 @Mapper
 public interface DepartmentMapper extends BaseMapper<Department> {
 
-    List<Department> findByParentId(Department department);
-
     /**
-     * 通过传值parentId,查询id为parent的数据
+     * 通过parentId、name获取部门信息
      * @param department
      * @return
      */
-    Department getByParentIdAndName(Department department);
+    Department findByParentIdAndName(Department department);
+
+    /**
+     * 通过parentId查询id=parentId的部门信息
+     * @param department
+     * @return
+     */
+    List<Department> findByParentId(Department department);
 }

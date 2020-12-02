@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.littlebuddha.backstage.datastatistics.mapper.MaterielMapper">
+
+    <sql id="materielColumns">
+        id AS "id",
+        new_order_number AS "newOrderNumber",
+        order_number AS "orderNumber",
+        supplier AS "supplier",
+        project_name AS "projectName",
+        materiel_number AS "materielNumber",
+        materiel_number_sort AS "materielNumberSort",
+        materiel_name AS "materielName",
+        specifications AS "specifications",
+        description AS "description",
+        brand AS "brand",
+        unit AS "unit",
+        order_amount AS "orderAmount",
+        unit_price AS "unitPrice",
+        currency AS "currency",
+        total_amount AS "totalAmount",
+        order_date AS "orderDate",
+        delivery_date AS "deliveryDate",
+        delivered_amount AS "deliveredAmount",
+        in_warehousing_date AS "inWarehousingDate",
+        undelivered_amount AS "undeliveredAmount",
+        first_party_remarks AS "firstPartyRemarks",
+        reconciled_amount AS "reconciledAmount",
+        no_reconciliation AS "noReconciliation",
+        payment_status AS "paymentStatus",
+        payment_way AS "paymentWay",
+        the_corresponding_human AS "theCorrespondingHuman.name",
+        second_party_remarks AS "secondPartyRemarks",
+        create_by AS "createBy.id",
+        create_date AS "createDate",
+        update_by AS "updateBy.id",
+        update_date AS "updateDate"
+    </sql>
+
+    <select id="get" resultType="com.littlebuddha.backstage.datastatistics.entity.Materiel">
+        SELECT
+        <include refid="materielColumns"/>
+        FROM data_statistics_materiel
+        WHERE id=#{id}
+    </select>
+
+    <select id="findList" resultType="com.littlebuddha.backstage.datastatistics.entity.Materiel">
+        SELECT
+        <include refid="materielColumns"/>
+        FROM data_statistics_materiel
+        <choose>
+            <when test="page !=null and page != '' and limit !=null and limit != ''">
+                LIMIT #{page},#{limit}
+            </when>
+            <otherwise>
+                LIMIT #{page},#{limit}
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="findAllList" resultType="com.littlebuddha.backstage.datastatistics.entity.Materiel">
+        SELECT
+        <include refid="materielColumns"/>
+        FROM data_statistics_materiel
+    </select>
+
+    <insert id="insert">
+        INSERT INTO data_statistics_materiel(
+            id,
+            new_order_number,
+            order_number,
+            supplier,
+            project_name,
+            materiel_number,
+            materiel_number_sort,
+            materiel_name,
+            specifications,
+            description,
+            brand,
+            unit,
+            order_amount,
+            unit_price,
+            currency,
+            total_amount,
+            order_date,
+            delivery_date,
+            delivered_amount,
+            in_warehousing_date,
+            undelivered_amount,
+            first_party_remarks,
+            reconciled_amount,
+            no_reconciliation,
+            payment_status,
+            payment_way,
+            the_corresponding_human,
+            second_party_remarks,
+            create_by,
+            create_date,
+            update_by,
+            update_date
+        )VALUES (
+            #{id},
+            #{newOrderNumber},
+            #{orderNumber},
+            #{supplier},
+            #{projectName},
+            #{materielNumber},
+            #{materielNumberSort},
+            #{materielName},
+            #{specifications},
+            #{description},
+            #{brand},
+            #{unit},
+            #{orderAmount},
+            #{unitPrice},
+            #{currency},
+            #{totalAmount},
+            #{orderDate},
+            #{deliveryDate},
+            #{deliveredAmount},
+            #{inWarehousingDate},
+            #{undeliveredAmount},
+            #{firstPartyRemarks},
+            #{reconciledAmount},
+            #{noReconciliation},
+            #{paymentStatus},
+            #{paymentWay},
+            #{theCorrespondingHuman},
+            #{secondPartyRemarks},
+            #{createBy.id},
+            #{createDate},
+            #{updateBy.id},
+            #{updateDate}
+        )
+    </insert>
+
+    <update id="update">
+        UPDATE data_statistics_materiel SET
+            new_order_number = #{newOrderNumber},
+            order_number = #{orderNumber},
+            supplier = #{supplier},
+            project_name = #{projectName},
+            materiel_number = #{materielNumber},
+            materiel_number_sort = #{materielNumberSort},
+            materiel_name = #{materielName},
+            specifications = #{specifications},
+            description = #{description},
+            brand = #{brand},
+            unit = #{unit},
+            order_amount = #{orderAmount},
+            unit_price = #{unitPrice},
+            currency = #{currency},
+            total_amount = #{totalAmount},
+            order_date = #{orderDate},
+            delivery_date = #{deliveryDate},
+            delivered_amount = #{deliveredAmount},
+            in_warehousing_date = #{inWarehousingDate},
+            undelivered_amount = #{undeliveredAmount},
+            first_party_remarks = #{firstPartyRemarks},
+            reconciled_amount = #{reconciledAmount},
+            no_reconciliation = #{noReconciliation},
+            payment_status = #{paymentStatus},
+            payment_way = #{paymentWay},
+            the_corresponding_human = #{theCorrespondingHuman},
+            second_party_remarks = #{secondPartyRemarks},
+            create_by = #{createBy.id},
+            create_date = #{createDate},
+            update_by = #{updateBy.id},
+            update_date = #{updateDate}
+        WHERE id=#{id}
+    </update>
+
+    <update id="recover">
+        UPDATE data_statistics_materiel SET is_delete = 0
+        WHERE id=#{id}
+    </update>
+
+    <delete id="deleteByPhysics">
+        DELETE FROM data_statistics_materiel
+        WHERE id=#{id}
+    </delete>
+</mapper>

@@ -210,6 +210,18 @@
       "target": "_self",
       "child": [
         {
+          "title": "物料列表",
+          "href": "/backstage/dataStatistics/materiel/list",
+          "icon": "fa fa-dot-circle-o",
+          "target": "_self"
+        },
+        {
+          "title": "统计列表",
+          "href": "/backstage/dataStatistics/page/list",
+          "icon": "fa fa-dot-circle-o",
+          "target": "_self"
+        },
+        {
           "title": "多级菜单",
           "href": "",
           "icon": "fa fa-meetup",

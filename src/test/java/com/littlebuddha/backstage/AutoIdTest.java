@@ -10,7 +10,7 @@ class AutoIdTest {
 
     @Test
     public void testAutoId(){
-        for (int i=0;i<10;i++){
+        for (int i=0;i<103;i++){
             String autoId = AutoId.getAutoId();
             System.out.println(autoId);
         }

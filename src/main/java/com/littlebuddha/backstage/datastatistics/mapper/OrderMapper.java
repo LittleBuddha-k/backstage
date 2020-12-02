@@ -1,7 +1,7 @@
 package com.littlebuddha.backstage.datastatistics.mapper;
 
 import com.littlebuddha.backstage.common.base.BaseMapper;
-import com.littlebuddha.backstage.datastatistics.entity.Materiel;
+import com.littlebuddha.backstage.datastatistics.entity.Order;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -9,5 +9,5 @@ import org.apache.ibatis.annotations.Mapper;
  * @date 2020/12/2 10:49
  */
 @Mapper
-public interface MaterielMapper extends BaseMapper<Materiel> {
+public interface OrderMapper extends BaseMapper<Order> {
 }

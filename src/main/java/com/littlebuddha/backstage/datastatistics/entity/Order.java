@@ -9,7 +9,7 @@ import java.util.Date;
  * @author ck
  * @date 2020/12/2 10:49
  */
-public class Materiel extends DataEntity {
+public class Order extends DataEntity {
 
     private String newOrderNumber;          //新订单号
     private String orderNumber;             //订单编号

@@ -211,7 +211,7 @@
       "child": [
         {
           "title": "物料列表",
-          "href": "/backstage/dataStatistics/materiel/list",
+          "href": "/backstage/dataStatistics/order/list",
           "icon": "fa fa-dot-circle-o",
           "target": "_self"
         },

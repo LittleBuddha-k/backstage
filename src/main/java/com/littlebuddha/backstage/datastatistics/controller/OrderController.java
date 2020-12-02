@@ -1,8 +1,8 @@
 package com.littlebuddha.backstage.datastatistics.controller;
 
 import com.littlebuddha.backstage.common.utils.resultresponse.JsonResult;
-import com.littlebuddha.backstage.datastatistics.entity.Materiel;
-import com.littlebuddha.backstage.datastatistics.service.MaterielService;
+import com.littlebuddha.backstage.datastatistics.entity.Order;
+import com.littlebuddha.backstage.datastatistics.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,23 +17,23 @@ import java.util.List;
  * @date 2020/12/2 10:06
  */
 @Controller
-@RequestMapping("/dataStatistics/materiel")
-public class MaterielController {
+@RequestMapping("/dataStatistics/order")
+public class OrderController {
 
     @Autowired
-    private MaterielService materielService;
+    private OrderService materielService;
 
     @GetMapping(value = {"","/list"})
-    public String list(Materiel materiel, Model model){
-        model.addAttribute("materiel",materiel);
-        return "dataStatistics/materiel";
+    public String list(Order order, Model model){
+        model.addAttribute("order",order);
+        return "dataStatistics/order";
     }
 
     @ResponseBody
     @GetMapping("/data")
-    public JsonResult<Materiel> data(Materiel materiel){
+    public JsonResult<Order> data(Order order){
         JsonResult result = new JsonResult();
-        List<Materiel> list = materielService.findList(materiel);
+        List<Order> list = materielService.findList(order);
         result.setCode(0);
         result.setMsg("成功");
         result.setCount(list.size());

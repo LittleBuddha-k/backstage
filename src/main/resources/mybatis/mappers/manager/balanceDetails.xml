@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.littlebuddha.backstage.manager.mapper.OrderMapper">
+<mapper namespace="com.littlebuddha.backstage.manager.mapper.BalanceDetailsMapper">
 
     <sql id="materielColumns">
         id AS "id",
@@ -40,14 +40,14 @@
     <select id="get" resultType="com.littlebuddha.backstage.manager.entity.Order">
         SELECT
         <include refid="materielColumns"/>
-        FROM data_statistics_materiel
+        FROM manager_order
         WHERE id=#{id}
     </select>
 
     <select id="findList" resultType="com.littlebuddha.backstage.manager.entity.Order">
         SELECT
         <include refid="materielColumns"/>
-        FROM data_statistics_materiel
+        FROM manager_order
         <choose>
             <when test="page !=null and page != '' and limit !=null and limit != ''">
                 LIMIT #{page},#{limit}
@@ -61,11 +61,11 @@
     <select id="findAllList" resultType="com.littlebuddha.backstage.manager.entity.Order">
         SELECT
         <include refid="materielColumns"/>
-        FROM data_statistics_materiel
+        FROM manager_order
     </select>
 
     <insert id="insert">
-        INSERT INTO data_statistics_materiel(
+        INSERT INTO manager_order(
             id,
             serial_number,
             testing,
@@ -135,7 +135,7 @@
     </insert>
 
     <update id="update">
-        UPDATE data_statistics_materiel SET
+        UPDATE manager_order SET
             serialNumber = #{serialNumber},
             testing = #{testing},
             texy = #{texy},
@@ -171,12 +171,12 @@
     </update>
 
     <update id="recover">
-        UPDATE data_statistics_materiel SET is_delete = 0
+        UPDATE manager_order SET is_delete = 0
         WHERE id=#{id}
     </update>
 
     <delete id="deleteByPhysics">
-        DELETE FROM data_statistics_materiel
+        DELETE FROM manager_order
         WHERE id=#{id}
     </delete>
 </mapper>

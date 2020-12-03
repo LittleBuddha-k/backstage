@@ -28,6 +28,14 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
     private Double mFourGoMainBoardPackage;              //m4GO主板包装
     private Double smallBoardPackaging;                  //小板包装
     private Double batteryPackaging;                       //电池包装
+    private Double goodProductsAmount;
+    private Double badBalanceOfIncomingMaterials;
+    private Double badBalanceInProcess;
+    private Double scrap;
+    private Double numberOfRework;
+    private Double workshopAmount;
+    private Double finishedProductAmount;
+    private Double initialGoodProduct;
     private Double intoOperation;                            //已投产
     private Double notIntoOperation;                         //未投产
     private Double lackOfMaterial;                               //欠料

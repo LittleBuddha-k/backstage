@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.littlebuddha.backstage.manager.mapper.OrderMapper">
+
+    <sql id="materielColumns">
+        id AS "id",
+        serial_number AS "serialNumber",
+        testing AS "testing",
+        texy AS "texy",
+        blue_island_materiel_number AS "blueIslandMaterielNumber",
+        chinese_name AS "chineseName",
+        supplier AS "supplier",
+        m_four_host AS "mFourHost",
+        m_four_go_host AS "mFourGoHost",
+        m_four_front_housing_assembly AS "mFourFrontHousingAssembly",
+        m_four_rear_housing_assembly AS "mFourRearHousingAssembly",
+        m_four_package AS "mFourPackage",
+        m_four_orange AS "mFourOrange",
+        m_four_sfr AS "mFourSFR",
+        m_four_byt AS "mFourBYT",
+        m_four_go_package AS "mFourGoPackage",
+        m_four_front_housing_assembly_second AS "mFourFrontHousingAssemblySecond",
+        m_four_main_board_package AS "mFourMainBoardPackage",
+        m_four_go_main_board_package AS "mFourGoMainBoardPackage",
+        small_board_packaging AS "smallBoardPackaging",
+        battery_packaging AS "batteryPackaging",
+        into_operation AS "intoOperation",
+        not_into_operation AS "notIntoOperation",
+        lack_of_material AS "lackOfMaterial",
+        lack_of_material_group AS "lackOfMaterialGroup",
+        new_jersey AS "newJersey",
+        blue_island AS "blueIsland",
+        difference AS "difference",
+        create_by AS "createBy.id",
+        create_date AS "createDate",
+        update_by AS "updateBy.id",
+        update_date AS "updateDate"
+    </sql>
+
+    <select id="get" resultType="com.littlebuddha.backstage.manager.entity.Order">
+        SELECT
+        <include refid="materielColumns"/>
+        FROM data_statistics_materiel
+        WHERE id=#{id}
+    </select>
+
+    <select id="findList" resultType="com.littlebuddha.backstage.manager.entity.Order">
+        SELECT
+        <include refid="materielColumns"/>
+        FROM data_statistics_materiel
+        <choose>
+            <when test="page !=null and page != '' and limit !=null and limit != ''">
+                LIMIT #{page},#{limit}
+            </when>
+            <otherwise>
+                LIMIT #{page},#{limit}
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="findAllList" resultType="com.littlebuddha.backstage.manager.entity.Order">
+        SELECT
+        <include refid="materielColumns"/>
+        FROM data_statistics_materiel
+    </select>
+
+    <insert id="insert">
+        INSERT INTO data_statistics_materiel(
+            id,
+            serial_number,
+            testing,
+            texy,
+            blue_island_materiel_number,
+            chinese_name,
+            supplier,
+            m_four_host,
+            m_four_go_host,
+            m_four_front_housing_assembly,
+            m_four_rear_housing_assembly,
+            m_four_package,
+            m_four_orange,
+            m_four_sfr,
+            m_four_byt,
+            m_four_go_package,
+            m_four_front_housing_assembly_second,
+            m_four_main_board_package,
+            m_four_go_main_board_package,
+            small_board_packaging,
+            battery_packaging,
+            into_operation,
+            not_into_operation,
+            lack_of_material,
+            lack_of_material_group,
+            new_jersey,
+            blue_island,
+            difference,
+            create_by,
+            create_date,
+            update_by,
+            update_date
+        )VALUES (
+            #{id},
+            #{serialNumber},
+            #{testing},
+            #{texy},
+            #{blueIslandMaterielNumber},
+            #{chineseName},
+            #{supplier},
+            #{mFourHost},
+            #{mFourGoHost},
+            #{mFourFrontHousingAssembly},
+            #{mFourRearHousingAssembly},
+            #{mFourPackage},
+            #{mFourOrange},
+            #{mFourSFR},
+            #{mFourBYT},
+            #{mFourGoPackage},
+            #{mFourFrontHousingAssemblySecond},
+            #{mFourMainBoardPackage},
+            #{mFourGoMainBoardPackage},
+            #{smallBoardPackaging},
+            #{batteryPackaging},
+            #{intoOperation},
+            #{notIntoOperation},
+            #{lackOfMaterial},
+            #{lackOfMaterialGroup},
+            #{newJersey},
+            #{blueIsland},
+            #{difference},
+            #{createBy.id},
+            #{createDate},
+            #{updateBy.id},
+            #{updateDate}
+        )
+    </insert>
+
+    <update id="update">
+        UPDATE data_statistics_materiel SET
+            serialNumber = #{serialNumber},
+            testing = #{testing},
+            texy = #{texy},
+            blue_island_materiel_number = #{blueIslandMaterielNumber},
+            chinese_name = #{chineseName},
+            supplier = #{supplier},
+            m_four_host = #{mFourHost},
+            m_four_go_host = #{mFourGoHost},
+            m_four_front_housing_assembly = #{mFourFrontHousingAssembly},
+            m_four_rear_housing_assembly = #{mFourRearHousingAssembly},
+            m_four_package = #{mFourPackage},
+            m_four_orange = #{mFourOrange},
+            m_four_sfr = #{mFourSFR},
+            m_four_byt = #{mFourBYT},
+            m_four_go_package = #{mFourGoPackage},
+            m_four_front_housing_assembly_second = #{mFourFrontHousingAssemblySecond},
+            m_four_main_board_package = #{mFourMainBoardPackage},
+            m_four_go_main_board_package = #{mFourGoMainBoardPackage},
+            small_board_packaging = #{smallBoardPackaging},
+            battery_packaging = #{batteryPackaging},
+            into_operation = #{intoOperation},
+            not_into_operation = #{notIntoOperation},
+            lack_of_material = #{lackOfMaterial},
+            lack_of_material_group = #{lackOfMaterialGroup},
+            new_jersey = #{newJersey},
+            blue_island = #{blueIsland},
+            difference = #{difference},
+            create_by = #{createBy.id},
+            create_date = #{createDate},
+            update_by = #{updateBy.id},
+            update_date = #{updateDate}
+        WHERE id=#{id}
+    </update>
+
+    <update id="recover">
+        UPDATE data_statistics_materiel SET is_delete = 0
+        WHERE id=#{id}
+    </update>
+
+    <delete id="deleteByPhysics">
+        DELETE FROM data_statistics_materiel
+        WHERE id=#{id}
+    </delete>
+</mapper>

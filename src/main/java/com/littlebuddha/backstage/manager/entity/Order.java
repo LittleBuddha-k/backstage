@@ -1,7 +1,8 @@
-package com.littlebuddha.backstage.datastatistics.entity;
+package com.littlebuddha.backstage.manager.entity;
 
 import com.littlebuddha.backstage.common.base.DataEntity;
 import com.littlebuddha.backstage.system.entity.Operator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -26,10 +27,18 @@ public class Order extends DataEntity {
     private Double unitPrice;               //单价
     private String currency;                //币种
     private Double totalAmount;             //总金额
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date orderDate;                 //下单日期
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date deliveryDate;              //交期
+
     private Double deliveredAmount;         //已交货数量
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date inWarehousingDate;         //入库日期
+
     private Double undeliveredAmount;       //未交货数量
     private String firstPartyRemarks;       //备注
 

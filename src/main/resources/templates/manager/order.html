@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <html>
 <head>
     <meta charset="utf-8">
@@ -7,8 +6,8 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/backstage/lib/layui-v2.5.5/css/layui.css" media="all">
-    <link rel="stylesheet" href="/backstage/css/public.css" media="all">
+    <link rel="stylesheet" href="/backstage/layui/lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="/backstage/layui/css/public.css" media="all">
 </head>
 <body>
 <div class="layuimini-container">
@@ -17,7 +16,7 @@
         <fieldset class="table-search-fieldset">
             <legend>搜索信息</legend>
             <div style="margin: 10px 10px 10px 10px">
-                <form class="layui-form layui-form-pane" action="">
+                <form class="layui-form layui-form-pane" id="searchForm">
                     <div class="layui-form-item">
                         <div class="layui-inline">
                             <label class="layui-form-label">用户姓名</label>
@@ -51,16 +50,14 @@
             </div>
         </fieldset>
 
-        <script type="text/html" id="toolbarDemo">
+        <script type="text/html" id="toolbar">
             <div class="layui-btn-container">
                 <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> 添加 </button>
                 <button class="layui-btn layui-btn-sm layui-btn-danger data-delete-btn" lay-event="delete"> 删除 </button>
-                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> 导入 </button>
-                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> 导出 </button>
             </div>
         </script>
 
-        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+        <table class="layui-hide" id="orderTableList" lay-filter="currentTableFilter"></table>
 
         <script type="text/html" id="currentTableBar">
             <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
@@ -69,7 +66,7 @@
 
     </div>
 </div>
-<script src="/backstage/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script src="/backstage/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 <script>
     layui.use(['form', 'table'], function () {
         var $ = layui.jquery,
@@ -77,9 +74,9 @@
             table = layui.table;
 
         table.render({
-            elem: '#currentTableId',
-            url: '/backstage/dataStatistics/order/data',
-            toolbar: '#toolbarDemo',
+            elem: '#orderTableList',
+            url: '/backstage/manager/order/data',
+            toolbar: '#toolbar',
             defaultToolbar: ['filter', 'exports', 'print', {
                 title: '提示',
                 layEvent: 'LAYTABLE_TIPS',
@@ -88,14 +85,18 @@
             cols: [
                 [
                 {type: "checkbox", width: 50},
-                {field: 'id', width: 150, title: 'ID', sort: true},
-                {field: 'newOrderNumber', width: 150, title: '新订单号'},
-                {field: 'orderNumber', width: 150, title: '订单编号', sort: true},
-                {field: 'supplier', width: 150, title: '供应商'},
+                {field: 'newOrderNumber', width: 80, title: '新订单号', sort: true},
+                {field: 'orderNumber', width: 80, title: '订单编号'},
+                {field: 'supplier', width: 80, title: '供应商', sort: true},
+                {field: 'projectName', width: 80, title: '项目名'},
                 {field: 'materielNumber', title: '蓝岸料号', minWidth: 150},
-                {field: 'materielNumberSort', width: 150, title: '蓝岸料号格式', sort: true},
-                {field: 'materielName', width: 150, title: '物料名称', sort: true},
-                {field: 'orderAmount', width: 150, title: '下单数量'},
+                {field: 'materielNumberSort', width: 80, title: '蓝岸料号格式', sort: true},
+                {field: 'materielName', width: 80, title: '物料名称', sort: true},
+                {field: 'specifications', width: 80, title: '规格'},
+                {field: 'description', width: 135, title: '描述', sort: true},
+                {field: 'brand', width: 135, title: '品牌', sort: true},
+                {field: 'unit', width: 135, title: '单位', sort: true},
+                {field: 'orderAmount', width: 135, title: '下单数量', sort: true},
                 {field: 'unitPrice', width: 135, title: '单价', sort: true},
                 {field: 'currency', width: 135, title: '币种', sort: true},
                 {field: 'totalAmount', width: 135, title: '总金额', sort: true},
@@ -112,7 +113,7 @@
                 {field: 'theCorrespondingHuman.name', width: 135, title: '对应人', sort: true},
                 {field: 'secondPartyRemarks', width: 135, title: '备注', sort: true},
                 {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
-                ]
+            ]
             ],
             limits: [10, 15, 20, 25, 50, 100],
             limit: 15,
@@ -128,7 +129,7 @@
             });
 
             //执行搜索重载
-            table.reload('currentTableId', {
+            table.reload('orderTableList', {
                 page: {
                     curr: 1
                 }
@@ -158,7 +159,7 @@
                     layer.full(index);
                 });
             } else if (obj.event === 'delete') {  // 监听删除操作
-                var checkStatus = table.checkStatus('currentTableId')
+                var checkStatus = table.checkStatus('orderTableList')
                     , data = checkStatus.data;
                 layer.alert(JSON.stringify(data));
             }
@@ -193,7 +194,6 @@
                 });
             }
         });
-
     });
 </script>
 

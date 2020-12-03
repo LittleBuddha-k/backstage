@@ -1,8 +1,8 @@
-package com.littlebuddha.backstage.datastatistics.controller;
+package com.littlebuddha.backstage.manager.controller;
 
 import com.littlebuddha.backstage.common.utils.resultresponse.JsonResult;
-import com.littlebuddha.backstage.datastatistics.entity.Order;
-import com.littlebuddha.backstage.datastatistics.service.OrderService;
+import com.littlebuddha.backstage.manager.entity.Order;
+import com.littlebuddha.backstage.manager.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +17,7 @@ import java.util.List;
  * @date 2020/12/2 10:06
  */
 @Controller
-@RequestMapping("/dataStatistics/order")
+@RequestMapping("/manager/order")
 public class OrderController {
 
     @Autowired
@@ -26,12 +26,13 @@ public class OrderController {
     @GetMapping(value = {"","/list"})
     public String list(Order order, Model model){
         model.addAttribute("order",order);
-        return "dataStatistics/order";
+        return "manager/order";
     }
 
     @ResponseBody
     @GetMapping("/data")
-    public JsonResult<Order> data(Order order){
+    public JsonResult<Order> data(Order order,String materielNumber){
+        System.out.println("接收到料号为"+order.getMaterielNumber());
         JsonResult result = new JsonResult();
         List<Order> list = materielService.findList(order);
         result.setCode(0);

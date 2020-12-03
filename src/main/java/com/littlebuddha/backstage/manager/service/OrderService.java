@@ -1,8 +1,8 @@
-package com.littlebuddha.backstage.datastatistics.service;
+package com.littlebuddha.backstage.manager.service;
 
 import com.littlebuddha.backstage.common.base.CrudService;
-import com.littlebuddha.backstage.datastatistics.entity.Order;
-import com.littlebuddha.backstage.datastatistics.mapper.OrderMapper;
+import com.littlebuddha.backstage.manager.entity.Order;
+import com.littlebuddha.backstage.manager.mapper.OrderMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;

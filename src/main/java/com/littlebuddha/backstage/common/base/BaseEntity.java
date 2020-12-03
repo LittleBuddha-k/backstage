@@ -26,9 +26,9 @@ public abstract class BaseEntity<E> implements Serializable {
      */
     private Page<E> pageObject;
 
-    private Integer page;
+    private Integer page = 1;
 
-    private Integer limit;
+    private Integer limit = 15;
 
     public String getId() {
         return id;

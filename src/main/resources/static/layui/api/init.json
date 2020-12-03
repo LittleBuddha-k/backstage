@@ -204,16 +204,24 @@
       ]
     },
     {
-      "title": "数据统计",
+      "title": "管理平台",
       "icon": "fa fa-slideshare",
       "href": "",
       "target": "_self",
       "child": [
         {
-          "title": "物料列表",
-          "href": "/backstage/dataStatistics/order/list",
+          "title": "数据中心",
+          "href": "",
           "icon": "fa fa-dot-circle-o",
-          "target": "_self"
+          "target": "_self",
+          "child": [
+            {
+              "title": "订单录入",
+              "href": "/backstage/manager/order/list",
+              "icon": "fa fa-calendar",
+              "target": "_self"
+            }
+          ]
         },
         {
           "title": "统计列表",

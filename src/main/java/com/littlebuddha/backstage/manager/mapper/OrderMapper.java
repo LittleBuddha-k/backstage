@@ -1,7 +1,7 @@
-package com.littlebuddha.backstage.datastatistics.mapper;
+package com.littlebuddha.backstage.manager.mapper;
 
 import com.littlebuddha.backstage.common.base.BaseMapper;
-import com.littlebuddha.backstage.datastatistics.entity.Order;
+import com.littlebuddha.backstage.manager.entity.Order;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.littlebuddha.backstage.manager.mapper.OtherOutWarehouseMapper">
+
+    <sql id="otherOutWarehouseColumns">
+        id AS "id",
+        serial_number AS "serialNumber",
+        out_warehouse_date AS "outWarehouseDate",
+        blue_island_materiel_number AS "blueIslandMaterielNumber",
+        supplier_materiel_number AS "supplierMaterielNumber",
+        materiel_name AS "materielName",
+        description AS "description",
+        out_warehouse_amount AS "outWarehouseAmount",
+        delivery_order_number AS "deliveryOrderNumber",
+        remarks AS "remarks",
+        create_by AS "createBy.id",
+        create_date AS "createDate",
+        update_by AS "updateBy.id",
+        update_date AS "updateDate"
+    </sql>
+
+    <select id="get" resultType="com.littlebuddha.backstage.manager.entity.MaterielFromSupplier">
+        SELECT
+        <include refid="otherOutWarehouseColumns"/>
+        FROM manager_materiel_from_supplier
+        WHERE id=#{id}
+    </select>
+
+    <select id="findList" resultType="com.littlebuddha.backstage.manager.entity.MaterielFromSupplier">
+        SELECT
+        <include refid="otherOutWarehouseColumns"/>
+        FROM manager_materiel_from_supplier
+        <choose>
+            <when test="page !=null and page != '' and limit !=null and limit != ''">
+                LIMIT #{page},#{limit}
+            </when>
+            <otherwise>
+                LIMIT #{page},#{limit}
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="findAllList" resultType="com.littlebuddha.backstage.manager.entity.MaterielFromSupplier">
+        SELECT
+        <include refid="otherOutWarehouseColumns"/>
+        FROM manager_materiel_from_supplier
+    </select>
+
+    <insert id="insert">
+        INSERT INTO manager_materiel_from_supplier(
+            id,
+            serial_number,
+            out_warehouse_date,
+            blue_island_materiel_number,
+            supplier_materiel_number,
+            materiel_name,
+            description,
+            out_warehouse_amount,
+            delivery_order_number,
+            remarks,
+            create_by,
+            create_date,
+            update_by,
+            update_date
+        )VALUES (
+            #{id},
+            #{serialNumber},
+            #{outWarehouseDate},
+            #{blueIslandMaterielNumber},
+            #{supplierMaterielNumber},
+            #{materielName},
+            #{description},
+            #{outWarehouseAmount},
+            #{deliveryOrderNumber},
+            #{remarks},
+            #{createBy.id},
+            #{createDate},
+            #{updateBy.id},
+            #{updateDate}
+        )
+    </insert>
+
+    <update id="update">
+        UPDATE manager_materiel_from_supplier SET
+            serial_number = #{serialNumber},
+            out_warehouse_date = #{outWarehouseDate},
+            blue_island_materiel_number = #{blueIslandMaterielNumber},
+            supplier_materiel_number = #{supplierMaterielNumber},
+            materiel_name = #{materielName},
+            description = #{description},
+            out_warehouse_amount = #{outWarehouseAmount},
+            delivery_order_number = #{deliveryOrderNumber},
+            remarks = #{remarks},
+            create_by = #{createBy.id},
+            create_date = #{createDate},
+            update_by = #{updateBy.id},
+            update_date = #{updateDate}
+        WHERE id=#{id}
+    </update>
+
+    <update id="recover">
+        UPDATE manager_materiel_from_supplier SET is_delete = 0
+        WHERE id=#{id}
+    </update>
+
+    <delete id="deleteByPhysics">
+        DELETE FROM manager_materiel_from_supplier
+        WHERE id=#{id}
+    </delete>
+</mapper>

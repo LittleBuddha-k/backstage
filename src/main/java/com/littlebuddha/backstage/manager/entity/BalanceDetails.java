@@ -10,7 +10,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
 
     private Integer serialNumber;                     //序号
     private Integer testing;                          //检测
-    private Double texy;                             //TEXY
+    private String texy;                             //TEXY
     private String blueIslandMaterielNumber;                   //蓝岸料号
     private String chineseName;                      //中文名称
     private String supplier;                         //供应商
@@ -28,14 +28,6 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
     private Double mFourGoMainBoardPackage;              //m4GO主板包装
     private Double smallBoardPackaging;                  //小板包装
     private Double batteryPackaging;                       //电池包装
-    private Double goodProductsAmount;
-    private Double badBalanceOfIncomingMaterials;
-    private Double badBalanceInProcess;
-    private Double scrap;
-    private Double numberOfRework;
-    private Double workshopAmount;
-    private Double finishedProductAmount;
-    private Double initialGoodProduct;
     private Double intoOperation;                            //已投产
     private Double notIntoOperation;                         //未投产
     private Double lackOfMaterial;                               //欠料
@@ -60,11 +52,11 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.testing = testing;
     }
 
-    public Double getTexy() {
+    public String getTexy() {
         return texy;
     }
 
-    public void setTexy(Double texy) {
+    public void setTexy(String texy) {
         this.texy = texy;
     }
 

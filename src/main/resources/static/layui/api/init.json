@@ -220,6 +220,82 @@
               "href": "/backstage/manager/order/list",
               "icon": "fa fa-calendar",
               "target": "_self"
+            },
+            {
+              "title": "赛达信组装M4理论结存明细",
+              "href": "",
+              "icon": "fa fa-calendar",
+              "target": "_self",
+              "child": [
+                {
+                  "title": "赛达信组装盘点汇总表",
+                  "href": "/backstage/manager/balanceDetails/list",
+                  "icon": "fa fa-calendar",
+                  "target": "_self"
+                },
+                {
+                  "title": "赛达信组装盘点汇总表",
+                  "href": "/backstage/manager/balanceDetails/list",
+                  "icon": "fa fa-calendar",
+                  "target": "_self"
+                },
+                {
+                  "title": "赛达信组装盘点汇总表",
+                  "href": "/backstage/manager/balanceDetails/list",
+                  "icon": "fa fa-calendar",
+                  "target": "_self"
+                }
+              ]
+            },
+            {
+              "title": "molokini蓝岸量产账表",
+              "href": "",
+              "icon": "fa fa-calendar",
+              "target": "_self",
+              "child": [
+                {
+                  "title": "汇总只参考Bom明细",
+                  "href": "/backstage/manager/summaryConsiderBomDetails/list",
+                  "icon": "fa fa-calendar",
+                  "target": "_self"
+                },
+                {
+                  "title": "厂商来料",
+                  "href": "/backstage/manager/materielFromSupplier/list",
+                  "icon": "fa fa-calendar",
+                  "target": "_self"
+                },
+                {
+                  "title": "其他出库",
+                  "href": "/backstage/manager/otherOutWareHouse/list",
+                  "icon": "fa fa-calendar",
+                  "target": "_self"
+                },
+                {
+                  "title": "厂商退料",
+                  "href": "/backstage/manager/balanceDetails/list",
+                  "icon": "fa fa-calendar",
+                  "target": "_self"
+                },
+                {
+                  "title": "成品出库明细",
+                  "href": "/backstage/manager/balanceDetails/list",
+                  "icon": "fa fa-calendar",
+                  "target": "_self"
+                },
+                {
+                  "title": "捷荣加工订单统计",
+                  "href": "/backstage/manager/balanceDetails/list",
+                  "icon": "fa fa-calendar",
+                  "target": "_self"
+                },
+                {
+                  "title": "我的",
+                  "href": "/backstage/manager/balanceDetails/list",
+                  "icon": "fa fa-calendar",
+                  "target": "_self"
+                }
+              ]
             }
           ]
         },

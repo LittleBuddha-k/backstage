@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.littlebuddha.backstage.manager.mapper.SummaryConsiderBomDetailsMapper">
+
+    <sql id="summaryConsiderBomDetailsColumns">
+        id AS "id",
+        testing AS "testing",
+        serial_number AS "serialNumber",
+        blue_island_materiel_number AS "blueIslandMaterielNumber",
+        supplier_materiel_number AS "supplierMaterielNumber",
+        description AS "description",
+        supplier AS "supplier",
+        dosage_of_plus AS "dosageOfPlus",
+        dosage_of_lite AS "dosageOfLite",
+        supplier_good_products AS "supplierGoodProducts",
+        supplier_bad_products AS "supplierBadProducts",
+        supplier_return_goods AS "supplierReturnGoods",
+        out_warehouse AS "outWarehouse",
+        delivery AS "delivery",
+        theoretically_usefully AS "theoreticallyUsefully",
+        actually_usefully AS "actuallyUsefully",
+        order_amount AS "orderAmount",
+        unpaid_amount AS "unpaidAmount",
+        replies AS "replies",
+        create_by AS "createBy.id",
+        create_date AS "createDate",
+        update_by AS "updateBy.id",
+        update_date AS "updateDate"
+    </sql>
+
+    <select id="get" resultType="com.littlebuddha.backstage.manager.entity.SummaryConsiderBomDetails">
+        SELECT
+        <include refid="summaryConsiderBomDetailsColumns"/>
+        FROM manager_summary_consider_bom_details
+        WHERE id=#{id}
+    </select>
+
+    <select id="findList" resultType="com.littlebuddha.backstage.manager.entity.SummaryConsiderBomDetails">
+        SELECT
+        <include refid="summaryConsiderBomDetailsColumns"/>
+        FROM manager_summary_consider_bom_details
+        <choose>
+            <when test="page !=null and page != '' and limit !=null and limit != ''">
+                LIMIT #{page},#{limit}
+            </when>
+            <otherwise>
+                LIMIT #{page},#{limit}
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="findAllList" resultType="com.littlebuddha.backstage.manager.entity.SummaryConsiderBomDetails">
+        SELECT
+        <include refid="summaryConsiderBomDetailsColumns"/>
+        FROM manager_summary_consider_bom_details
+    </select>
+
+    <insert id="insert">
+        INSERT INTO manager_summary_consider_bom_details(
+            id,
+            serial_number,
+            testing,
+            texy,
+            blue_island_materiel_number,
+            chinese_name,
+            supplier,
+            m_four_host,
+            m_four_go_host,
+            m_four_front_housing_assembly,
+            m_four_rear_housing_assembly,
+            m_four_package,
+            m_four_orange,
+            m_four_sfr,
+            m_four_byt,
+            m_four_go_package,
+            m_four_front_housing_assembly_second,
+            m_four_main_board_package,
+            m_four_go_main_board_package,
+            small_board_packaging,
+            battery_packaging,
+            into_operation,
+            not_into_operation,
+            lack_of_material,
+            lack_of_material_group,
+            new_jersey,
+            blue_island,
+            difference,
+            remarks,
+            create_by,
+            create_date,
+            update_by,
+            update_date
+        )VALUES (
+            #{id},
+            #{serialNumber},
+            #{testing},
+            #{texy},
+            #{blueIslandMaterielNumber},
+            #{chineseName},
+            #{supplier},
+            #{mFourHost},
+            #{mFourGoHost},
+            #{mFourFrontHousingAssembly},
+            #{mFourRearHousingAssembly},
+            #{mFourPackage},
+            #{mFourOrange},
+            #{mFourSFR},
+            #{mFourBYT},
+            #{mFourGoPackage},
+            #{mFourFrontHousingAssemblySecond},
+            #{mFourMainBoardPackage},
+            #{mFourGoMainBoardPackage},
+            #{smallBoardPackaging},
+            #{batteryPackaging},
+            #{intoOperation},
+            #{notIntoOperation},
+            #{lackOfMaterial},
+            #{lackOfMaterialGroup},
+            #{newJersey},
+            #{blueIsland},
+            #{difference},
+            #{remarks},
+            #{createBy.id},
+            #{createDate},
+            #{updateBy.id},
+            #{updateDate}
+        )
+    </insert>
+
+    <update id="update">
+        UPDATE manager_summary_consider_bom_details SET
+            serialNumber = #{serialNumber},
+            testing = #{testing},
+            texy = #{texy},
+            blue_island_materiel_number = #{blueIslandMaterielNumber},
+            chinese_name = #{chineseName},
+            supplier = #{supplier},
+            m_four_host = #{mFourHost},
+            m_four_go_host = #{mFourGoHost},
+            m_four_front_housing_assembly = #{mFourFrontHousingAssembly},
+            m_four_rear_housing_assembly = #{mFourRearHousingAssembly},
+            m_four_package = #{mFourPackage},
+            m_four_orange = #{mFourOrange},
+            m_four_sfr = #{mFourSFR},
+            m_four_byt = #{mFourBYT},
+            m_four_go_package = #{mFourGoPackage},
+            m_four_front_housing_assembly_second = #{mFourFrontHousingAssemblySecond},
+            m_four_main_board_package = #{mFourMainBoardPackage},
+            m_four_go_main_board_package = #{mFourGoMainBoardPackage},
+            small_board_packaging = #{smallBoardPackaging},
+            battery_packaging = #{batteryPackaging},
+            into_operation = #{intoOperation},
+            not_into_operation = #{notIntoOperation},
+            lack_of_material = #{lackOfMaterial},
+            lack_of_material_group = #{lackOfMaterialGroup},
+            new_jersey = #{newJersey},
+            blue_island = #{blueIsland},
+            difference = #{difference},
+            remarks = #{remarks},
+            create_by = #{createBy.id},
+            create_date = #{createDate},
+            update_by = #{updateBy.id},
+            update_date = #{updateDate}
+        WHERE id=#{id}
+    </update>
+
+    <update id="recover">
+        UPDATE manager_summary_consider_bom_details SET is_delete = 0
+        WHERE id=#{id}
+    </update>
+
+    <delete id="deleteByPhysics">
+        DELETE FROM manager_summary_consider_bom_details
+        WHERE id=#{id}
+    </delete>
+</mapper>

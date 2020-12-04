@@ -1,8 +1,8 @@
 package com.littlebuddha.backstage.manager.controller;
 
 import com.littlebuddha.backstage.common.utils.resultresponse.JsonResult;
-import com.littlebuddha.backstage.manager.entity.BalanceDetails;
-import com.littlebuddha.backstage.manager.service.BalanceDetailsService;
+import com.littlebuddha.backstage.manager.entity.SummaryConsiderBomDetails;
+import com.littlebuddha.backstage.manager.service.SummaryConsiderBomDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,23 +17,23 @@ import java.util.List;
  * @date 2020/12/2 10:06
  */
 @Controller
-@RequestMapping("/manager/balanceDetails")
-public class BalanceDetailsController {
+@RequestMapping("/manager/summaryConsiderBomDetails")
+public class SummaryConsiderBomController {
 
     @Autowired
-    private BalanceDetailsService balanceDetailsService;
+    private SummaryConsiderBomDetailsService summaryConsiderBomDetailsService;
 
     @GetMapping(value = {"","/list"})
-    public String list(BalanceDetails balanceDetails, Model model){
-        model.addAttribute("balanceDetails",balanceDetails);
-        return "manager/balanceDetails";
+    public String list(SummaryConsiderBomDetails summaryConsiderBomDetails, Model model){
+        model.addAttribute("summaryConsiderBomDetails",summaryConsiderBomDetails);
+        return "manager/summaryConsiderBom";
     }
 
     @ResponseBody
     @GetMapping("/data")
-    public JsonResult<BalanceDetails> data(BalanceDetails balanceDetails){
+    public JsonResult<SummaryConsiderBomDetails> data(SummaryConsiderBomDetails summaryConsiderBomDetails){
         JsonResult result = new JsonResult();
-        List<BalanceDetails> list = balanceDetailsService.findList(balanceDetails);
+        List<SummaryConsiderBomDetails> list = summaryConsiderBomDetailsService.findList(summaryConsiderBomDetails);
         result.setCode(0);
         result.setMsg("成功");
         result.setCount(list.size());

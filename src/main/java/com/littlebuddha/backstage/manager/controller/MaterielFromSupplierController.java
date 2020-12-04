@@ -1,8 +1,8 @@
 package com.littlebuddha.backstage.manager.controller;
 
 import com.littlebuddha.backstage.common.utils.resultresponse.JsonResult;
-import com.littlebuddha.backstage.manager.entity.BalanceDetails;
-import com.littlebuddha.backstage.manager.service.BalanceDetailsService;
+import com.littlebuddha.backstage.manager.entity.MaterielFromSupplier;
+import com.littlebuddha.backstage.manager.service.MaterielFromSupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,23 +17,23 @@ import java.util.List;
  * @date 2020/12/2 10:06
  */
 @Controller
-@RequestMapping("/manager/balanceDetails")
-public class BalanceDetailsController {
+@RequestMapping("/manager/materielFromSupplier")
+public class MaterielFromSupplierController {
 
     @Autowired
-    private BalanceDetailsService balanceDetailsService;
+    private MaterielFromSupplierService materielFromSupplierService;
 
     @GetMapping(value = {"","/list"})
-    public String list(BalanceDetails balanceDetails, Model model){
-        model.addAttribute("balanceDetails",balanceDetails);
-        return "manager/balanceDetails";
+    public String list(MaterielFromSupplier materielFromSupplier, Model model){
+        model.addAttribute("materielFromSupplier",materielFromSupplier);
+        return "manager/materielFromSupplier";
     }
 
     @ResponseBody
     @GetMapping("/data")
-    public JsonResult<BalanceDetails> data(BalanceDetails balanceDetails){
+    public JsonResult<MaterielFromSupplier> data(MaterielFromSupplier materielFromSupplier){
         JsonResult result = new JsonResult();
-        List<BalanceDetails> list = balanceDetailsService.findList(balanceDetails);
+        List<MaterielFromSupplier> list = materielFromSupplierService.findList(materielFromSupplier);
         result.setCode(0);
         result.setMsg("成功");
         result.setCount(list.size());

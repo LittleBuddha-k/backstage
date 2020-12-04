@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.littlebuddha.backstage.manager.mapper.BalanceDetailsMapper">
 
-    <sql id="materielColumns">
+    <sql id="balanceDetailsColumns">
         id AS "id",
         serial_number AS "serialNumber",
         testing AS "testing",
@@ -31,23 +31,24 @@
         new_jersey AS "newJersey",
         blue_island AS "blueIsland",
         difference AS "difference",
+        remarks AS "remarks",
         create_by AS "createBy.id",
         create_date AS "createDate",
         update_by AS "updateBy.id",
         update_date AS "updateDate"
     </sql>
 
-    <select id="get" resultType="com.littlebuddha.backstage.manager.entity.Order">
+    <select id="get" resultType="com.littlebuddha.backstage.manager.entity.BalanceDetails">
         SELECT
-        <include refid="materielColumns"/>
-        FROM manager_order
+        <include refid="balanceDetailsColumns"/>
+        FROM manager_balance_details
         WHERE id=#{id}
     </select>
 
-    <select id="findList" resultType="com.littlebuddha.backstage.manager.entity.Order">
+    <select id="findList" resultType="com.littlebuddha.backstage.manager.entity.BalanceDetails">
         SELECT
-        <include refid="materielColumns"/>
-        FROM manager_order
+        <include refid="balanceDetailsColumns"/>
+        FROM manager_balance_details
         <choose>
             <when test="page !=null and page != '' and limit !=null and limit != ''">
                 LIMIT #{page},#{limit}
@@ -58,14 +59,14 @@
         </choose>
     </select>
 
-    <select id="findAllList" resultType="com.littlebuddha.backstage.manager.entity.Order">
+    <select id="findAllList" resultType="com.littlebuddha.backstage.manager.entity.BalanceDetails">
         SELECT
-        <include refid="materielColumns"/>
-        FROM manager_order
+        <include refid="balanceDetailsColumns"/>
+        FROM manager_balance_details
     </select>
 
     <insert id="insert">
-        INSERT INTO manager_order(
+        INSERT INTO manager_balance_details(
             id,
             serial_number,
             testing,
@@ -94,6 +95,8 @@
             new_jersey,
             blue_island,
             difference,
+            remarks,
+            remarks,
             create_by,
             create_date,
             update_by,
@@ -127,6 +130,7 @@
             #{newJersey},
             #{blueIsland},
             #{difference},
+            #{remarks},
             #{createBy.id},
             #{createDate},
             #{updateBy.id},
@@ -135,7 +139,7 @@
     </insert>
 
     <update id="update">
-        UPDATE manager_order SET
+        UPDATE manager_balance_details SET
             serialNumber = #{serialNumber},
             testing = #{testing},
             texy = #{texy},
@@ -163,6 +167,7 @@
             new_jersey = #{newJersey},
             blue_island = #{blueIsland},
             difference = #{difference},
+            remarks = #{remarks},
             create_by = #{createBy.id},
             create_date = #{createDate},
             update_by = #{updateBy.id},
@@ -171,12 +176,12 @@
     </update>
 
     <update id="recover">
-        UPDATE manager_order SET is_delete = 0
+        UPDATE manager_balance_details SET is_delete = 0
         WHERE id=#{id}
     </update>
 
     <delete id="deleteByPhysics">
-        DELETE FROM manager_order
+        DELETE FROM manager_balance_details
         WHERE id=#{id}
     </delete>
 </mapper>

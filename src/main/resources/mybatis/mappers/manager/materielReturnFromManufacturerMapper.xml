@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.littlebuddha.backstage.manager.mapper.OtherOutWarehouseMapper">
+<mapper namespace="com.littlebuddha.backstage.manager.mapper.MaterielReturnFromManufacturerMapper">
 
-    <sql id="otherOutWarehouseColumns">
+    <sql id="materielReturnFromManufacturerColumns">
         id AS "id",
         serial_number AS "serialNumber",
-        out_warehouse_date AS "outWarehouseDate",
+        return_date AS "returnDate",
         blue_island_materiel_number AS "blueIslandMaterielNumber",
+        return_manufacturer AS "returnManufacturer",
         supplier_materiel_number AS "supplierMaterielNumber",
         materiel_name AS "materielName",
         description AS "description",
-        out_warehouse_amount AS "outWarehouseAmount",
-        delivery_order_number AS "deliveryOrderNumber",
+        return_amount AS "returnAmount",
+        return_order_number AS "returnOrderNumber",
         remarks AS "remarks",
         create_by AS "createBy.id",
         create_date AS "createDate",
@@ -19,17 +20,17 @@
         update_date AS "updateDate"
     </sql>
 
-    <select id="get" resultType="com.littlebuddha.backstage.manager.entity.OtherOutWarehouse">
+    <select id="get" resultType="com.littlebuddha.backstage.manager.entity.MaterialReturnFromManufacturer">
         SELECT
-        <include refid="otherOutWarehouseColumns"/>
-        FROM manager_out_warehouse
+        <include refid="materielReturnFromManufacturerColumns"/>
+        FROM manager_materiel_return_from_manufacturer
         WHERE id=#{id}
     </select>
 
-    <select id="findList" resultType="com.littlebuddha.backstage.manager.entity.OtherOutWarehouse">
+    <select id="findList" resultType="com.littlebuddha.backstage.manager.entity.MaterialReturnFromManufacturer">
         SELECT
-        <include refid="otherOutWarehouseColumns"/>
-        FROM manager_out_warehouse
+        <include refid="materielReturnFromManufacturerColumns"/>
+        FROM manager_materiel_return_from_manufacturer
         <choose>
             <when test="page !=null and page != '' and limit !=null and limit != ''">
                 LIMIT #{page},#{limit}
@@ -40,23 +41,24 @@
         </choose>
     </select>
 
-    <select id="findAllList" resultType="com.littlebuddha.backstage.manager.entity.OtherOutWarehouse">
+    <select id="findAllList" resultType="com.littlebuddha.backstage.manager.entity.MaterialReturnFromManufacturer">
         SELECT
-        <include refid="otherOutWarehouseColumns"/>
-        FROM manager_out_warehouse
+        <include refid="materielReturnFromManufacturerColumns"/>
+        FROM manager_materiel_return_from_manufacturer
     </select>
 
     <insert id="insert">
-        INSERT INTO manager_out_warehouse(
+        INSERT INTO manager_materiel_return_from_manufacturer(
             id,
             serial_number,
-            out_warehouse_date,
+            return_date,
             blue_island_materiel_number,
+            return_manufacturer,
             supplier_materiel_number,
             materiel_name,
             description,
-            out_warehouse_amount,
-            delivery_order_number,
+            return_amount,
+            return_order_number,
             remarks,
             create_by,
             create_date,
@@ -65,13 +67,14 @@
         )VALUES (
             #{id},
             #{serialNumber},
-            #{outWarehouseDate},
+            #{returnDate},
             #{blueIslandMaterielNumber},
+            #{returnManufacturer},
             #{supplierMaterielNumber},
             #{materielName},
             #{description},
-            #{outWarehouseAmount},
-            #{deliveryOrderNumber},
+            #{returnAmount},
+            #{returnOrderNumber},
             #{remarks},
             #{createBy.id},
             #{createDate},
@@ -81,15 +84,16 @@
     </insert>
 
     <update id="update">
-        UPDATE manager_out_warehouse SET
+        UPDATE manager_materiel_return_from_manufacturer SET
             serial_number = #{serialNumber},
-            out_warehouse_date = #{outWarehouseDate},
+            return_date = #{returnDate},
             blue_island_materiel_number = #{blueIslandMaterielNumber},
+            return_manufacturer = #{returnManufacturer},
             supplier_materiel_number = #{supplierMaterielNumber},
             materiel_name = #{materielName},
             description = #{description},
-            out_warehouse_amount = #{outWarehouseAmount},
-            delivery_order_number = #{deliveryOrderNumber},
+            return_amount = #{returnAmount},
+            return_order_number = #{returnOrderNumber},
             remarks = #{remarks},
             create_by = #{createBy.id},
             create_date = #{createDate},
@@ -99,12 +103,12 @@
     </update>
 
     <update id="recover">
-        UPDATE manager_out_warehouse SET is_delete = 0
+        UPDATE manager_materiel_return_from_manufacturer SET is_delete = 0
         WHERE id=#{id}
     </update>
 
     <delete id="deleteByPhysics">
-        DELETE FROM manager_out_warehouse
+        DELETE FROM manager_materiel_return_from_manufacturer
         WHERE id=#{id}
     </delete>
 </mapper>

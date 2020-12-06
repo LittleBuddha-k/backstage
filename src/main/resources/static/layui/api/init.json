@@ -267,19 +267,19 @@
                 },
                 {
                   "title": "其他出库",
-                  "href": "/backstage/manager/otherOutWareHouse/list",
+                  "href": "/backstage/manager/otherOutWarehouse/list",
                   "icon": "fa fa-calendar",
                   "target": "_self"
                 },
                 {
                   "title": "厂商退料",
-                  "href": "/backstage/manager/balanceDetails/list",
+                  "href": "/backstage/manager/materielReturnFromManufacturer/list",
                   "icon": "fa fa-calendar",
                   "target": "_self"
                 },
                 {
                   "title": "成品出库明细",
-                  "href": "/backstage/manager/balanceDetails/list",
+                  "href": "/backstage/manager/finishedDeliveryDetails/list",
                   "icon": "fa fa-calendar",
                   "target": "_self"
                 },

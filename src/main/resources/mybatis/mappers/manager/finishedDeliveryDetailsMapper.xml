@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.littlebuddha.backstage.manager.mapper.FinishedDeliveryDetailsMapper">
+
+    <sql id="finishedDeliveryDetailsColumns">
+        id AS "id",
+        delivery_date AS "deliveryDate",
+        specification AS "specification",
+        blue_island_finished_product_code AS "blueIslandFinishedProductCode",
+        product_name AS "productName",
+        order_number_for_jierong AS "orderNumberForJierong",
+        jierong_delivery_order_number AS "jierongDeliveryOrderNumber",
+        shipment_amount AS "shipmentAmount",
+        shipment_address AS "shipmentAddress",
+        receiver AS "receiver",
+        remarks AS "remarks",
+        create_by AS "createBy.id",
+        create_date AS "createDate",
+        update_by AS "updateBy.id",
+        update_date AS "updateDate"
+    </sql>
+
+    <select id="get" resultType="com.littlebuddha.backstage.manager.entity.FinishedDeliveryDetails">
+        SELECT
+        <include refid="finishedDeliveryDetailsColumns"/>
+        FROM manager_finished_delivery_details
+        WHERE id=#{id}
+    </select>
+
+    <select id="findList" resultType="com.littlebuddha.backstage.manager.entity.FinishedDeliveryDetails">
+        SELECT
+        <include refid="finishedDeliveryDetailsColumns"/>
+        FROM manager_finished_delivery_details
+        <choose>
+            <when test="page !=null and page != '' and limit !=null and limit != ''">
+                LIMIT #{page},#{limit}
+            </when>
+            <otherwise>
+                LIMIT #{page},#{limit}
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="findAllList" resultType="com.littlebuddha.backstage.manager.entity.FinishedDeliveryDetails">
+        SELECT
+        <include refid="finishedDeliveryDetailsColumns"/>
+        FROM manager_finished_delivery_details
+    </select>
+
+    <insert id="insert">
+        INSERT INTO manager_finished_delivery_details(
+            id,
+            delivery_date,
+            specification,
+            blue_island_finished_product_code,
+            product_name,
+            order_number_for_jierong,
+            jierong_delivery_order_number,
+            shipment_amount,
+            shipment_address,
+            receiver,
+            remarks,
+            create_by,
+            create_date,
+            update_by,
+            update_date
+        )VALUES (
+            #{id},
+            #{deliveryDate},
+            #{specification},
+            #{blueIslandFinishedProductCode},
+            #{productName},
+            #{orderNumberForJierong},
+            #{jierongDeliveryOrderNumber},
+            #{shipmentAmount},
+            #{shipmentAddress},
+            #{receiver},
+            #{remarks},
+            #{createBy.id},
+            #{createDate},
+            #{updateBy.id},
+            #{updateDate}
+        )
+    </insert>
+
+    <update id="update">
+        UPDATE manager_finished_delivery_details SET
+            delivery_date = #{deliveryDate},
+            specification = #{specification},
+            blue_island_finished_product_code = #{blueIslandFinishedProductCode},
+            product_name = #{productName},
+            order_number_for_jierong = #{orderNumberForJierong},
+            jierong_delivery_order_number = #{jierongDeliveryOrderNumber},
+            shipment_amount = #{shipmentAmount},
+            shipment_address = #{shipmentAddress},
+            receiver = #{receiver},
+            remarks = #{remarks},
+            create_by = #{createBy.id},
+            create_date = #{createDate},
+            update_by = #{updateBy.id},
+            update_date = #{updateDate}
+        WHERE id=#{id}
+    </update>
+
+    <update id="recover">
+        UPDATE manager_finished_delivery_details SET is_delete = 0
+        WHERE id=#{id}
+    </update>
+
+    <delete id="deleteByPhysics">
+        DELETE FROM manager_finished_delivery_details
+        WHERE id=#{id}
+    </delete>
+</mapper>

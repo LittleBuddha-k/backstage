@@ -75,7 +75,7 @@
 
         table.render({
             elem: '#balanceDetailsTableList',
-            url: '/backstage/manager/otherOutWarehouse/data',
+            url: '/backstage/manager/materielReturnFromManufacturer/data',
             toolbar: '#toolbar',
             defaultToolbar: ['filter', 'exports', 'print', {
                 title: '提示',
@@ -86,13 +86,13 @@
                 [
                 {type: "checkbox", width: 50},
                 {field: 'serialNumber', width: 120, title: '序号', sort: true},
-                {field: 'outWarehouseDate', width: 120, title: '出库日期', sort: true},
+                {field: 'returnDate', width: 120, title: '退货日期', sort: true},
                 {field: 'blueIslandMaterielNumber', width: 120, title: '蓝岸料号', sort: true},
-                {field: 'supplierMaterielNumber', width: 120, title: '供应商料号编码', sort: true},
+                {field: 'returnManufacturer', width: 120, title: '退货厂商', sort: true},
                 {field: 'materielName', width: 120, title: '物料名称', sort: true},
                 {field: 'description', width: 120, title: '描述', sort: true},
-                {field: 'outWarehouseAmount', width: 120, title: '出库数量', sort: true},
-                {field: 'deliveryOrderNumber', width: 120, title: '送货单号', sort: true},
+                {field: 'returnAmount', width: 120, title: '退货数量', sort: true},
+                {field: 'returnOrderNumber', width: 120, title: '退货单号', sort: true},
                 {field: 'remarks', width: 120, title: '备注', sort: true},
                 {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
             ]

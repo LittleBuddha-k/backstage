@@ -75,7 +75,7 @@
 
         table.render({
             elem: '#balanceDetailsTableList',
-            url: '/backstage/manager/otherOutWarehouse/data',
+            url: '/backstage/manager/finishedDeliveryDetails/data',
             toolbar: '#toolbar',
             defaultToolbar: ['filter', 'exports', 'print', {
                 title: '提示',
@@ -85,14 +85,15 @@
             cols: [
                 [
                 {type: "checkbox", width: 50},
-                {field: 'serialNumber', width: 120, title: '序号', sort: true},
-                {field: 'outWarehouseDate', width: 120, title: '出库日期', sort: true},
-                {field: 'blueIslandMaterielNumber', width: 120, title: '蓝岸料号', sort: true},
-                {field: 'supplierMaterielNumber', width: 120, title: '供应商料号编码', sort: true},
-                {field: 'materielName', width: 120, title: '物料名称', sort: true},
-                {field: 'description', width: 120, title: '描述', sort: true},
-                {field: 'outWarehouseAmount', width: 120, title: '出库数量', sort: true},
-                {field: 'deliveryOrderNumber', width: 120, title: '送货单号', sort: true},
+                {field: 'deliveryDate', width: 120, title: '出库日期', sort: true},
+                {field: 'specification', width: 120, title: '规格型号', sort: true},
+                {field: 'blueIslandFinishedProductCode', width: 120, title: '蓝岸完品编码', sort: true},
+                {field: 'productName', width: 120, title: '产品名称', sort: true},
+                {field: 'orderNumberForJierong', width: 120, title: '给捷荣加工的订单号', sort: true},
+                {field: 'jierongDeliveryOrderNumber', width: 120, title: '捷容送货单号', sort: true},
+                {field: 'shipmentAmount', width: 120, title: '出货数量', sort: true},
+                {field: 'shipmentAddress', width: 120, title: '出货地址', sort: true},
+                {field: 'receiver', width: 120, title: '接货人', sort: true},
                 {field: 'remarks', width: 120, title: '备注', sort: true},
                 {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
             ]

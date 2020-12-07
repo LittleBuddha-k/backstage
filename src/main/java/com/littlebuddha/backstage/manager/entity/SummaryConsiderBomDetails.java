@@ -3,6 +3,7 @@ package com.littlebuddha.backstage.manager.entity;
 import com.littlebuddha.backstage.common.base.DataEntity;
 
 /**
+ * 只依bom明细的统计
  * @author ck
  * @date 2020/12/4 11:15
  */

@@ -1,8 +1,8 @@
 package com.littlebuddha.backstage.manager.controller;
 
 import com.littlebuddha.backstage.common.utils.resultresponse.JsonResult;
-import com.littlebuddha.backstage.manager.entity.Order;
-import com.littlebuddha.backstage.manager.service.OrderService;
+import com.littlebuddha.backstage.manager.entity.DeliveryPlan;
+import com.littlebuddha.backstage.manager.service.DeliveryPlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,24 +17,23 @@ import java.util.List;
  * @date 2020/12/2 10:06
  */
 @Controller
-@RequestMapping("/manager/order")
-public class OrderController {
+@RequestMapping("/manager/deliveryPlan")
+public class DeliveryPlanController {
 
     @Autowired
-    private OrderService orderService;
+    private DeliveryPlanService deliveryPlanService;
 
     @GetMapping(value = {"","/list"})
-    public String list(Order order, Model model){
-        model.addAttribute("order",order);
-        return "manager/order";
+    public String list(DeliveryPlan deliveryPlan, Model model){
+        model.addAttribute("deliveryPlan",deliveryPlan);
+        return "manager/deliveryPlan";
     }
 
     @ResponseBody
     @GetMapping("/data")
-    public JsonResult<Order> data(Order order,String materielNumber){
-        System.out.println("接收到料号为"+order.getMaterielNumber());
+    public JsonResult<DeliveryPlan> data(DeliveryPlan deliveryPlan, String materielNumber){
         JsonResult result = new JsonResult();
-        List<Order> list = orderService.findList(order);
+        List<DeliveryPlan> list = deliveryPlanService.findList(deliveryPlan);
         result.setCode(0);
         result.setMsg("成功");
         result.setCount(list.size());

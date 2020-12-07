@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.littlebuddha.backstage.manager.mapper.DeliveryPlanMapper">
+
+    <sql id="deliveryPlanColumns">
+        id AS "id",
+        delivery_date AS "deliveryDate",
+        delivery_amount AS "deliveryAmount",
+        cumulative_delivery_amount AS "cumulativeDeliveryAmount",
+        in_coming_materiel_date AS "inComingMaterielDate",
+        gift_box_amount AS "giftBoxAmount",
+        cumulative_gift_box_amount AS "cumulativeGiftBoxAmount",
+        carton_amount AS "cartonAmount",
+        paper_separator_amount AS "paperSeparatorAmount",
+        cumulative_paper_separator_amount AS "cumulativePaperSeparatorAmount",
+        delivery_type AS "deliveryType",
+        create_by AS "createBy.id",
+        create_date AS "createDate",
+        update_by AS "updateBy.id",
+        update_date AS "updateDate"
+    </sql>
+
+    <select id="get" resultType="com.littlebuddha.backstage.manager.entity.DeliveryPlan">
+        SELECT
+        <include refid="deliveryPlanColumns"/>
+        FROM manager_delivery_plan
+        WHERE id=#{id}
+    </select>
+
+    <select id="findList" resultType="com.littlebuddha.backstage.manager.entity.DeliveryPlan">
+        SELECT
+        <include refid="deliveryPlanColumns"/>
+        FROM manager_delivery_plan
+        <choose>
+            <when test="page !=null and page != '' and limit !=null and limit != ''">
+                LIMIT #{page},#{limit}
+            </when>
+            <otherwise>
+                LIMIT #{page},#{limit}
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="findAllList" resultType="com.littlebuddha.backstage.manager.entity.DeliveryPlan">
+        SELECT
+        <include refid="deliveryPlanColumns"/>
+        FROM manager_delivery_plan
+    </select>
+
+    <insert id="insert">
+        INSERT INTO manager_delivery_plan(
+            id,
+            delivery_date,
+            delivery_amount,
+            cumulative_delivery_amount,
+            in_coming_materiel_date,
+            gift_box_amount,
+            cumulative_gift_box_amount,
+            carton_amount,
+            paper_separator_amount,
+            cumulative_paper_separator_amount,
+            delivery_type,
+            create_by,
+            create_date,
+            update_by,
+            update_date
+        )VALUES (
+            #{id},
+            #{deliveryDate},
+            #{deliveryAmount},
+            #{cumulativeDeliveryAmount},
+            #{inComingMaterielDate},
+            #{giftBoxAmount},
+            #{cumulativeGiftBoxAmount},
+            #{cartonAmount},
+            #{paperSeparatorAmount},
+            #{cumulativePaperSeparatorAmount},
+            #{deliveryType},
+            #{createBy.id},
+            #{createDate},
+            #{updateBy.id},
+            #{updateDate}
+        )
+    </insert>
+
+    <update id="update">
+        UPDATE manager_delivery_plan SET
+            delivery_date = #{deliveryDate},
+            delivery_amount = #{deliveryAmount},
+            cumulative_delivery_amount = #{cumulativeDeliveryAmount},
+            in_coming_materiel_date = #{inComingMaterielDate},
+            gift_box_amount = #{giftBoxAmount},
+            cumulative_gift_box_amount = #{cumulativeGiftBoxAmount},
+            carton_amount = #{cartonAmount},
+            paper_separator_amount = #{paperSeparatorAmount},
+            cumulative_paper_separator_amount = #{cumulativePaperSeparatorAmount},
+            delivery_type = #{deliveryType},
+            create_by = #{createBy.id},
+            create_date = #{createDate},
+            update_by = #{updateBy.id},
+            update_date = #{updateDate}
+        WHERE id=#{id}
+    </update>
+
+    <update id="recover">
+        UPDATE manager_delivery_plan SET is_delete = 0
+        WHERE id=#{id}
+    </update>
+
+    <delete id="deleteByPhysics">
+        DELETE FROM manager_delivery_plan
+        WHERE id=#{id}
+    </delete>
+</mapper>

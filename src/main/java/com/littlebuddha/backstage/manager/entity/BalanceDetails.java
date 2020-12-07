@@ -3,6 +3,7 @@ package com.littlebuddha.backstage.manager.entity;
 import com.littlebuddha.backstage.common.base.DataEntity;
 
 /**
+ * 赛达信组装盘点汇总表
  * @author ck
  * @date 2020/12/3 16:07
  */

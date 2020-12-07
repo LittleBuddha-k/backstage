@@ -5,7 +5,7 @@ import com.littlebuddha.backstage.common.base.DataEntity;
 import java.util.Date;
 
 /**
- * 厂商退料
+ * 成品出库明细
  * @author ck
  * @date 2020/12/4 15:46
  */

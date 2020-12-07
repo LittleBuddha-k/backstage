@@ -234,14 +234,8 @@
                   "target": "_self"
                 },
                 {
-                  "title": "赛达信组装盘点汇总表",
-                  "href": "/backstage/manager/balanceDetails/list",
-                  "icon": "fa fa-calendar",
-                  "target": "_self"
-                },
-                {
-                  "title": "赛达信组装盘点汇总表",
-                  "href": "/backstage/manager/balanceDetails/list",
+                  "title": "成品出库明细",
+                  "href": "/backstage/manager/finishedDeliveryDetails/list",
                   "icon": "fa fa-calendar",
                   "target": "_self"
                 }
@@ -284,14 +278,23 @@
                   "target": "_self"
                 },
                 {
-                  "title": "捷荣加工订单统计",
+                  "title": "我的",
                   "href": "/backstage/manager/balanceDetails/list",
                   "icon": "fa fa-calendar",
                   "target": "_self"
-                },
+                }
+              ]
+            },
+
+            {
+              "title": "交货计划",
+              "href": "",
+              "icon": "fa fa-calendar",
+              "target": "_self",
+              "child": [
                 {
-                  "title": "我的",
-                  "href": "/backstage/manager/balanceDetails/list",
+                  "title": "交货计划",
+                  "href": "/backstage/manager/deliveryPlan/list",
                   "icon": "fa fa-calendar",
                   "target": "_self"
                 }

@@ -6,9 +6,8 @@ import com.littlebuddha.backstage.manager.service.DeliveryPlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -34,10 +33,23 @@ public class DeliveryPlanController {
     public JsonResult<DeliveryPlan> data(DeliveryPlan deliveryPlan, String materielNumber){
         JsonResult result = new JsonResult();
         List<DeliveryPlan> list = deliveryPlanService.findList(deliveryPlan);
+        List<DeliveryPlan> all = deliveryPlanService.findList(new DeliveryPlan());
         result.setCode(0);
         result.setMsg("成功");
-        result.setCount(list.size());
+        result.setCount(all.size());
         result.setData(list);
         return result;
+    }
+
+    @ResponseBody
+    @PostMapping("/importFile")
+    public JsonResult importFile(@RequestParam("file") MultipartFile file){
+
+        return null;
+    }
+
+    @PostMapping("/exportFile")
+    public void exportFile(DeliveryPlan deliveryPlan){
+
     }
 }

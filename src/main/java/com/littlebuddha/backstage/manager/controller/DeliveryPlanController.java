@@ -22,15 +22,15 @@ public class DeliveryPlanController {
     @Autowired
     private DeliveryPlanService deliveryPlanService;
 
-    @GetMapping(value = {"","/list"})
-    public String list(DeliveryPlan deliveryPlan, Model model){
-        model.addAttribute("deliveryPlan",deliveryPlan);
+    @GetMapping(value = {"", "/list"})
+    public String list(DeliveryPlan deliveryPlan, Model model) {
+        model.addAttribute("deliveryPlan", deliveryPlan);
         return "manager/deliveryPlan";
     }
 
     @ResponseBody
     @GetMapping("/data")
-    public JsonResult<DeliveryPlan> data(DeliveryPlan deliveryPlan, String materielNumber){
+    public JsonResult<DeliveryPlan> data(DeliveryPlan deliveryPlan, String materielNumber) {
         JsonResult result = new JsonResult();
         List<DeliveryPlan> list = deliveryPlanService.findList(deliveryPlan);
         List<DeliveryPlan> all = deliveryPlanService.findList(new DeliveryPlan());
@@ -41,15 +41,22 @@ public class DeliveryPlanController {
         return result;
     }
 
+    @GetMapping("/form/{mode}")
+    public String form(DeliveryPlan deliveryPlan,@PathVariable(name = "mode")String mode, Model model){
+        model.addAttribute("deliveryPlan",deliveryPlan);
+        model.addAttribute("mode",mode);
+        return "manager/form/deliveryPlanForm";
+    }
+
     @ResponseBody
     @PostMapping("/importFile")
-    public JsonResult importFile(@RequestParam("file") MultipartFile file){
+    public JsonResult importFile(@RequestParam("file") MultipartFile file) {
 
         return null;
     }
 
     @PostMapping("/exportFile")
-    public void exportFile(DeliveryPlan deliveryPlan){
+    public void exportFile(DeliveryPlan deliveryPlan) {
 
     }
 }

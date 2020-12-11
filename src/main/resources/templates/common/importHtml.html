@@ -14,7 +14,6 @@
               style="padding-left:20px;text-align:center;" onsubmit="loading('正在导入，请稍等...');">
             <div name="file" id="importFile" class="zyupload"></div>
             导入文件不能超过5M，仅允许导入“xls”或“xlsx”格式文件！　　
-
         </form>
     </div>
 </div>
@@ -30,7 +29,7 @@
             itemWidth: "40px",                 // 文件项的宽度
             itemHeight: "15px",                 // 文件项的高度
             url: "api/upload",  // 上传文件的路径
-            fileType: ["jpg", "png", "txt", "js", "exe","xls","xlsx"],// 上传文件的类型
+            fileType: ["xls","xlsx"],// 上传文件的类型
             fileSize: 51200000,                // 上传文件的大小
             multiple: true,                    // 是否可以多个文件上传
             dragDrop: true,                    // 是否可以拖动上传文件

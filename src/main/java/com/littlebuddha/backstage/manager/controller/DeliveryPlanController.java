@@ -55,6 +55,13 @@ public class DeliveryPlanController {
         return null;
     }
 
+    @ResponseBody
+    @GetMapping("/importTemplate")
+    public JsonResult importTemplate(){
+
+        return null;
+    }
+
     @PostMapping("/exportFile")
     public void exportFile(DeliveryPlan deliveryPlan) {
 

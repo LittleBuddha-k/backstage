@@ -3,7 +3,6 @@
  */
 package com.littlebuddha.backstage.common.utils;
 
-import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -11,6 +10,7 @@ import org.springframework.web.servlet.LocaleResolver;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
@@ -190,7 +190,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 		// 用正则表达式取出标记
 		Pattern p = Pattern.compile("<([a-zA-Z]+)[^<>]*>");
 		Matcher m = p.matcher(temp_result);
-		List<String> endHTML = Lists.newArrayList();
+		List<String> endHTML = new ArrayList<>();
 		while (m.find()) {
 			endHTML.add(m.group(1));
 		}

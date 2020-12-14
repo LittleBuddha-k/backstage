@@ -1,12 +1,11 @@
 package com.littlebuddha.backstage.common.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.littlebuddha.backstage.system.entity.Operator;
+import com.littlebuddha.backstage.common.utils.AutoId;
+import com.littlebuddha.backstage.modules.system.entity.Operator;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
-
-import com.littlebuddha.backstage.common.utils.AutoId;
 
 import java.io.Serializable;
 import java.util.Date;

@@ -208,11 +208,11 @@
                     content: "/backstage/common/importHtml" ,
                     btn: ['下载模板','确定', '关闭'],
                     btn1: function(index, layero){
-                        layer.downloadFile('${ctx}/data/goods/import/template');
+                        layer.downloadFile('/backstage/manager/deliveryPlan/import/template');
                     },
                     btn2: function(index, layero){
                         var iframeWin = layero.find('iframe')[0]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
-                        iframeWin.contentWindow.importExcel('${ctx}/data/goods/import', function (data) {
+                        iframeWin.contentWindow.importExcel('/backstage/manager/deliveryPlan/import', function (data) {
                             if(data.success){
                                 layer.success(data.msg);
                                 refresh();

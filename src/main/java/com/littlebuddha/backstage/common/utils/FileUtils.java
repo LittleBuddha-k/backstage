@@ -3,10 +3,6 @@
  */
 package com.littlebuddha.backstage.common.utils;
 
-import com.google.common.collect.Lists;
-import com.jeeplus.common.config.Global;
-import com.jeeplus.core.web.Servlets;
-import com.jeeplus.modules.sys.entity.FileData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

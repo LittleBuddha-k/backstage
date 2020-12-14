@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.littlebuddha.backstage.manager.mapper.DeliveryPlanMapper">
+<mapper namespace="com.littlebuddha.backstage.modules.manager.mapper.DeliveryPlanMapper">
 
     <sql id="deliveryPlanColumns">
         id AS "id",
@@ -20,14 +20,14 @@
         update_date AS "updateDate"
     </sql>
 
-    <select id="get" resultType="com.littlebuddha.backstage.manager.entity.DeliveryPlan">
+    <select id="get" resultType="com.littlebuddha.backstage.modules.manager.entity.DeliveryPlan">
         SELECT
         <include refid="deliveryPlanColumns"/>
         FROM manager_delivery_plan
         WHERE id=#{id}
     </select>
 
-    <select id="findList" resultType="com.littlebuddha.backstage.manager.entity.DeliveryPlan">
+    <select id="findList" resultType="com.littlebuddha.backstage.modules.manager.entity.DeliveryPlan">
         SELECT
         <include refid="deliveryPlanColumns"/>
         FROM manager_delivery_plan
@@ -41,7 +41,7 @@
         </choose>
     </select>
 
-    <select id="findAllList" resultType="com.littlebuddha.backstage.manager.entity.DeliveryPlan">
+    <select id="findAllList" resultType="com.littlebuddha.backstage.modules.manager.entity.DeliveryPlan">
         SELECT
         <include refid="deliveryPlanColumns"/>
         FROM manager_delivery_plan

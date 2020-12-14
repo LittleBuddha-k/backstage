@@ -1,9 +1,9 @@
 package com.littlebuddha.backstage.common.utils;
 
-import com.littlebuddha.backstage.system.entity.Department;
-import com.littlebuddha.backstage.system.entity.Menu;
-import com.littlebuddha.backstage.system.service.DepartmentService;
-import com.littlebuddha.backstage.system.service.MenuService;
+import com.littlebuddha.backstage.modules.system.entity.Department;
+import com.littlebuddha.backstage.modules.system.entity.Menu;
+import com.littlebuddha.backstage.modules.system.service.DepartmentService;
+import com.littlebuddha.backstage.modules.system.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

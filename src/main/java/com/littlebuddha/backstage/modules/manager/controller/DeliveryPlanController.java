@@ -1,9 +1,5 @@
 package com.littlebuddha.backstage.modules.manager.controller;
 
-import com.littlebuddha.backstage.common.utils.DateUtils;
-import com.littlebuddha.backstage.common.utils.excel.ExportExcel;
-import com.littlebuddha.backstage.common.utils.excel.ImportExcel;
-import com.littlebuddha.backstage.common.utils.io.FileUtil;
 import com.littlebuddha.backstage.common.utils.resultresponse.JsonResult;
 import com.littlebuddha.backstage.modules.manager.entity.DeliveryPlan;
 import com.littlebuddha.backstage.modules.manager.service.DeliveryPlanService;
@@ -59,108 +55,5 @@ public class DeliveryPlanController {
         model.addAttribute("deliveryPlan",deliveryPlan);
         model.addAttribute("mode",mode);
         return "manager/form/deliveryPlanForm";
-    }
-
-    /**
-     * 导出excel文件
-     */
-    @ResponseBody
-    @RequestMapping(value = "export")
-    public void templateExport(DeliveryPlan deliveryPlan, HttpServletRequest request, HttpServletResponse response) {
-        try {
-            //模板路径
-            String templatepath = request.getServletContext().getRealPath("/template/deliveryPlan.xlsx");
-            //excel临时存放路径
-            String realpath = request.getServletContext().getRealPath("/template/real");//压缩文件集合
-            File savedir = new File(realpath);
-            if(!savedir.exists()){
-                savedir.mkdirs();
-            }
-            List<DeliveryPlan> list = deliveryPlanService.findList(deliveryPlan);
-            String fileName = "终端信息"+DateUtils.getDate("yyyyMMddHHmmss")+".xlsx";// 导出文件名
-            String filepath = realpath + File.separator + fileName;
-            OutputStream os = new FileOutputStream(filepath);
-            InputStream is = new FileInputStream(templatepath);
-            XLSTransformer transformer = new XLSTransformer();
-            Map beans = new HashMap();
-            beans.put("list",list);
-            XSSFWorkbook workbook = (XSSFWorkbook) transformer.transformXLS(is,beans);
-            workbook.write(os);
-            //关闭excel输出流
-            os.close();
-            is.close();
-            FileUtil.downloadFile(response,realpath,fileName);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * 导出excel文件
-     */
-    @ResponseBody
-    @RequiresPermissions("marketing:visiting:export")
-    @RequestMapping(value = "export")
-    public JsonResult annotationExport(DeliveryPlan visiting, HttpServletRequest request, HttpServletResponse response) {
-        JsonResult j = new JsonResult();
-        try {
-            String fileName = "访店信息" + DateUtils.getDate("yyyyMMddHHmmss") + ".xlsx";
-            List<DeliveryPlan> exportData = deliveryPlanService.findList(visiting);
-            new ExportExcel("访店信息", DeliveryPlan.class).setDataList(exportData).write(response, fileName).dispose();
-            j.setMsg("导出成功！");
-            return j;
-        } catch (Exception e) {
-            j.setMsg("导出访店信息失败！失败信息：" + e.getMessage());
-        }
-        return j;
-    }
-
-    /**
-     * 导入Excel数据
-     */
-    @ResponseBody
-    @RequestMapping(value = "import")
-    public JsonResult templateImport(@RequestParam("file")MultipartFile file, HttpServletResponse response, HttpServletRequest request) {
-        JsonResult j = new JsonResult();
-        try {
-            int successNum = 0;
-            int failureNum = 0;
-            StringBuilder failureMsg = new StringBuilder();
-            ImportExcel ei = new ImportExcel(file, 1, 0);
-            List<DeliveryPlan> list = ei.getDataList(DeliveryPlan.class);
-            for (DeliveryPlan deliveryPlan : list){
-                try{
-                    deliveryPlanService.save(deliveryPlan);
-                    successNum++;
-                }catch (Exception ex) {
-                    failureNum++;
-                }
-            }
-            if (failureNum>0){
-                failureMsg.insert(0, "，失败 "+failureNum+" 条终端信息管理记录。");
-            }
-            j.setMsg( "已成功导入 "+successNum+" 条终端信息管理"+failureMsg);
-        } catch (Exception e) {
-            j.setMsg("导入终端信息管理失败！失败信息："+e.getMessage());
-        }
-        return j;
-    }
-
-    /**
-     * 下载导入终端信息数据模板
-     */
-    @ResponseBody
-    @RequestMapping(value = "import/template")
-    public JsonResult exportTemplate(HttpServletResponse response) {
-        JsonResult j = new JsonResult();
-        try {
-            String fileName = "终端信息导入模板.xlsx";
-            List<DeliveryPlan> list = new ArrayList<>();
-            new ExportExcel("终端信息数据", DeliveryPlan.class, 1).setDataList(list).write(response, fileName).dispose();
-            return null;
-        } catch (Exception e) {
-            j.setMsg( "导入模板下载失败！失败信息："+e.getMessage());
-        }
-        return j;
     }
 }

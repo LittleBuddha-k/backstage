@@ -1,7 +1,6 @@
 package com.littlebuddha.backstage.modules.manager.entity;
 
 import com.littlebuddha.backstage.common.base.DataEntity;
-import com.littlebuddha.backstage.common.utils.excel.annotation.ExcelField;
 
 import java.util.Date;
 
@@ -25,7 +24,6 @@ public class DeliveryPlan extends DataEntity<DeliveryPlan> {
 
     private String deliveryType;                      //交货计划类型---lite or plus
 
-    @ExcelField(title = "交货日期",align = 2,sort = 1)
     public Date getDeliveryDate() {
         return deliveryDate;
     }
@@ -34,7 +32,6 @@ public class DeliveryPlan extends DataEntity<DeliveryPlan> {
         this.deliveryDate = deliveryDate;
     }
 
-    @ExcelField(title = "交货数量",align = 2,sort = 2)
     public Double getDeliveryAmount() {
         return deliveryAmount;
     }
@@ -43,7 +40,6 @@ public class DeliveryPlan extends DataEntity<DeliveryPlan> {
         this.deliveryAmount = deliveryAmount;
     }
 
-    @ExcelField(title = "累计交货数量",align = 2,sort = 3)
     public Double getCumulativeDeliveryAmount() {
         return cumulativeDeliveryAmount;
     }
@@ -52,7 +48,6 @@ public class DeliveryPlan extends DataEntity<DeliveryPlan> {
         this.cumulativeDeliveryAmount = cumulativeDeliveryAmount;
     }
 
-    @ExcelField(title = "进料日期",align = 2,sort = 4)
     public Date getInComingMaterielDate() {
         return inComingMaterielDate;
     }
@@ -61,7 +56,6 @@ public class DeliveryPlan extends DataEntity<DeliveryPlan> {
         this.inComingMaterielDate = inComingMaterielDate;
     }
 
-    @ExcelField(title = "礼盒配套数量",align = 2,sort = 5)
     public Double getGiftBoxAmount() {
         return giftBoxAmount;
     }
@@ -70,7 +64,6 @@ public class DeliveryPlan extends DataEntity<DeliveryPlan> {
         this.giftBoxAmount = giftBoxAmount;
     }
 
-    @ExcelField(title = "累计礼盒数量",align = 2,sort = 6)
     public Double getCumulativeGiftBoxAmount() {
         return cumulativeGiftBoxAmount;
     }
@@ -79,7 +72,6 @@ public class DeliveryPlan extends DataEntity<DeliveryPlan> {
         this.cumulativeGiftBoxAmount = cumulativeGiftBoxAmount;
     }
 
-    @ExcelField(title = "纸箱数",align = 2,sort = 7)
     public Double getCartonAmount() {
         return cartonAmount;
     }
@@ -88,7 +80,6 @@ public class DeliveryPlan extends DataEntity<DeliveryPlan> {
         this.cartonAmount = cartonAmount;
     }
 
-    @ExcelField(title = "纸隔板数",align = 2,sort = 8)
     public Double getPaperSeparatorAmount() {
         return paperSeparatorAmount;
     }
@@ -97,7 +88,6 @@ public class DeliveryPlan extends DataEntity<DeliveryPlan> {
         this.paperSeparatorAmount = paperSeparatorAmount;
     }
 
-    @ExcelField(title = "累计纸隔板数",align = 2,sort = 9)
     public Double getCumulativePaperSeparatorAmount() {
         return cumulativePaperSeparatorAmount;
     }
@@ -106,7 +96,6 @@ public class DeliveryPlan extends DataEntity<DeliveryPlan> {
         this.cumulativePaperSeparatorAmount = cumulativePaperSeparatorAmount;
     }
 
-    @ExcelField(title = "交货计划类型",align = 2,sort = 10)
     public String getDeliveryType() {
         return deliveryType;
     }

@@ -6,15 +6,6 @@
     <link rel="stylesheet" href="/backstage/layui/lib/layui-v2.5.5/css/layui.css" media="all">
     <link rel="stylesheet" href="/backstage/layui/lib/jq-module/zyupload/zyupload-1.0.0.min.css" media="all">
     <link rel="stylesheet" href="/backstage/layui/css/public.css" media="all">
-    <script>
-        function importExcel(url, fn) {
-            var importForm =$("#importForm")[0];
-            jp.loading('  正在导入，请稍等...');
-            jp.uploadFile(importForm, url,function (data) {
-                fn(data);
-            })
-        }
-    </script>
 </head>
 <body>
 <div class="layuimini-container">
@@ -28,5 +19,25 @@
         </form>
     </div>
 </div>
+<script src="/backstage/layui/lib/jquery-3.4.1/jquery-3.4.1.min.js" charset="utf-8"></script>
+<script src="/backstage/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script src="/backstage/layui/js/backstage/backstage.js" charset="utf-8"></script>
+<script>
+    function importExcel(url, fn) {
+        var importForm =$("#importForm")[0];
+        var data = new FormData(importForm);
+        $.ajax({
+            url:'/backstage/manager/deliveryPlan/import',
+            type:'post',
+            data:data,  // 直接丢对象
+            // ajax传文件 一定要指定两个关键性的参数
+            contentType:false,  // 不用任何编码 因为formdata对象自带编码 django能够识别该对象
+            processData:false,  // 告诉浏览器不要处理我的数据 直接发就行
+            success:function (data) {
+                alert(data)
+            }
+        })
+    }
+</script>
 </body>
 </html>

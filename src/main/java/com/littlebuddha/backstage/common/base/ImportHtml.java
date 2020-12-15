@@ -1,4 +1,4 @@
-package com.littlebuddha.backstage.common.controller;
+package com.littlebuddha.backstage.common.base;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

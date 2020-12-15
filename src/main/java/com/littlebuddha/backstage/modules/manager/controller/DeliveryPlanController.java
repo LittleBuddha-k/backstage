@@ -3,22 +3,13 @@ package com.littlebuddha.backstage.modules.manager.controller;
 import com.littlebuddha.backstage.common.utils.resultresponse.JsonResult;
 import com.littlebuddha.backstage.modules.manager.entity.DeliveryPlan;
 import com.littlebuddha.backstage.modules.manager.service.DeliveryPlanService;
-import net.sf.jxls.transformer.XLSTransformer;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author ck
@@ -55,5 +46,12 @@ public class DeliveryPlanController {
         model.addAttribute("deliveryPlan",deliveryPlan);
         model.addAttribute("mode",mode);
         return "manager/form/deliveryPlanForm";
+    }
+
+    @ResponseBody
+    @PostMapping("/import")
+    public void importFile(@RequestParam(name = "file")MultipartFile file){
+        boolean empty = file.isEmpty();
+        System.out.println("文件为空吗？++++++"+empty);
     }
 }

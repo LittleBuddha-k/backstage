@@ -135,12 +135,76 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!--JXLS对excel操作begin,模板导出？？？？？-->
+        <!-- https://mvnrepository.com/artifact/org.jxls/jxls -->
+        <dependency>
+            <groupId>org.jxls</groupId>
+            <artifactId>jxls</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jxls/jxls-poi -->
+        <dependency>
+            <groupId>org.jxls</groupId>
+            <artifactId>jxls-poi</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jxls/jxls-jexcel -->
+        <dependency>
+            <groupId>org.jxls</groupId>
+            <artifactId>jxls-jexcel</artifactId>
+            <version>1.0.9</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/net.sf.jxls/jxls-reader -->
+        <dependency>
+            <groupId>net.sf.jxls</groupId>
+            <artifactId>jxls-reader</artifactId>
+            <version>1.0.6</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/net.sf.jxls/jxls-core -->
         <dependency>
             <groupId>net.sf.jxls</groupId>
             <artifactId>jxls-core</artifactId>
             <version>1.0.6</version>
         </dependency>
+        <!--JXLS对excel操作end-->
+
+        <!--poi操作excel依赖begin-->
+        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>4.1.2</version>
+        </dependency>
+        <!--poi操作excel依赖end-->
+
+        <!-- 条形码、二维码生成  -->
+        <!-- https://mvnrepository.com/artifact/com.google.zxing/core -->
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
+            <version>3.4.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.zxing/javase -->
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>javase</artifactId>
+            <version>3.4.1</version>
+        </dependency>
+
+        <!-- Echarts图表依赖包开始 -->
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.6</version>
+        </dependency>
+        <!-- UTILS begin -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>20.0</version>
+        </dependency>
+
     </dependencies>
 
     <!--这个插件，可以将应用打包成一个可执行的jar包-->

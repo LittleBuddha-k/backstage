@@ -1,5 +1,6 @@
 package com.littlebuddha.backstage.modules.manager.controller;
 
+import com.littlebuddha.backstage.common.excel.ImportExcel;
 import com.littlebuddha.backstage.common.utils.resultresponse.JsonResult;
 import com.littlebuddha.backstage.modules.manager.entity.DeliveryPlan;
 import com.littlebuddha.backstage.modules.manager.service.DeliveryPlanService;
@@ -50,8 +51,15 @@ public class DeliveryPlanController {
 
     @ResponseBody
     @PostMapping("/import")
-    public void importFile(@RequestParam(name = "file")MultipartFile file){
-        boolean empty = file.isEmpty();
-        System.out.println("文件为空吗？++++++"+empty);
+    public JsonResult importFile(@RequestParam(name = "file")MultipartFile file){
+        JsonResult jsonResult = new JsonResult();
+        try {
+            ImportExcel importExcel = new ImportExcel(file,1,0);
+            List<DeliveryPlan> dataList = importExcel.getDataList(DeliveryPlan.class);
+        } catch (Exception e) {
+            jsonResult.setCode(200);
+            jsonResult.setMsg("导入失败。。。。。。");
+        }
+        return jsonResult;
     }
 }

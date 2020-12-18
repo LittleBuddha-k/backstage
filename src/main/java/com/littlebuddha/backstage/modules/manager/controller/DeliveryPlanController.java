@@ -1,5 +1,7 @@
 package com.littlebuddha.backstage.modules.manager.controller;
 
+import com.google.common.collect.Lists;
+import com.littlebuddha.backstage.common.excel.ExportExcel;
 import com.littlebuddha.backstage.common.excel.ImportExcel;
 import com.littlebuddha.backstage.common.utils.resultresponse.JsonResult;
 import com.littlebuddha.backstage.modules.manager.entity.DeliveryPlan;
@@ -10,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -56,9 +59,30 @@ public class DeliveryPlanController {
         try {
             ImportExcel importExcel = new ImportExcel(file,1,0);
             List<DeliveryPlan> dataList = importExcel.getDataList(DeliveryPlan.class);
+            for (DeliveryPlan deliveryPlan : dataList) {
+                System.out.println(deliveryPlan);
+            }
         } catch (Exception e) {
-            jsonResult.setCode(200);
+            jsonResult.setCode(400);
             jsonResult.setMsg("导入失败。。。。。。");
+        }
+        return jsonResult;
+    }
+
+    /**
+     * 下载导入终端信息数据模板
+     */
+    @ResponseBody
+    @RequestMapping(value = "import/template")
+    public JsonResult importFileTemplate(HttpServletResponse response) {
+        JsonResult jsonResult = new JsonResult();
+        try {
+            String fileName = "交货计划导入模板.xlsx";
+            List<DeliveryPlan> list = Lists.newArrayList();
+            new ExportExcel("交货计划数据", DeliveryPlan.class, 2).setDataList(list).write(response, fileName).dispose();
+            return null;
+        } catch (Exception e) {
+            jsonResult.setMsg( "导入模板下载失败！失败信息："+e.getMessage());
         }
         return jsonResult;
     }

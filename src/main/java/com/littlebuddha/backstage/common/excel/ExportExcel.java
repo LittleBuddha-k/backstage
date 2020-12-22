@@ -2,7 +2,6 @@ package com.littlebuddha.backstage.common.excel;
 
 import com.google.common.collect.Lists;
 import com.littlebuddha.backstage.common.anotations.ExcelField;
-import com.littlebuddha.backstage.common.utils.DictUtil;
 import com.littlebuddha.backstage.common.utils.Encodes;
 import com.littlebuddha.backstage.common.utils.Reflections;
 import org.apache.commons.lang3.StringUtils;
@@ -217,62 +216,62 @@ public class ExportExcel {
      * @return 样式列表
      */
     private Map<String, CellStyle> createStyles(Workbook wb) {
-        Map<String, CellStyle> styles = new HashMap<String, CellStyle>();
+        Map<String, CellStyle> styles = new HashMap<>();
 
-        //CellStyle style = wb.createCellStyle();
-        //style.setAlignment(CellStyle.ALIGN_CENTER);
-        //style.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
-        //Font titleFont = wb.createFont();
-        //titleFont.setFontName("Arial");
-        //titleFont.setFontHeightInPoints((short) 16);
-        //titleFont.setBoldweight(Font.BOLDWEIGHT_BOLD);
-        //style.setFont(titleFont);
-        //styles.put("title", style);
-//
-        //style = wb.createCellStyle();
-        //style.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
-        //style.setBorderRight(CellStyle.BORDER_THIN);
-        //style.setRightBorderColor(IndexedColors.GREY_50_PERCENT.getIndex());
-        //style.setBorderLeft(CellStyle.BORDER_THIN);
-        //style.setLeftBorderColor(IndexedColors.GREY_50_PERCENT.getIndex());
-        //style.setBorderTop(CellStyle.BORDER_THIN);
-        //style.setTopBorderColor(IndexedColors.GREY_50_PERCENT.getIndex());
-        //style.setBorderBottom(CellStyle.BORDER_THIN);
-        //style.setBottomBorderColor(IndexedColors.GREY_50_PERCENT.getIndex());
-        //Font dataFont = wb.createFont();
-        //dataFont.setFontName("Arial");
-        //dataFont.setFontHeightInPoints((short) 10);
-        //style.setFont(dataFont);
-        //styles.put("data", style);
-//
-        //style = wb.createCellStyle();
-        //style.cloneStyleFrom(styles.get("data"));
-        //style.setAlignment(CellStyle.ALIGN_LEFT);
-        //styles.put("data1", style);
-//
-        //style = wb.createCellStyle();
-        //style.cloneStyleFrom(styles.get("data"));
-        //style.setAlignment(CellStyle.ALIGN_CENTER);
-        //styles.put("data2", style);
-//
-        //style = wb.createCellStyle();
-        //style.cloneStyleFrom(styles.get("data"));
-        //style.setAlignment(CellStyle.ALIGN_RIGHT);
-        //styles.put("data3", style);
-//
-        //style = wb.createCellStyle();
-        //style.cloneStyleFrom(styles.get("data"));
-//		style.setWrapText(true);
-        //style.setAlignment(CellStyle.ALIGN_CENTER);
-        //style.setFillForegroundColor(IndexedColors.GREY_50_PERCENT.getIndex());
-        //style.setFillPattern(CellStyle.SOLID_FOREGROUND);
-        //Font headerFont = wb.createFont();
-        //headerFont.setFontName("Arial");
-        //headerFont.setFontHeightInPoints((short) 10);
-        //headerFont.setBoldweight(Font.BOLDWEIGHT_BOLD);
-        //headerFont.setColor(IndexedColors.WHITE.getIndex());
-        //style.setFont(headerFont);
-        //styles.put("header", style);
+        CellStyle style = wb.createCellStyle();
+        style.setAlignment(HorizontalAlignment.CENTER);
+        style.setVerticalAlignment(VerticalAlignment.CENTER);
+        Font titleFont = wb.createFont();
+        titleFont.setFontName("Arial");
+        titleFont.setFontHeightInPoints((short) 16);
+        titleFont.setBold(true);
+        style.setFont(titleFont);
+        styles.put("title", style);
+
+        style = wb.createCellStyle();
+        style.setVerticalAlignment(VerticalAlignment.CENTER);
+        style.setBorderRight(BorderStyle.THIN);
+        style.setRightBorderColor(IndexedColors.GREY_50_PERCENT.getIndex());
+        style.setBorderLeft(BorderStyle.THIN);
+        style.setLeftBorderColor(IndexedColors.GREY_50_PERCENT.getIndex());
+        style.setBorderTop(BorderStyle.THIN);
+        style.setTopBorderColor(IndexedColors.GREY_50_PERCENT.getIndex());
+        style.setBorderBottom(BorderStyle.THIN);
+        style.setBottomBorderColor(IndexedColors.GREY_50_PERCENT.getIndex());
+        Font dataFont = wb.createFont();
+        dataFont.setFontName("Arial");
+        dataFont.setFontHeightInPoints((short) 10);
+        style.setFont(dataFont);
+        styles.put("data", style);
+
+        style = wb.createCellStyle();
+        style.cloneStyleFrom(styles.get("data"));
+        style.setAlignment(HorizontalAlignment.LEFT);
+        styles.put("data1", style);
+
+        style = wb.createCellStyle();
+        style.cloneStyleFrom(styles.get("data"));
+        style.setAlignment(HorizontalAlignment.CENTER);
+        styles.put("data2", style);
+
+        style = wb.createCellStyle();
+        style.cloneStyleFrom(styles.get("data"));
+        style.setAlignment(HorizontalAlignment.RIGHT);
+        styles.put("data3", style);
+
+        style = wb.createCellStyle();
+        style.cloneStyleFrom(styles.get("data"));
+//    style.setWrapText(true);
+        style.setAlignment(HorizontalAlignment.CENTER);
+        style.setFillForegroundColor(IndexedColors.GREY_50_PERCENT.getIndex());
+        style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        Font headerFont = wb.createFont();
+        headerFont.setFontName("Arial");
+        headerFont.setFontHeightInPoints((short) 10);
+        headerFont.setBold(true);
+        headerFont.setColor(IndexedColors.WHITE.getIndex());
+        style.setFont(headerFont);
+        styles.put("header", style);
 
         return styles;
     }
@@ -365,9 +364,9 @@ public class ExportExcel {
                         }
                     }
                     // If is dict, get dict label
-                    if (StringUtils.isNotBlank(ef.dictType())){
+                    /*if (StringUtils.isNotBlank(ef.dictType())){
                         val = DictUtil.getDictLabel(val==null?"":val.toString(), ef.dictType(), "");
-                    }
+                    }*/
                 }catch(Exception ex) {
                     // Failure to ignore
                     log.info(ex.toString());

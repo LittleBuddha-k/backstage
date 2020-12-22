@@ -1,14 +1,10 @@
 package com.littlebuddha.backstage.common.utils;
 
-import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.lang3.StringEscapeUtils;
-import reactor.core.Exceptions;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 
 /**
  * @author ck
@@ -32,11 +28,12 @@ public class Encodes {
      * Hex解码.
      */
     public static byte[] decodeHex(String input) {
-        try {
+        /*try {
             return Hex.decodeHex(input.toCharArray());
         } catch (DecoderException e) {
             throw Exceptions.unchecked(e);
-        }
+        }*/
+        return new byte[0];
     }
 
     /**
@@ -125,11 +122,12 @@ public class Encodes {
      * URL 编码, Encode默认为UTF-8.
      */
     public static String urlEncode(String part) {
-        try {
+        /*try {
             return URLEncoder.encode(part, DEFAULT_URL_ENCODING);
         } catch (UnsupportedEncodingException e) {
             throw Exceptions.unchecked(e);
-        }
+        }*/
+        return part;
     }
 
     /**
@@ -137,10 +135,11 @@ public class Encodes {
      */
     public static String urlDecode(String part) {
 
-        try {
+        /*try {
             return URLDecoder.decode(part, DEFAULT_URL_ENCODING);
         } catch (UnsupportedEncodingException e) {
             throw Exceptions.unchecked(e);
-        }
+        }*/
+        return part;
     }
 }

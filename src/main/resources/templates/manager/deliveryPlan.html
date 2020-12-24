@@ -173,21 +173,16 @@
                     , area: ['80%', '60%']//定义宽高
                     , shade: 0.8//遮幕
                     , id: 'LAY_layuipro' //设定一个id，防止重复弹出
-                    , btn: ['下载模板','确定', '取消']
+                    , btn: ['确定', '取消']
                     , btnAlign: 'c'//按钮排列：居中对齐
                     , moveType: 1 //拖拽模式，0或者1
                     , content: '/backstage/manager/deliveryPlan/form/add'//跳转到想要的界面，这里是我自己项目的跳转界面
                     ,
                     btn1:function () {
-                        alert('下载模板')
-                        //获取当前小窗口页面的save方法
-                    }
-                    ,
-                    btn2:function () {
                         alert("确定")
                     }
                     ,
-                    btn3:function () {
+                    btn2:function () {
                         alert("取消")
                     }
 
@@ -196,10 +191,8 @@
                 var checkStatus = table.checkStatus('deliveryPlanTableList')
                     , data = checkStatus.data;
                 layer.alert(JSON.stringify(data));
-            } else if (obj.event === 'export') {  // 监听导出操作
-                var checkStatus = table.checkStatus('deliveryPlanTableList')
-                    , data = checkStatus.data;
-                layer.alert(JSON.stringify(data));
+            } else if (obj.event === 'exportFile') {  // 监听导出操作
+                alert("老子要导出")
             } else if (obj.event === 'importFile') {  // 监听导入操作
                 //弹出一个小框框，选择文件
                 layer.open({

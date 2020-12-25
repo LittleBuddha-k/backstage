@@ -192,7 +192,7 @@
                     , data = checkStatus.data;
                 layer.alert(JSON.stringify(data));
             } else if (obj.event === 'exportFile') {  // 监听导出操作
-                alert("老子要导出")
+                downloadFile('/backstage/manager/deliveryPlan/export')
             } else if (obj.event === 'importFile') {  // 监听导入操作
                 //弹出一个小框框，选择文件
                 layer.open({

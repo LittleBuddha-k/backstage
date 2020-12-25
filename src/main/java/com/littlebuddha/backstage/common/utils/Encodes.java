@@ -5,6 +5,7 @@ import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.lang3.StringEscapeUtils;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 /**
  * @author ck
@@ -122,11 +123,11 @@ public class Encodes {
      * URL 编码, Encode默认为UTF-8.
      */
     public static String urlEncode(String part) {
-        /*try {
+        try {
             return URLEncoder.encode(part, DEFAULT_URL_ENCODING);
         } catch (UnsupportedEncodingException e) {
-            throw Exceptions.unchecked(e);
-        }*/
+            e.printStackTrace();
+        }
         return part;
     }
 

@@ -53,6 +53,22 @@ public class DeliveryPlanController {
     }
 
     @ResponseBody
+    @RequestMapping("export")
+    public JsonResult exportFile(DeliveryPlan deliveryPlan,HttpServletResponse response){
+        JsonResult jsonResult = new JsonResult();
+        try {
+            String fileName = "交货计划信息"+".xlsx";
+            List<DeliveryPlan> list = deliveryPlanService.findList(deliveryPlan);
+            new ExportExcel("交货计划信息", DeliveryPlan.class).setDataList(list).write(response, fileName).dispose();
+            jsonResult.setMsg("导出成功！");
+            return jsonResult;
+        } catch (Exception e) {
+            jsonResult.setMsg("导出交货计划信息记录失败！失败信息："+e.getMessage());
+        }
+        return jsonResult;
+    }
+
+    @ResponseBody
     @PostMapping("/import")
     public JsonResult importFile(@RequestParam(name = "file")MultipartFile file){
         JsonResult jsonResult = new JsonResult();
@@ -79,7 +95,7 @@ public class DeliveryPlanController {
         try {
             String fileName = "交货计划导入模板.xlsx";
             List<DeliveryPlan> list = Lists.newArrayList();
-            new ExportExcel("交货计划数据", DeliveryPlan.class, 2).setDataList(list).write(response, fileName).dispose();
+            new ExportExcel("交货计划数据", DeliveryPlan.class, 1).setDataList(list).write(response, fileName).dispose();
             return null;
         } catch (Exception e) {
             jsonResult.setMsg( "导入模板下载失败！失败信息："+e.getMessage());

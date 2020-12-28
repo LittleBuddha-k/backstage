@@ -1,7 +1,7 @@
 package com.littlebuddha.backstage.modules.manager.service;
 
 import com.littlebuddha.backstage.common.base.CrudService;
-import com.littlebuddha.backstage.modules.manager.entity.MaterialReturnFromManufacturer;
+import com.littlebuddha.backstage.modules.manager.entity.MaterielReturnFromManufacturer;
 import com.littlebuddha.backstage.modules.manager.mapper.MaterielReturnFromManufacturerMapper;
 import org.springframework.stereotype.Service;
 
@@ -13,30 +13,30 @@ import java.util.List;
  * @date 2020/12/2 10:52
  */
 @Service
-public class MaterielReturnFromManufacturerService extends CrudService<MaterialReturnFromManufacturer, MaterielReturnFromManufacturerMapper> {
+public class MaterielReturnFromManufacturerService extends CrudService<MaterielReturnFromManufacturer, MaterielReturnFromManufacturerMapper> {
 
     @Override
-    public int save(MaterialReturnFromManufacturer materialReturnFromManufacturer) {
-        return super.save(materialReturnFromManufacturer);
+    public int save(MaterielReturnFromManufacturer materielReturnFromManufacturer) {
+        return super.save(materielReturnFromManufacturer);
     }
 
     @Override
-    public int deleteAllByPhysics(Collection<MaterialReturnFromManufacturer> materialReturnFromManufacturer) {
-        return super.deleteAllByPhysics(materialReturnFromManufacturer);
+    public int deleteAllByPhysics(Collection<MaterielReturnFromManufacturer> materielReturnFromManufacturer) {
+        return super.deleteAllByPhysics(materielReturnFromManufacturer);
     }
 
     @Override
-    public MaterialReturnFromManufacturer get(MaterialReturnFromManufacturer materialReturnFromManufacturer) {
-        return super.get(materialReturnFromManufacturer);
+    public MaterielReturnFromManufacturer get(MaterielReturnFromManufacturer materielReturnFromManufacturer) {
+        return super.get(materielReturnFromManufacturer);
     }
 
     @Override
-    public List<MaterialReturnFromManufacturer> findList(MaterialReturnFromManufacturer materialReturnFromManufacturer) {
-        return super.findList(materialReturnFromManufacturer);
+    public List<MaterielReturnFromManufacturer> findList(MaterielReturnFromManufacturer materielReturnFromManufacturer) {
+        return super.findList(materielReturnFromManufacturer);
     }
 
     @Override
-    public List<MaterialReturnFromManufacturer> findAllList(MaterialReturnFromManufacturer materialReturnFromManufacturer) {
-        return super.findAllList(materialReturnFromManufacturer);
+    public List<MaterielReturnFromManufacturer> findAllList(MaterielReturnFromManufacturer materielReturnFromManufacturer) {
+        return super.findAllList(materielReturnFromManufacturer);
     }
 }

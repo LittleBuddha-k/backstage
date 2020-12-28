@@ -1,5 +1,6 @@
 package com.littlebuddha.backstage.modules.manager.entity;
 
+import com.littlebuddha.backstage.common.anotations.ExcelField;
 import com.littlebuddha.backstage.common.base.DataEntity;
 
 import java.util.Date;
@@ -21,6 +22,7 @@ public class FinishedDeliveryDetails extends DataEntity<FinishedDeliveryDetails>
     private String shipmentAddress;                     //出货地址
     private String receiver;                           //接货人
 
+    @ExcelField(title = "出库日期",align = 2,sort = 1)
     public Date getDeliveryDate() {
         return deliveryDate;
     }
@@ -29,6 +31,7 @@ public class FinishedDeliveryDetails extends DataEntity<FinishedDeliveryDetails>
         this.deliveryDate = deliveryDate;
     }
 
+    @ExcelField(title = "规格型号",align = 2,sort = 2)
     public String getSpecification() {
         return specification;
     }
@@ -37,6 +40,7 @@ public class FinishedDeliveryDetails extends DataEntity<FinishedDeliveryDetails>
         this.specification = specification;
     }
 
+    @ExcelField(title = "蓝岸成品编码",align = 2,sort = 3)
     public String getBlueIslandFinishedProductCode() {
         return blueIslandFinishedProductCode;
     }
@@ -45,6 +49,7 @@ public class FinishedDeliveryDetails extends DataEntity<FinishedDeliveryDetails>
         this.blueIslandFinishedProductCode = blueIslandFinishedProductCode;
     }
 
+    @ExcelField(title = "产品名",align = 2,sort = 4)
     public String getProductName() {
         return productName;
     }
@@ -53,6 +58,7 @@ public class FinishedDeliveryDetails extends DataEntity<FinishedDeliveryDetails>
         this.productName = productName;
     }
 
+    @ExcelField(title = "捷荣订单号",align = 2,sort = 5)
     public String getOrderNumberForJierong() {
         return orderNumberForJierong;
     }
@@ -61,6 +67,7 @@ public class FinishedDeliveryDetails extends DataEntity<FinishedDeliveryDetails>
         this.orderNumberForJierong = orderNumberForJierong;
     }
 
+    @ExcelField(title = "捷荣加工订单号",align = 2,sort = 6)
     public String getJierongDeliveryOrderNumber() {
         return jierongDeliveryOrderNumber;
     }
@@ -69,6 +76,7 @@ public class FinishedDeliveryDetails extends DataEntity<FinishedDeliveryDetails>
         this.jierongDeliveryOrderNumber = jierongDeliveryOrderNumber;
     }
 
+    @ExcelField(title = "出货数量",align = 2,sort = 7)
     public Double getShipmentAmount() {
         return shipmentAmount;
     }
@@ -77,6 +85,7 @@ public class FinishedDeliveryDetails extends DataEntity<FinishedDeliveryDetails>
         this.shipmentAmount = shipmentAmount;
     }
 
+    @ExcelField(title = "出货地址",align = 2,sort = 8)
     public String getShipmentAddress() {
         return shipmentAddress;
     }
@@ -85,6 +94,7 @@ public class FinishedDeliveryDetails extends DataEntity<FinishedDeliveryDetails>
         this.shipmentAddress = shipmentAddress;
     }
 
+    @ExcelField(title = "接货人",align = 2,sort = 9)
     public String getReceiver() {
         return receiver;
     }

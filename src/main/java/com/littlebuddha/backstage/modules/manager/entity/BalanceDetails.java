@@ -1,5 +1,6 @@
 package com.littlebuddha.backstage.modules.manager.entity;
 
+import com.littlebuddha.backstage.common.anotations.ExcelField;
 import com.littlebuddha.backstage.common.base.DataEntity;
 
 /**
@@ -37,6 +38,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
     private Double blueIsland;                                     //蓝岸
     private Double difference;                                     //差异
 
+    @ExcelField(title = "序号",align = 2,sort = 1)
     public Integer getSerialNumber() {
         return serialNumber;
     }
@@ -45,6 +47,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.serialNumber = serialNumber;
     }
 
+    @ExcelField(title = "检测",align = 2,sort = 2)
     public Integer getTesting() {
         return testing;
     }
@@ -53,6 +56,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.testing = testing;
     }
 
+    @ExcelField(title = "TEXY",align = 2,sort = 3)
     public String getTexy() {
         return texy;
     }
@@ -61,6 +65,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.texy = texy;
     }
 
+    @ExcelField(title = "蓝岸料号",align = 2,sort = 4)
     public String getBlueIslandMaterielNumber() {
         return blueIslandMaterielNumber;
     }
@@ -69,6 +74,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.blueIslandMaterielNumber = blueIslandMaterielNumber;
     }
 
+    @ExcelField(title = "中文名称",align = 2,sort = 5)
     public String getChineseName() {
         return chineseName;
     }
@@ -77,6 +83,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.chineseName = chineseName;
     }
 
+    @ExcelField(title = "供应商",align = 2,sort = 6)
     public String getSupplier() {
         return supplier;
     }
@@ -85,6 +92,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.supplier = supplier;
     }
 
+    @ExcelField(title = "M4主机",align = 2,sort = 7)
     public Double getmFourHost() {
         return mFourHost;
     }
@@ -93,6 +101,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.mFourHost = mFourHost;
     }
 
+    @ExcelField(title = "M4GO主机",align = 2,sort = 8)
     public Double getmFourGoHost() {
         return mFourGoHost;
     }
@@ -101,6 +110,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.mFourGoHost = mFourGoHost;
     }
 
+    @ExcelField(title = "M4前壳组件",align = 2,sort = 9)
     public Double getmFourFrontHousingAssembly() {
         return mFourFrontHousingAssembly;
     }
@@ -109,6 +119,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.mFourFrontHousingAssembly = mFourFrontHousingAssembly;
     }
 
+    @ExcelField(title = "M4后壳组件",align = 2,sort = 10)
     public Double getmFourRearHousingAssembly() {
         return mFourRearHousingAssembly;
     }
@@ -117,6 +128,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.mFourRearHousingAssembly = mFourRearHousingAssembly;
     }
 
+    @ExcelField(title = "M4包装",align = 2,sort = 11)
     public Double getmFourPackage() {
         return mFourPackage;
     }
@@ -125,6 +137,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.mFourPackage = mFourPackage;
     }
 
+    @ExcelField(title = "M4Orange",align = 2,sort = 12)
     public Double getmFourOrange() {
         return mFourOrange;
     }
@@ -133,6 +146,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.mFourOrange = mFourOrange;
     }
 
+    @ExcelField(title = "M4-SFR",align = 2,sort = 13)
     public Double getmFourSFR() {
         return mFourSFR;
     }
@@ -141,6 +155,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.mFourSFR = mFourSFR;
     }
 
+    @ExcelField(title = "M4-BYT",align = 2,sort = 14)
     public Double getmFourBYT() {
         return mFourBYT;
     }
@@ -149,6 +164,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.mFourBYT = mFourBYT;
     }
 
+    @ExcelField(title = "M4go包装",align = 2,sort = 15)
     public Double getmFourGoPackage() {
         return mFourGoPackage;
     }
@@ -157,6 +173,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.mFourGoPackage = mFourGoPackage;
     }
 
+    @ExcelField(title = "前壳组件",align = 2,sort = 16)
     public Double getmFourFrontHousingAssemblySecond() {
         return mFourFrontHousingAssemblySecond;
     }
@@ -165,6 +182,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.mFourFrontHousingAssemblySecond = mFourFrontHousingAssemblySecond;
     }
 
+    @ExcelField(title = "主板包装",align = 2,sort = 17)
     public Double getmFourMainBoardPackage() {
         return mFourMainBoardPackage;
     }
@@ -173,6 +191,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.mFourMainBoardPackage = mFourMainBoardPackage;
     }
 
+    @ExcelField(title = "m4GO主板包装",align = 2,sort = 18)
     public Double getmFourGoMainBoardPackage() {
         return mFourGoMainBoardPackage;
     }
@@ -181,6 +200,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.mFourGoMainBoardPackage = mFourGoMainBoardPackage;
     }
 
+    @ExcelField(title = "小板包装",align = 2,sort = 19)
     public Double getSmallBoardPackaging() {
         return smallBoardPackaging;
     }
@@ -189,6 +209,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.smallBoardPackaging = smallBoardPackaging;
     }
 
+    @ExcelField(title = "电池包装",align = 2,sort = 20)
     public Double getBatteryPackaging() {
         return batteryPackaging;
     }
@@ -197,6 +218,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.batteryPackaging = batteryPackaging;
     }
 
+    @ExcelField(title = "已投产",align = 2,sort = 21)
     public Double getIntoOperation() {
         return intoOperation;
     }
@@ -205,6 +227,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.intoOperation = intoOperation;
     }
 
+    @ExcelField(title = "未投产",align = 2,sort = 22)
     public Double getNotIntoOperation() {
         return notIntoOperation;
     }
@@ -213,6 +236,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.notIntoOperation = notIntoOperation;
     }
 
+    @ExcelField(title = "欠料",align = 2,sort = 23)
     public Double getLackOfMaterial() {
         return lackOfMaterial;
     }
@@ -221,6 +245,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.lackOfMaterial = lackOfMaterial;
     }
 
+    @ExcelField(title = "欠料（Group）",align = 2,sort = 24)
     public Double getLackOfMaterialGroup() {
         return lackOfMaterialGroup;
     }
@@ -229,6 +254,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.lackOfMaterialGroup = lackOfMaterialGroup;
     }
 
+    @ExcelField(title = "新泽森",align = 2,sort = 25)
     public Double getNewJersey() {
         return newJersey;
     }
@@ -237,6 +263,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.newJersey = newJersey;
     }
 
+    @ExcelField(title = "蓝岸",align = 2,sort = 26)
     public Double getBlueIsland() {
         return blueIsland;
     }
@@ -245,6 +272,7 @@ public class BalanceDetails extends DataEntity<BalanceDetails> {
         this.blueIsland = blueIsland;
     }
 
+    @ExcelField(title = "差异",align = 2,sort = 27)
     public Double getDifference() {
         return difference;
     }

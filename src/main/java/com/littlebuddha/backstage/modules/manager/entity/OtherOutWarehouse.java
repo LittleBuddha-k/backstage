@@ -1,5 +1,6 @@
 package com.littlebuddha.backstage.modules.manager.entity;
 
+import com.littlebuddha.backstage.common.anotations.ExcelField;
 import com.littlebuddha.backstage.common.base.DataEntity;
 
 import java.util.Date;
@@ -20,6 +21,7 @@ public class OtherOutWarehouse extends DataEntity<OtherOutWarehouse> {
     private Integer outWarehouseAmount;              //出库数量
     private String deliveryOrderNumber;              //送货单号
 
+    @ExcelField(title = "序号",align = 2,sort = 1)
     public Integer getSerialNumber() {
         return serialNumber;
     }
@@ -28,6 +30,7 @@ public class OtherOutWarehouse extends DataEntity<OtherOutWarehouse> {
         this.serialNumber = serialNumber;
     }
 
+    @ExcelField(title = "出库日期",align = 2,sort = 2)
     public Date getOutWarehouseDate() {
         return outWarehouseDate;
     }
@@ -36,6 +39,7 @@ public class OtherOutWarehouse extends DataEntity<OtherOutWarehouse> {
         this.outWarehouseDate = outWarehouseDate;
     }
 
+    @ExcelField(title = "蓝岸料号",align = 2,sort = 3)
     public String getBlueIslandMaterielNumber() {
         return blueIslandMaterielNumber;
     }
@@ -44,6 +48,7 @@ public class OtherOutWarehouse extends DataEntity<OtherOutWarehouse> {
         this.blueIslandMaterielNumber = blueIslandMaterielNumber;
     }
 
+    @ExcelField(title = "供应商料号编码",align = 2,sort = 4)
     public String getSupplierMaterielNumber() {
         return supplierMaterielNumber;
     }
@@ -52,6 +57,7 @@ public class OtherOutWarehouse extends DataEntity<OtherOutWarehouse> {
         this.supplierMaterielNumber = supplierMaterielNumber;
     }
 
+    @ExcelField(title = "物料名称",align = 2,sort = 5)
     public String getMaterielName() {
         return materielName;
     }
@@ -60,6 +66,7 @@ public class OtherOutWarehouse extends DataEntity<OtherOutWarehouse> {
         this.materielName = materielName;
     }
 
+    @ExcelField(title = "描述",align = 2,sort = 6)
     public String getDescription() {
         return description;
     }
@@ -68,6 +75,7 @@ public class OtherOutWarehouse extends DataEntity<OtherOutWarehouse> {
         this.description = description;
     }
 
+    @ExcelField(title = "出库数量",align = 2,sort = 7)
     public Integer getOutWarehouseAmount() {
         return outWarehouseAmount;
     }
@@ -76,6 +84,7 @@ public class OtherOutWarehouse extends DataEntity<OtherOutWarehouse> {
         this.outWarehouseAmount = outWarehouseAmount;
     }
 
+    @ExcelField(title = "送货单号",align = 2,sort = 8)
     public String getDeliveryOrderNumber() {
         return deliveryOrderNumber;
     }

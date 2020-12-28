@@ -1,5 +1,6 @@
 package com.littlebuddha.backstage.modules.manager.entity;
 
+import com.littlebuddha.backstage.common.anotations.ExcelField;
 import com.littlebuddha.backstage.common.base.DataEntity;
 
 import java.util.Date;
@@ -23,6 +24,7 @@ public class MaterielFromSupplier extends DataEntity<MaterielFromSupplier> {
     private String deliveryManufacturerCheck;        //交货厂商核对
     private String blueIslandOrderNumber;            //蓝岸订单号
 
+    @ExcelField(title = "序号",align = 2,sort = 1)
     public Integer getSerialNumber() {
         return serialNumber;
     }
@@ -31,6 +33,7 @@ public class MaterielFromSupplier extends DataEntity<MaterielFromSupplier> {
         this.serialNumber = serialNumber;
     }
 
+    @ExcelField(title = "日期",align = 2,sort = 2)
     public Date getInComingDate() {
         return inComingDate;
     }
@@ -39,6 +42,7 @@ public class MaterielFromSupplier extends DataEntity<MaterielFromSupplier> {
         this.inComingDate = inComingDate;
     }
 
+    @ExcelField(title = "蓝岸料号",align = 2,sort = 3)
     public String getBlueIslandMaterielNumber() {
         return blueIslandMaterielNumber;
     }
@@ -47,6 +51,7 @@ public class MaterielFromSupplier extends DataEntity<MaterielFromSupplier> {
         this.blueIslandMaterielNumber = blueIslandMaterielNumber;
     }
 
+    @ExcelField(title = "供应商料号编码",align = 2,sort = 4)
     public String getSupplierMaterielNumber() {
         return supplierMaterielNumber;
     }
@@ -55,6 +60,7 @@ public class MaterielFromSupplier extends DataEntity<MaterielFromSupplier> {
         this.supplierMaterielNumber = supplierMaterielNumber;
     }
 
+    @ExcelField(title = "物料名称",align = 2,sort = 5)
     public String getMaterielName() {
         return materielName;
     }
@@ -63,6 +69,7 @@ public class MaterielFromSupplier extends DataEntity<MaterielFromSupplier> {
         this.materielName = materielName;
     }
 
+    @ExcelField(title = "描述",align = 2,sort = 6)
     public String getDescription() {
         return description;
     }
@@ -71,6 +78,7 @@ public class MaterielFromSupplier extends DataEntity<MaterielFromSupplier> {
         this.description = description;
     }
 
+    @ExcelField(title = "良品数",align = 2,sort = 7)
     public Double getGoodProducts() {
         return goodProducts;
     }
@@ -79,6 +87,7 @@ public class MaterielFromSupplier extends DataEntity<MaterielFromSupplier> {
         this.goodProducts = goodProducts;
     }
 
+    @ExcelField(title = "不良品数",align = 2,sort = 8)
     public Double getBadProducts() {
         return badProducts;
     }
@@ -87,6 +96,7 @@ public class MaterielFromSupplier extends DataEntity<MaterielFromSupplier> {
         this.badProducts = badProducts;
     }
 
+    @ExcelField(title = "送货单号",align = 2,sort = 9)
     public String getDeliveryOrderNumber() {
         return deliveryOrderNumber;
     }
@@ -95,6 +105,7 @@ public class MaterielFromSupplier extends DataEntity<MaterielFromSupplier> {
         this.deliveryOrderNumber = deliveryOrderNumber;
     }
 
+    @ExcelField(title = "交货厂商核对",align = 2,sort = 10)
     public String getDeliveryManufacturerCheck() {
         return deliveryManufacturerCheck;
     }
@@ -103,6 +114,7 @@ public class MaterielFromSupplier extends DataEntity<MaterielFromSupplier> {
         this.deliveryManufacturerCheck = deliveryManufacturerCheck;
     }
 
+    @ExcelField(title = "蓝岸订单号",align = 2,sort = 11)
     public String getBlueIslandOrderNumber() {
         return blueIslandOrderNumber;
     }

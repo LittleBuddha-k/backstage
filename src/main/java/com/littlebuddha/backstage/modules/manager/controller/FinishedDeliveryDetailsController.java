@@ -60,12 +60,12 @@ public class FinishedDeliveryDetailsController {
             String fileName = "成品出库明细"+".xlsx";
             List<FinishedDeliveryDetails> list = finishedDeliveryDetailsService.findList(finishedDeliveryDetails);
             new ExportExcel("成品出库明细", FinishedDeliveryDetails.class).setDataList(list).write(response, fileName).dispose();
-            jsonResult.setMsg("导出成功！");
-            return jsonResult;
         } catch (Exception e) {
-            jsonResult.setMsg("导出成品出库明细失败！失败信息："+e.getMessage());
+            jsonResult.setSuccess(false);
+            jsonResult.setMsg("导出订单信息记录失败！失败信息："+e.getMessage());
+            return jsonResult;
         }
-        return jsonResult;
+        return null;
     }
 
     @ResponseBody

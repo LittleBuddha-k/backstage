@@ -60,12 +60,12 @@ public class MaterielReturnFromManufacturerController {
             String fileName = "厂商退料"+".xlsx";
             List<MaterielReturnFromManufacturer> list = materielReturnFromManufacturerService.findList(materielReturnFromManufacturer);
             new ExportExcel("厂商退料", MaterielReturnFromManufacturer.class).setDataList(list).write(response, fileName).dispose();
-            jsonResult.setMsg("导出成功！");
-            return jsonResult;
         } catch (Exception e) {
-            jsonResult.setMsg("导出厂商退料记录失败！失败信息："+e.getMessage());
+            jsonResult.setSuccess(false);
+            jsonResult.setMsg("导出订单信息记录失败！失败信息："+e.getMessage());
+            return jsonResult;
         }
-        return jsonResult;
+        return null;
     }
 
     @ResponseBody

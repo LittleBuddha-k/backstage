@@ -7,10 +7,28 @@ package com.littlebuddha.backstage.common.utils.resultresponse;
  */
 public class JsonResult<D> {
 
+    private boolean success = true;// 是否成功
+    private String errorCode = "-1";//错误代码
     private Integer code;
     private String msg;
     private Integer count;
     private D data;
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    public String getErrorCode() {
+        return errorCode;
+    }
+
+    public void setErrorCode(String errorCode) {
+        this.errorCode = errorCode;
+    }
 
     public Integer getCode() {
         return code;

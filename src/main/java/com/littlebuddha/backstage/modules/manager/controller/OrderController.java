@@ -61,12 +61,12 @@ public class OrderController {
             String fileName = "订单信息"+".xlsx";
             List<Order> list = orderService.findList(order);
             new ExportExcel("订单信息", Order.class).setDataList(list).write(response, fileName).dispose();
-            jsonResult.setMsg("导出成功！");
-            return jsonResult;
         } catch (Exception e) {
+            jsonResult.setSuccess(false);
             jsonResult.setMsg("导出订单信息记录失败！失败信息："+e.getMessage());
+            return jsonResult;
         }
-        return jsonResult;
+        return null;
     }
 
     @ResponseBody

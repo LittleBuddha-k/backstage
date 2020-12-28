@@ -60,12 +60,12 @@ public class SummaryConsiderBomController {
             String fileName = "只依bom明细的统计"+".xlsx";
             List<SummaryConsiderBomDetails> list = summaryConsiderBomDetailsService.findList(summaryConsiderBomDetails);
             new ExportExcel("只依bom明细的统计", SummaryConsiderBomDetails.class).setDataList(list).write(response, fileName).dispose();
-            jsonResult.setMsg("导出成功！");
-            return jsonResult;
         } catch (Exception e) {
-            jsonResult.setMsg("导出只依bom明细的统计失败！失败信息："+e.getMessage());
+            jsonResult.setSuccess(false);
+            jsonResult.setMsg("导出订单信息记录失败！失败信息："+e.getMessage());
+            return jsonResult;
         }
-        return jsonResult;
+        return null;
     }
 
     @ResponseBody

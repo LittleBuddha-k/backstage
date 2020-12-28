@@ -60,12 +60,12 @@ public class BalanceDetailsController {
             String fileName = "赛达信组装盘点汇总表"+".xlsx";
             List<BalanceDetails> list = balanceDetailsService.findList(balanceDetails);
             new ExportExcel("赛达信组装盘点汇总表", BalanceDetails.class).setDataList(list).write(response, fileName).dispose();
-            jsonResult.setMsg("导出成功！");
-            return jsonResult;
         } catch (Exception e) {
-            jsonResult.setMsg("导出赛达信组装盘点汇总表失败！失败信息："+e.getMessage());
+            jsonResult.setSuccess(false);
+            jsonResult.setMsg("导出订单信息记录失败！失败信息："+e.getMessage());
+            return jsonResult;
         }
-        return jsonResult;
+        return null;
     }
 
     @ResponseBody

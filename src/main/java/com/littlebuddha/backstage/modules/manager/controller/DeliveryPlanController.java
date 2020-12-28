@@ -60,12 +60,12 @@ public class DeliveryPlanController {
             String fileName = "交货计划信息"+".xlsx";
             List<DeliveryPlan> list = deliveryPlanService.findList(deliveryPlan);
             new ExportExcel("交货计划信息", DeliveryPlan.class).setDataList(list).write(response, fileName).dispose();
-            jsonResult.setMsg("导出成功！");
-            return jsonResult;
         } catch (Exception e) {
-            jsonResult.setMsg("导出交货计划信息记录失败！失败信息："+e.getMessage());
+            jsonResult.setSuccess(false);
+            jsonResult.setMsg("导出订单信息记录失败！失败信息："+e.getMessage());
+            return jsonResult;
         }
-        return jsonResult;
+        return null;
     }
 
     @ResponseBody

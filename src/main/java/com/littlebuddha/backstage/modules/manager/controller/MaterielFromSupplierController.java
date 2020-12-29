@@ -76,7 +76,7 @@ public class MaterielFromSupplierController {
             ImportExcel importExcel = new ImportExcel(file,1,0);
             List<MaterielFromSupplier> dataList = importExcel.getDataList(MaterielFromSupplier.class);
             for (MaterielFromSupplier materielFromSupplier : dataList) {
-                System.out.println(materielFromSupplier);
+                materielFromSupplierService.save(materielFromSupplier);
             }
         } catch (Exception e) {
             jsonResult.setCode(400);

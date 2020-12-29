@@ -76,7 +76,7 @@ public class BalanceDetailsController {
             ImportExcel importExcel = new ImportExcel(file,1,0);
             List<BalanceDetails> dataList = importExcel.getDataList(BalanceDetails.class);
             for (BalanceDetails balanceDetails : dataList) {
-                System.out.println(balanceDetails);
+                balanceDetailsService.save(balanceDetails);
             }
         } catch (Exception e) {
             jsonResult.setCode(400);

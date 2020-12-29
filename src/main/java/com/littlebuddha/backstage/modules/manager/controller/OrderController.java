@@ -77,7 +77,7 @@ public class OrderController {
             ImportExcel importExcel = new ImportExcel(file,1,0);
             List<Order> dataList = importExcel.getDataList(Order.class);
             for (Order order : dataList) {
-                System.out.println(order);
+                orderService.save(order);
             }
         } catch (Exception e) {
             jsonResult.setCode(400);

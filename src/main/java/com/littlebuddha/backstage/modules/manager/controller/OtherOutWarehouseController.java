@@ -76,7 +76,7 @@ public class OtherOutWarehouseController {
             ImportExcel importExcel = new ImportExcel(file,1,0);
             List<OtherOutWarehouse> dataList = importExcel.getDataList(OtherOutWarehouse.class);
             for (OtherOutWarehouse otherOutWarehouse : dataList) {
-                System.out.println(otherOutWarehouse);
+                otherOutWarehouseService.save(otherOutWarehouse);
             }
         } catch (Exception e) {
             jsonResult.setCode(400);

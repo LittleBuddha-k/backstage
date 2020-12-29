@@ -76,7 +76,7 @@ public class MaterielReturnFromManufacturerController {
             ImportExcel importExcel = new ImportExcel(file,1,0);
             List<MaterielReturnFromManufacturer> dataList = importExcel.getDataList(MaterielReturnFromManufacturer.class);
             for (MaterielReturnFromManufacturer materielReturnFromManufacturer : dataList) {
-                System.out.println(materielReturnFromManufacturer);
+                materielReturnFromManufacturerService.save(materielReturnFromManufacturer);
             }
         } catch (Exception e) {
             jsonResult.setCode(400);

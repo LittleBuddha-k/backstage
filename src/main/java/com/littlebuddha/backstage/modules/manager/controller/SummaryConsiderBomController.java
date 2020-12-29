@@ -76,7 +76,7 @@ public class SummaryConsiderBomController {
             ImportExcel importExcel = new ImportExcel(file,1,0);
             List<SummaryConsiderBomDetails> dataList = importExcel.getDataList(SummaryConsiderBomDetails.class);
             for (SummaryConsiderBomDetails summaryConsiderBomDetails : dataList) {
-                System.out.println(summaryConsiderBomDetails);
+                summaryConsiderBomDetailsService.save(summaryConsiderBomDetails);
             }
         } catch (Exception e) {
             jsonResult.setCode(400);

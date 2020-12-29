@@ -76,7 +76,7 @@ public class FinishedDeliveryDetailsController {
             ImportExcel importExcel = new ImportExcel(file,1,0);
             List<FinishedDeliveryDetails> dataList = importExcel.getDataList(FinishedDeliveryDetails.class);
             for (FinishedDeliveryDetails finishedDeliveryDetails : dataList) {
-                System.out.println(finishedDeliveryDetails);
+                finishedDeliveryDetailsService.save(finishedDeliveryDetails);
             }
         } catch (Exception e) {
             jsonResult.setCode(400);

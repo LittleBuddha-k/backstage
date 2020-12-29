@@ -76,7 +76,7 @@ public class DeliveryPlanController {
             ImportExcel importExcel = new ImportExcel(file,1,0);
             List<DeliveryPlan> dataList = importExcel.getDataList(DeliveryPlan.class);
             for (DeliveryPlan deliveryPlan : dataList) {
-                System.out.println(deliveryPlan);
+                deliveryPlanService.save(deliveryPlan);
             }
         } catch (Exception e) {
             jsonResult.setCode(400);

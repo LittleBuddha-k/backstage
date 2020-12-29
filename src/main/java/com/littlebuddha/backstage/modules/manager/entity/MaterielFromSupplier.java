@@ -13,7 +13,7 @@ import java.util.Date;
 public class MaterielFromSupplier extends DataEntity<MaterielFromSupplier> {
 
     private Integer serialNumber;                     //序号
-    private Date inComingDate;                                //日期
+    private Date inComingDate;                        //进货日期
     private String blueIslandMaterielNumber;          //蓝岸料号
     private String supplierMaterielNumber;            //供应商料号编码
     private String materielName;                      //物料名称

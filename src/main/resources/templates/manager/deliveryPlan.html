@@ -175,7 +175,15 @@
         // 监听搜索操作
         form.on('submit(data-search-btn)', function (data) {
             //执行搜索重载
-
+            table.reload('userTableReload', {
+                url: 'search.php',
+                where: { //设定异步数据接口的额外参数，任意设
+                    userName: $('#userName').val()
+                }
+                , page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+            });
         });
 
         /**

@@ -20,13 +20,13 @@
             <div style="margin: 10px 10px 10px 10px">
                 <form class="layui-form layui-form-pane" id="searchForm">
                     <div class="layui-form-item">
-                        <div class="layui-inline">
+                        <!--<div class="layui-inline">
                             <label class="layui-form-label">交货日期</label>
                             <div class="layui-input-inline">
                                 <input type="text" id="deliveryDate" name="deliveryDate" autocomplete="off"
                                        class="layui-input" th:value="${deliveryPlan.getDeliveryDate()}">
                             </div>
-                        </div>
+                        </div>-->
                         <div class="layui-inline">
                             <label class="layui-form-label">交货数量</label>
                             <div class="layui-input-inline">
@@ -41,14 +41,14 @@
                                        class="layui-input" th:value="${deliveryPlan.getCumulativeDeliveryAmount()}">
                             </div>
                         </div>
-                        <div class="layui-inline">
+                        <!--<div class="layui-inline">
                             <label class="layui-form-label">进货日期</label>
                             <div class="layui-input-inline">
                                 <input type="text" id="inComingMaterielDate" name="inComingMaterielDate"
                                        autocomplete="off" class="layui-input"
                                        th:value="${deliveryPlan.getInComingMaterielDate()}">
                             </div>
-                        </div>
+                        </div>-->
                         <div class="layui-inline">
                             <label class="layui-form-label">礼盒配套数</label>
                             <div class="layui-input-inline">
@@ -175,13 +175,7 @@
         // 监听搜索操作
         form.on('submit(data-search-btn)', function (data) {
             //执行搜索重载
-            table.reload({
-                where: data.field,
-                page: {
-                    curr: 1
-                }
-            });
-            return false;
+            alert(data);
         });
 
         /**

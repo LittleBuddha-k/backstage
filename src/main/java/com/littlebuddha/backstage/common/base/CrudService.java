@@ -129,6 +129,15 @@ public abstract class CrudService<E extends DataEntity,M extends BaseMapper<E>> 
     }
 
     /**
+     * 获取数据条数
+     * @return
+     */
+    public int getTotalCount(E entity) {
+        List<E> allList = mapper.findAllList(entity);
+        return allList.size();
+    };
+
+    /**
      * 单条逻辑删除数据的恢复
      * @param entity
      */

@@ -3,34 +3,66 @@
 <mapper namespace="com.littlebuddha.backstage.modules.manager.mapper.DeliveryPlanMapper">
 
     <sql id="deliveryPlanColumns">
-        id AS "id",
-        delivery_date AS "deliveryDate",
-        delivery_amount AS "deliveryAmount",
-        cumulative_delivery_amount AS "cumulativeDeliveryAmount",
-        in_coming_materiel_date AS "inComingMaterielDate",
-        gift_box_amount AS "giftBoxAmount",
-        cumulative_gift_box_amount AS "cumulativeGiftBoxAmount",
-        carton_amount AS "cartonAmount",
-        paper_separator_amount AS "paperSeparatorAmount",
-        cumulative_paper_separator_amount AS "cumulativePaperSeparatorAmount",
-        delivery_type AS "deliveryType",
-        create_by AS "createBy.id",
-        create_date AS "createDate",
-        update_by AS "updateBy.id",
-        update_date AS "updateDate"
+        a.id AS "id",
+        a.delivery_date AS "deliveryDate",
+        a.delivery_amount AS "deliveryAmount",
+        a.cumulative_delivery_amount AS "cumulativeDeliveryAmount",
+        a.in_coming_materiel_date AS "inComingMaterielDate",
+        a.gift_box_amount AS "giftBoxAmount",
+        a.cumulative_gift_box_amount AS "cumulativeGiftBoxAmount",
+        a.carton_amount AS "cartonAmount",
+        a.paper_separator_amount AS "paperSeparatorAmount",
+        a.cumulative_paper_separator_amount AS "cumulativePaperSeparatorAmount",
+        a.delivery_type AS "deliveryType",
+        a.create_by AS "createBy.id",
+        a.create_date AS "createDate",
+        a.update_by AS "updateBy.id",
+        a.update_date AS "updateDate"
     </sql>
 
     <select id="get" resultType="com.littlebuddha.backstage.modules.manager.entity.DeliveryPlan">
         SELECT
         <include refid="deliveryPlanColumns"/>
-        FROM manager_delivery_plan
-        WHERE id=#{id}
+        FROM manager_delivery_plan a
+        WHERE a.id=#{id}
     </select>
 
     <select id="findList" resultType="com.littlebuddha.backstage.modules.manager.entity.DeliveryPlan">
         SELECT
         <include refid="deliveryPlanColumns"/>
-        FROM manager_delivery_plan
+        FROM manager_delivery_plan a
+        <where>
+            <if test="deliveryDate != null and deliveryDate != ''" >
+                and a.delivery_date = #{deliveryDate}
+            </if>
+            <if test="deliveryAmount != null and deliveryAmount != ''" >
+                and a.delivery_amount = #{deliveryAmount}
+            </if>
+            <if test="cumulativeDeliveryAmount != null and cumulativeDeliveryAmount != ''" >
+                and a.cumulative_delivery_amount = #{cumulativeDeliveryAmount}
+            </if>
+            <if test="inComingMaterielDate != null and inComingMaterielDate != ''" >
+                and a.in_coming_materiel_date = #{inComingMaterielDate}
+            </if>
+            <if test="giftBoxAmount != null and giftBoxAmount != ''" >
+                and a.gift_box_amount = #{giftBoxAmount}
+            </if>
+            <if test="cumulativeGiftBoxAmount != null and cumulativeGiftBoxAmount != ''" >
+                and a.cumulative_gift_box_amount = #{cumulativeGiftBoxAmount}
+            </if>
+            <if test="cartonAmount != null and cartonAmount != ''" >
+                and a.carton_amount = #{cartonAmount}
+            </if>
+            <if test="paperSeparatorAmount != null and paperSeparatorAmount != ''" >
+                and a.paper_separator_amount = #{paperSeparatorAmount}
+            </if>
+            <if test="cumulativePaperSeparatorAmount != null and cumulativePaperSeparatorAmount != ''" >
+                and a.cumulative_paper_separator_amount = #{cumulativePaperSeparatorAmount}
+            </if>
+            <if test="deliveryType != null and deliveryType != ''" >
+                and a.delivery_type = #{deliveryType}
+            </if>
+        </where>
         <choose>
             <when test="page !=null and page != '' and limit !=null and limit != ''">
                 LIMIT #{page},#{limit}
@@ -44,7 +76,7 @@
     <select id="findAllList" resultType="com.littlebuddha.backstage.modules.manager.entity.DeliveryPlan">
         SELECT
         <include refid="deliveryPlanColumns"/>
-        FROM manager_delivery_plan
+        FROM manager_delivery_plan a
     </select>
 
     <insert id="insert">

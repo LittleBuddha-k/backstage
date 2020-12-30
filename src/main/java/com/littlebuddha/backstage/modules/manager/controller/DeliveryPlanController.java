@@ -37,11 +37,10 @@ public class DeliveryPlanController {
     public JsonResult<DeliveryPlan> data(DeliveryPlan deliveryPlan, String materielNumber) {
         JsonResult result = new JsonResult();
         List<DeliveryPlan> list = deliveryPlanService.findList(deliveryPlan);
-        List<DeliveryPlan> all = deliveryPlanService.findList(new DeliveryPlan());
         result.setCode(0);
         result.setMsg("成功");
-        result.setCount(all.size());
         result.setData(list);
+        result.setCount(deliveryPlanService.getTotalCount(new DeliveryPlan()));
         return result;
     }
 

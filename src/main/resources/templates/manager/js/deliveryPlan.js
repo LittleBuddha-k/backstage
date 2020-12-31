@@ -6,36 +6,110 @@ $(document).ready(function () {
 
         table.render({
             elem: '#deliveryPlanTableList',
+            cols: [
+                [
+                    {
+                        type: "checkbox",
+                        width: 50
+                    },
+                    {
+                        field: 'deliveryDate',
+                        width: 80,
+                        title: '交货日期',
+                        sort: true
+                    },
+                    {
+                        field: 'deliveryAmount',
+                        width: 120,
+                        title: '交货数量',
+                        sort: true
+                    },
+                    {
+                        field: 'cumulativeDeliveryAmount',
+                        width: 120,
+                        title: '累计交货数量',
+                        sort: true
+                    },
+                    {
+                        field: 'inComingMaterielDate',
+                        width: 120,
+                        title: '进料日期',
+                        sort: true
+                    },
+                    {
+                        field: 'giftBoxAmount',
+                        width: 120,
+                        title: '礼盒配套数',
+                        sort: true
+                    },
+                    {
+                        field: 'cumulativeGiftBoxAmount',
+                        width: 120,
+                        title: '累计礼盒配套数',
+                        sort: true
+                    },
+                    {
+                        field: 'cartonAmount',
+                        width: 120,
+                        title: '纸箱数',
+                        sort: true
+                    },
+                    {
+                        field: 'paperSeparatorAmount',
+                        width: 120,
+                        title: '纸隔板数',
+                        sort: true
+                    },
+                    {
+                        field: 'cumulativePaperSeparatorAmount',
+                        width: 120,
+                        title: '累计纸隔板数',
+                        sort: true
+                    },
+                    {
+                        field: 'deliveryType',
+                        width: 120,
+                        title: '交货类型',
+                        sort: true
+                    },
+                    {
+                        title: '操作',
+                        minWidth: 150,
+                        toolbar: '#deliveryPlanTableBar',
+                        align: "center"
+                    }
+                ]
+            ],
             url: '/backstage/manager/deliveryPlan/data',
             method: 'post',
             contentType: 'application/json',
-            where:'',
+            where: {
+                deliveryAmount: ,
+                cumulativeDeliveryAmount: 123,
+                giftBoxAmount: 123,
+                cumulativeGiftBoxAmount: 123,
+                cartonAmount: 123,
+                paperSeparatorAmount: 123,
+                cumulativePaperSeparatorAmount: 123,
+                deliveryType: 123,
+            },
             toolbar: '#toolbar',//添加表格工具栏模板
-            page: true,//开启分页,
-            limit: 10,
-            limits: [10, 15, 20, 25, 50, 100],
-            skin: 'line',
             defaultToolbar: ['filter', 'exports', 'print', {
                 title: '提示',
                 layEvent: 'LAYTABLE_TIPS',
                 icon: 'layui-icon-tips'
             }],
-            cols: [
-                [
-                    {type: "checkbox", width: 50},
-                    {field: 'deliveryDate', width: 80, title: '交货日期', sort: true},
-                    {field: 'deliveryAmount', width: 120, title: '交货数量', sort: true},
-                    {field: 'cumulativeDeliveryAmount', width: 120, title: '累计交货数量', sort: true},
-                    {field: 'inComingMaterielDate', width: 120, title: '进料日期', sort: true},
-                    {field: 'giftBoxAmount', width: 120, title: '礼盒配套数', sort: true},
-                    {field: 'cumulativeGiftBoxAmount', width: 120, title: '累计礼盒配套数', sort: true},
-                    {field: 'cartonAmount', width: 120, title: '纸箱数', sort: true},
-                    {field: 'paperSeparatorAmount', width: 120, title: '纸隔板数', sort: true},
-                    {field: 'cumulativePaperSeparatorAmount', width: 120, title: '累计纸隔板数', sort: true},
-                    {field: 'deliveryType', width: 120, title: '交货类型', sort: true},
-                    {title: '操作', minWidth: 150, toolbar: '#deliveryPlanTableBar', align: "center"}
-                ]
-            ]
+            done: function(){
+
+            },
+            page: true,//开启分页,
+            limit: 10,
+            limits: [10, 15, 20, 25, 50, 100],
+            title: '交货计划表格',
+            text: {
+                none: '暂无相关数据' //默认：无数据。
+            },
+            skin: 'line'
         });
 
         // 监听搜索操作

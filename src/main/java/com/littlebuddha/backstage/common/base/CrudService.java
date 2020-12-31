@@ -133,8 +133,8 @@ public abstract class CrudService<E extends DataEntity,M extends BaseMapper<E>> 
      * @return
      */
     public int getTotalCount(E entity) {
-        List<E> allList = mapper.findAllList(entity);
-        return allList.size();
+        int allCount = mapper.getTotalCount(entity);
+        return allCount;
     };
 
     /**

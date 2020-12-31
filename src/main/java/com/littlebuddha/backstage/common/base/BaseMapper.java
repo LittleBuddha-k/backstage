@@ -79,4 +79,12 @@ public interface BaseMapper<E> {
      * @return
      */
     int recovery(E entity);
+
+    /**
+     * 获取数据总条数
+     * @param entity
+     * @param <E>
+     * @return
+     */
+    int getTotalCount(E entity);
 }

@@ -33,7 +33,7 @@ public class DeliveryPlanController {
     }
 
     @ResponseBody
-    @GetMapping("/data")
+    @PostMapping("/data")
     public JsonResult<DeliveryPlan> data(DeliveryPlan deliveryPlan, String materielNumber) {
         JsonResult result = new JsonResult();
         List<DeliveryPlan> list = deliveryPlanService.findList(deliveryPlan);

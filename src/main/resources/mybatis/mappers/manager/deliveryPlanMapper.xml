@@ -79,6 +79,12 @@
         FROM manager_delivery_plan a
     </select>
 
+    <select id="getTotalCount" resultType="int">
+        SELECT
+        Count(1)
+        FROM manager_delivery_plan a
+    </select>
+
     <insert id="insert">
         INSERT INTO manager_delivery_plan(
             id,

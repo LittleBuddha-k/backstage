@@ -3,58 +3,58 @@
 <mapper namespace="com.littlebuddha.backstage.modules.manager.mapper.BalanceDetailsMapper">
 
     <sql id="balanceDetailsColumns">
-        id AS "id",
-        serial_number AS "serialNumber",
-        testing AS "testing",
-        texy AS "texy",
-        blue_island_materiel_number AS "blueIslandMaterielNumber",
-        chinese_name AS "chineseName",
-        supplier AS "supplier",
-        m_four_host AS "mFourHost",
-        m_four_go_host AS "mFourGoHost",
-        m_four_front_housing_assembly AS "mFourFrontHousingAssembly",
-        m_four_rear_housing_assembly AS "mFourRearHousingAssembly",
-        m_four_package AS "mFourPackage",
-        m_four_orange AS "mFourOrange",
-        m_four_sfr AS "mFourSFR",
-        m_four_byt AS "mFourBYT",
-        m_four_go_package AS "mFourGoPackage",
-        m_four_front_housing_assembly_second AS "mFourFrontHousingAssemblySecond",
-        m_four_main_board_package AS "mFourMainBoardPackage",
-        m_four_go_main_board_package AS "mFourGoMainBoardPackage",
-        small_board_packaging AS "smallBoardPackaging",
-        battery_packaging AS "batteryPackaging",
-        into_operation AS "intoOperation",
-        not_into_operation AS "notIntoOperation",
-        lack_of_material AS "lackOfMaterial",
-        lack_of_material_group AS "lackOfMaterialGroup",
-        new_jersey AS "newJersey",
-        blue_island AS "blueIsland",
-        difference AS "difference",
-        remarks AS "remarks",
-        create_by AS "createBy.id",
-        create_date AS "createDate",
-        update_by AS "updateBy.id",
-        update_date AS "updateDate"
+        a.id AS "id",
+        a.serial_number AS "serialNumber",
+        a.testing AS "testing",
+        a.texy AS "texy",
+        a.blue_island_materiel_number AS "blueIslandMaterielNumber",
+        a.chinese_name AS "chineseName",
+        a.supplier AS "supplier",
+        a.m_four_host AS "mFourHost",
+        a.m_four_go_host AS "mFourGoHost",
+        a.m_four_front_housing_assembly AS "mFourFrontHousingAssembly",
+        a.m_four_rear_housing_assembly AS "mFourRearHousingAssembly",
+        a.m_four_package AS "mFourPackage",
+        a.m_four_orange AS "mFourOrange",
+        a.m_four_sfr AS "mFourSFR",
+        a.m_four_byt AS "mFourBYT",
+        a.m_four_go_package AS "mFourGoPackage",
+        a.m_four_front_housing_assembly_second AS "mFourFrontHousingAssemblySecond",
+        a.m_four_main_board_package AS "mFourMainBoardPackage",
+        a.m_four_go_main_board_package AS "mFourGoMainBoardPackage",
+        a.small_board_packaging AS "smallBoardPackaging",
+        a.battery_packaging AS "batteryPackaging",
+        a.into_operation AS "intoOperation",
+        a.not_into_operation AS "notIntoOperation",
+        a.lack_of_material AS "lackOfMaterial",
+        a.lack_of_material_group AS "lackOfMaterialGroup",
+        a.new_jersey AS "newJersey",
+        a.blue_island AS "blueIsland",
+        a.difference AS "difference",
+        a.remarks AS "remarks",
+        a.create_by AS "createBy.id",
+        a.create_date AS "createDate",
+        a.update_by AS "updateBy.id",
+        a.update_date AS "updateDate"
     </sql>
 
     <select id="get" resultType="com.littlebuddha.backstage.modules.manager.entity.BalanceDetails">
         SELECT
         <include refid="balanceDetailsColumns"/>
-        FROM manager_balance_details
-        WHERE id=#{id}
+        FROM manager_balance_details a
+        WHERE a.id=#{id}
     </select>
 
     <select id="findList" resultType="com.littlebuddha.backstage.modules.manager.entity.BalanceDetails">
         SELECT
         <include refid="balanceDetailsColumns"/>
-        FROM manager_balance_details
+        FROM manager_balance_details a
         <choose>
             <when test="page !=null and page != '' and limit !=null and limit != ''">
                 LIMIT #{page},#{limit}
             </when>
             <otherwise>
-                LIMIT #{page},#{limit}
+                ORDER BY a.create_date DESC
             </otherwise>
         </choose>
     </select>
@@ -62,7 +62,7 @@
     <select id="findAllList" resultType="com.littlebuddha.backstage.modules.manager.entity.BalanceDetails">
         SELECT
         <include refid="balanceDetailsColumns"/>
-        FROM manager_balance_details
+        FROM manager_balance_details a
     </select>
 
     <insert id="insert">

@@ -3,39 +3,39 @@
 <mapper namespace="com.littlebuddha.backstage.modules.manager.mapper.OtherOutWarehouseMapper">
 
     <sql id="otherOutWarehouseColumns">
-        id AS "id",
-        serial_number AS "serialNumber",
-        out_warehouse_date AS "outWarehouseDate",
-        blue_island_materiel_number AS "blueIslandMaterielNumber",
-        supplier_materiel_number AS "supplierMaterielNumber",
-        materiel_name AS "materielName",
-        description AS "description",
-        out_warehouse_amount AS "outWarehouseAmount",
-        delivery_order_number AS "deliveryOrderNumber",
-        remarks AS "remarks",
-        create_by AS "createBy.id",
-        create_date AS "createDate",
-        update_by AS "updateBy.id",
-        update_date AS "updateDate"
+        a.id AS "id",
+        a.serial_number AS "serialNumber",
+        a.out_warehouse_date AS "outWarehouseDate",
+        a.blue_island_materiel_number AS "blueIslandMaterielNumber",
+        a.supplier_materiel_number AS "supplierMaterielNumber",
+        a.materiel_name AS "materielName",
+        a.description AS "description",
+        a.out_warehouse_amount AS "outWarehouseAmount",
+        a.delivery_order_number AS "deliveryOrderNumber",
+        a.remarks AS "remarks",
+        a.create_by AS "createBy.id",
+        a.create_date AS "createDate",
+        a.update_by AS "updateBy.id",
+        a.update_date AS "updateDate"
     </sql>
 
     <select id="get" resultType="com.littlebuddha.backstage.modules.manager.entity.OtherOutWarehouse">
         SELECT
         <include refid="otherOutWarehouseColumns"/>
-        FROM manager_out_warehouse
-        WHERE id=#{id}
+        FROM manager_out_warehouse a
+        WHERE a.id=#{id}
     </select>
 
     <select id="findList" resultType="com.littlebuddha.backstage.modules.manager.entity.OtherOutWarehouse">
         SELECT
         <include refid="otherOutWarehouseColumns"/>
-        FROM manager_out_warehouse
+        FROM manager_out_warehouse a
         <choose>
             <when test="page !=null and page != '' and limit !=null and limit != ''">
                 LIMIT #{page},#{limit}
             </when>
             <otherwise>
-                LIMIT #{page},#{limit}
+                ORDER BY a.create_date DESC
             </otherwise>
         </choose>
     </select>
@@ -43,7 +43,7 @@
     <select id="findAllList" resultType="com.littlebuddha.backstage.modules.manager.entity.OtherOutWarehouse">
         SELECT
         <include refid="otherOutWarehouseColumns"/>
-        FROM manager_out_warehouse
+        FROM manager_out_warehouse a
     </select>
 
     <insert id="insert">

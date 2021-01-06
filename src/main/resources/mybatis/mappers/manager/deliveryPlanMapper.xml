@@ -68,7 +68,7 @@
                 LIMIT #{page},#{limit}
             </when>
             <otherwise>
-                LIMIT #{page},#{limit}
+                ORDER BY a.create_date DESC
             </otherwise>
         </choose>
     </select>

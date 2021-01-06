@@ -3,48 +3,48 @@
 <mapper namespace="com.littlebuddha.backstage.modules.manager.mapper.SummaryConsiderBomDetailsMapper">
 
     <sql id="summaryConsiderBomDetailsColumns">
-        id AS "id",
-        testing AS "testing",
-        serial_number AS "serialNumber",
-        blue_island_materiel_number AS "blueIslandMaterielNumber",
-        supplier_materiel_number AS "supplierMaterielNumber",
-        description AS "description",
-        supplier AS "supplier",
-        dosage_of_plus AS "dosageOfPlus",
-        dosage_of_lite AS "dosageOfLite",
-        supplier_good_products AS "supplierGoodProducts",
-        supplier_bad_products AS "supplierBadProducts",
-        supplier_return_goods AS "supplierReturnGoods",
-        out_warehouse AS "outWarehouse",
-        delivery AS "delivery",
-        theoretically_usefully AS "theoreticallyUsefully",
-        actually_usefully AS "actuallyUsefully",
-        order_amount AS "orderAmount",
-        unpaid_amount AS "unpaidAmount",
-        replies AS "replies",
-        create_by AS "createBy.id",
-        create_date AS "createDate",
-        update_by AS "updateBy.id",
-        update_date AS "updateDate"
+        a.id AS "id",
+        a.testing AS "testing",
+        a.serial_number AS "serialNumber",
+        a.blue_island_materiel_number AS "blueIslandMaterielNumber",
+        a.supplier_materiel_number AS "supplierMaterielNumber",
+        a.description AS "description",
+        a.supplier AS "supplier",
+        a.dosage_of_plus AS "dosageOfPlus",
+        a.dosage_of_lite AS "dosageOfLite",
+        a.supplier_good_products AS "supplierGoodProducts",
+        a.supplier_bad_products AS "supplierBadProducts",
+        a.supplier_return_goods AS "supplierReturnGoods",
+        a.out_warehouse AS "outWarehouse",
+        a.delivery AS "delivery",
+        a.theoretically_usefully AS "theoreticallyUsefully",
+        a.actually_usefully AS "actuallyUsefully",
+        a.order_amount AS "orderAmount",
+        a.unpaid_amount AS "unpaidAmount",
+        a.replies AS "replies",
+        a.create_by AS "createBy.id",
+        a.create_date AS "createDate",
+        a.update_by AS "updateBy.id",
+        a.update_date AS "updateDate"
     </sql>
 
     <select id="get" resultType="com.littlebuddha.backstage.modules.manager.entity.SummaryConsiderBomDetails">
         SELECT
         <include refid="summaryConsiderBomDetailsColumns"/>
-        FROM manager_summary_consider_bom_details
-        WHERE id=#{id}
+        FROM manager_summary_consider_bom_details a
+        WHERE a.id=#{id}
     </select>
 
     <select id="findList" resultType="com.littlebuddha.backstage.modules.manager.entity.SummaryConsiderBomDetails">
         SELECT
         <include refid="summaryConsiderBomDetailsColumns"/>
-        FROM manager_summary_consider_bom_details
+        FROM manager_summary_consider_bom_details a
         <choose>
             <when test="page !=null and page != '' and limit !=null and limit != ''">
                 LIMIT #{page},#{limit}
             </when>
             <otherwise>
-                LIMIT #{page},#{limit}
+                ORDER BY a.create_date DESC
             </otherwise>
         </choose>
     </select>
@@ -52,7 +52,7 @@
     <select id="findAllList" resultType="com.littlebuddha.backstage.modules.manager.entity.SummaryConsiderBomDetails">
         SELECT
         <include refid="summaryConsiderBomDetailsColumns"/>
-        FROM manager_summary_consider_bom_details
+        FROM manager_summary_consider_bom_details a
     </select>
 
     <insert id="insert">

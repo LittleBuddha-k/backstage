@@ -3,57 +3,57 @@
 <mapper namespace="com.littlebuddha.backstage.modules.manager.mapper.OrderMapper">
 
     <sql id="orderColumns">
-        id AS "id",
-        new_order_number AS "newOrderNumber",
-        order_number AS "orderNumber",
-        supplier AS "supplier",
-        project_name AS "projectName",
-        materiel_number AS "materielNumber",
-        materiel_number_sort AS "materielNumberSort",
-        materiel_name AS "materielName",
-        specifications AS "specifications",
-        description AS "description",
-        brand AS "brand",
-        unit AS "unit",
-        order_amount AS "orderAmount",
-        unit_price AS "unitPrice",
-        currency AS "currency",
-        total_amount AS "totalAmount",
-        order_date AS "orderDate",
-        delivery_date AS "deliveryDate",
-        delivered_amount AS "deliveredAmount",
-        in_warehousing_date AS "inWarehousingDate",
-        undelivered_amount AS "undeliveredAmount",
-        first_party_remarks AS "firstPartyRemarks",
-        reconciled_amount AS "reconciledAmount",
-        no_reconciliation AS "noReconciliation",
-        payment_status AS "paymentStatus",
-        payment_way AS "paymentWay",
-        the_corresponding_human AS "theCorrespondingHuman.name",
-        second_party_remarks AS "secondPartyRemarks",
-        create_by AS "createBy.id",
-        create_date AS "createDate",
-        update_by AS "updateBy.id",
-        update_date AS "updateDate"
+        a.id AS "id",
+        a.new_order_number AS "newOrderNumber",
+        a.order_number AS "orderNumber",
+        a.supplier AS "supplier",
+        a.project_name AS "projectName",
+        a.materiel_number AS "materielNumber",
+        a.materiel_number_sort AS "materielNumberSort",
+        a.materiel_name AS "materielName",
+        a.specifications AS "specifications",
+        a.description AS "description",
+        a.brand AS "brand",
+        a.unit AS "unit",
+        a.order_amount AS "orderAmount",
+        a.unit_price AS "unitPrice",
+        a.currency AS "currency",
+        a.total_amount AS "totalAmount",
+        a.order_date AS "orderDate",
+        a.delivery_date AS "deliveryDate",
+        a.delivered_amount AS "deliveredAmount",
+        a.in_warehousing_date AS "inWarehousingDate",
+        a.undelivered_amount AS "undeliveredAmount",
+        a.first_party_remarks AS "firstPartyRemarks",
+        a.reconciled_amount AS "reconciledAmount",
+        a.no_reconciliation AS "noReconciliation",
+        a.payment_status AS "paymentStatus",
+        a.payment_way AS "paymentWay",
+        a.the_corresponding_human AS "theCorrespondingHuman.name",
+        a.second_party_remarks AS "secondPartyRemarks",
+        a.create_by AS "createBy.id",
+        a.create_date AS "createDate",
+        a.update_by AS "updateBy.id",
+        a.update_date AS "updateDate"
     </sql>
 
     <select id="get" resultType="com.littlebuddha.backstage.modules.manager.entity.Order">
         SELECT
         <include refid="orderColumns"/>
-        FROM manager_order
-        WHERE id=#{id}
+        FROM manager_order a
+        WHERE a.id=#{id}
     </select>
 
     <select id="findList" resultType="com.littlebuddha.backstage.modules.manager.entity.Order">
         SELECT
         <include refid="orderColumns"/>
-        FROM manager_order
+        FROM manager_order a
         <choose>
             <when test="page !=null and page != '' and limit !=null and limit != ''">
                 LIMIT #{page},#{limit}
             </when>
             <otherwise>
-                LIMIT #{page},#{limit}
+                ORDER BY a.create_date DESC
             </otherwise>
         </choose>
     </select>
@@ -61,7 +61,7 @@
     <select id="findAllList" resultType="com.littlebuddha.backstage.modules.manager.entity.Order">
         SELECT
         <include refid="orderColumns"/>
-        FROM manager_order
+        FROM manager_order a
     </select>
 
     <insert id="insert">

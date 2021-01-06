@@ -3,40 +3,40 @@
 <mapper namespace="com.littlebuddha.backstage.modules.manager.mapper.MaterielReturnFromManufacturerMapper">
 
     <sql id="materielReturnFromManufacturerColumns">
-        id AS "id",
-        serial_number AS "serialNumber",
-        return_date AS "returnDate",
-        blue_island_materiel_number AS "blueIslandMaterielNumber",
-        return_manufacturer AS "returnManufacturer",
-        supplier_materiel_number AS "supplierMaterielNumber",
-        materiel_name AS "materielName",
-        description AS "description",
-        return_amount AS "returnAmount",
-        return_order_number AS "returnOrderNumber",
-        remarks AS "remarks",
-        create_by AS "createBy.id",
-        create_date AS "createDate",
-        update_by AS "updateBy.id",
-        update_date AS "updateDate"
+        a.id AS "id",
+        a.serial_number AS "serialNumber",
+        a.return_date AS "returnDate",
+        a.blue_island_materiel_number AS "blueIslandMaterielNumber",
+        a.return_manufacturer AS "returnManufacturer",
+        a.supplier_materiel_number AS "supplierMaterielNumber",
+        a.materiel_name AS "materielName",
+        a.description AS "description",
+        a.return_amount AS "returnAmount",
+        a.return_order_number AS "returnOrderNumber",
+        a.remarks AS "remarks",
+        a.create_by AS "createBy.id",
+        a.create_date AS "createDate",
+        a.update_by AS "updateBy.id",
+        a.update_date AS "updateDate"
     </sql>
 
     <select id="get" resultType="com.littlebuddha.backstage.modules.manager.entity.MaterielReturnFromManufacturer">
         SELECT
         <include refid="materielReturnFromManufacturerColumns"/>
-        FROM manager_materiel_return_from_manufacturer
-        WHERE id=#{id}
+        FROM manager_materiel_return_from_manufacturer a
+        WHERE a.id=#{id}
     </select>
 
     <select id="findList" resultType="com.littlebuddha.backstage.modules.manager.entity.MaterielReturnFromManufacturer">
         SELECT
         <include refid="materielReturnFromManufacturerColumns"/>
-        FROM manager_materiel_return_from_manufacturer
+        FROM manager_materiel_return_from_manufacturer a
         <choose>
             <when test="page !=null and page != '' and limit !=null and limit != ''">
                 LIMIT #{page},#{limit}
             </when>
             <otherwise>
-                LIMIT #{page},#{limit}
+                ORDER BY a.create_date DESC
             </otherwise>
         </choose>
     </select>
@@ -44,7 +44,7 @@
     <select id="findAllList" resultType="com.littlebuddha.backstage.modules.manager.entity.MaterielReturnFromManufacturer">
         SELECT
         <include refid="materielReturnFromManufacturerColumns"/>
-        FROM manager_materiel_return_from_manufacturer
+        FROM manager_materiel_return_from_manufacturer a
     </select>
 
     <insert id="insert">

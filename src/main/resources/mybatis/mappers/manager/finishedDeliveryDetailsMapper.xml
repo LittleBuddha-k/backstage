@@ -3,40 +3,40 @@
 <mapper namespace="com.littlebuddha.backstage.modules.manager.mapper.FinishedDeliveryDetailsMapper">
 
     <sql id="finishedDeliveryDetailsColumns">
-        id AS "id",
-        delivery_date AS "deliveryDate",
-        specification AS "specification",
-        blue_island_finished_product_code AS "blueIslandFinishedProductCode",
-        product_name AS "productName",
-        order_number_for_jierong AS "orderNumberForJierong",
-        jierong_delivery_order_number AS "jierongDeliveryOrderNumber",
-        shipment_amount AS "shipmentAmount",
-        shipment_address AS "shipmentAddress",
-        receiver AS "receiver",
-        remarks AS "remarks",
-        create_by AS "createBy.id",
-        create_date AS "createDate",
-        update_by AS "updateBy.id",
-        update_date AS "updateDate"
+        a.id AS "id",
+        a.delivery_date AS "deliveryDate",
+        a.specification AS "specification",
+        a.blue_island_finished_product_code AS "blueIslandFinishedProductCode",
+        a.product_name AS "productName",
+        a.order_number_for_jierong AS "orderNumberForJierong",
+        a.jierong_delivery_order_number AS "jierongDeliveryOrderNumber",
+        a.shipment_amount AS "shipmentAmount",
+        a.shipment_address AS "shipmentAddress",
+        a.receiver AS "receiver",
+        a.remarks AS "remarks",
+        a.create_by AS "createBy.id",
+        a.create_date AS "createDate",
+        a.update_by AS "updateBy.id",
+        a.update_date AS "updateDate"
     </sql>
 
     <select id="get" resultType="com.littlebuddha.backstage.modules.manager.entity.FinishedDeliveryDetails">
         SELECT
         <include refid="finishedDeliveryDetailsColumns"/>
-        FROM manager_finished_delivery_details
-        WHERE id=#{id}
+        FROM manager_finished_delivery_details a
+        WHERE a.id=#{id}
     </select>
 
     <select id="findList" resultType="com.littlebuddha.backstage.modules.manager.entity.FinishedDeliveryDetails">
         SELECT
         <include refid="finishedDeliveryDetailsColumns"/>
-        FROM manager_finished_delivery_details
+        FROM manager_finished_delivery_details a
         <choose>
             <when test="page !=null and page != '' and limit !=null and limit != ''">
                 LIMIT #{page},#{limit}
             </when>
             <otherwise>
-                LIMIT #{page},#{limit}
+                ORDER BY a.create_date DESC
             </otherwise>
         </choose>
     </select>
@@ -44,7 +44,7 @@
     <select id="findAllList" resultType="com.littlebuddha.backstage.modules.manager.entity.FinishedDeliveryDetails">
         SELECT
         <include refid="finishedDeliveryDetailsColumns"/>
-        FROM manager_finished_delivery_details
+        FROM manager_finished_delivery_details a
     </select>
 
     <insert id="insert">

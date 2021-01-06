@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html"
+      xmlns:hidden="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>来料表单</title>
+    <link rel="stylesheet" href="/backstage/layui/lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="/backstage/layui/css/public.css" media="all">
+    <style>
+        .layui-btn:not(.layui-btn-lg ):not(.layui-btn-sm):not(.layui-btn-xs) {
+            height: 34px;
+            line-height: 34px;
+            padding: 0 8px;
+        }
+    </style>
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <form class="layui-form layui-form-pane" id="materielFromSupplierForm">
+            <input type="hidden" name="id" th:value="${materielFromSupplier.getId()}">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">序号</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="serialNumber" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">进货日期</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="inComingDate" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">蓝岸料号</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="blueIslandMaterielNumber" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">供应商料号编码</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="supplierMaterielNumber" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">物料名称</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="materielName" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">描述</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="description" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">良品数</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="goodProducts" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">不良品数</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="badProducts" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">送货单号</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="deliveryOrderNumber" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">交货厂商核对</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="deliveryManufacturerCheck" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/backstage/layui/lib/jquery-3.4.1/jquery-3.4.1.min.js" charset="utf-8"></script>
+<script src="/backstage/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script src="/backstage/layui/js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+</body>
+</html>

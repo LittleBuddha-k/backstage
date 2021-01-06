@@ -34,7 +34,7 @@ public class BalanceDetailsController {
     }
 
     @ResponseBody
-    @GetMapping("/data")
+    @PostMapping("/data")
     public JsonResult<BalanceDetails> data(BalanceDetails balanceDetails){
         JsonResult result = new JsonResult();
         List<BalanceDetails> list = balanceDetailsService.findList(balanceDetails);

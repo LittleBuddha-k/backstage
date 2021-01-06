@@ -34,7 +34,7 @@ public class MaterielFromSupplierController {
     }
 
     @ResponseBody
-    @GetMapping("/data")
+    @PostMapping("/data")
     public JsonResult<MaterielFromSupplier> data(MaterielFromSupplier materielFromSupplier){
         JsonResult result = new JsonResult();
         List<MaterielFromSupplier> list = materielFromSupplierService.findList(materielFromSupplier);

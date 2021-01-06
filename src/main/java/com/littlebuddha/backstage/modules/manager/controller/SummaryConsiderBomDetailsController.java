@@ -22,7 +22,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/manager/summaryConsiderBomDetails")
-public class SummaryConsiderBomController {
+public class SummaryConsiderBomDetailsController {
 
     @Autowired
     private SummaryConsiderBomDetailsService summaryConsiderBomDetailsService;
@@ -30,11 +30,11 @@ public class SummaryConsiderBomController {
     @GetMapping(value = {"","/list"})
     public String list(SummaryConsiderBomDetails summaryConsiderBomDetails, Model model){
         model.addAttribute("summaryConsiderBomDetails",summaryConsiderBomDetails);
-        return "manager/summaryConsiderBom";
+        return "manager/summaryConsiderBomDetails";
     }
 
     @ResponseBody
-    @GetMapping("/data")
+    @PostMapping("/data")
     public JsonResult<SummaryConsiderBomDetails> data(SummaryConsiderBomDetails summaryConsiderBomDetails){
         JsonResult result = new JsonResult();
         List<SummaryConsiderBomDetails> list = summaryConsiderBomDetailsService.findList(summaryConsiderBomDetails);

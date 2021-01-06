@@ -6,93 +6,34 @@ $(document).ready(function () {
 
         //第一个实例
         table.render({
-            elem: '#deliveryPlanTableList',
+            elem: '#materielFromSupplierTableList',
             toolbar: '#toolbar',
-            url: '/backstage/manager/deliveryPlan/data', //数据接口
+            url: '/backstage/manager/materielFromSupplier/data', //数据接口
             method: 'post',
             page: true, //开启分页
             cols: [
                 [
-                    {
-                        type: "checkbox",
-                        width: 50
-                    },
-                    {
-                        field: 'deliveryDate',
-                        width: 200,
-                        title: '交货日期',
-                        sort: true,
-                        templet:function(deliveryPlan){return dateTimeFormat(deliveryPlan.deliveryDate);}
-                    },
-                    {
-                        field: 'deliveryAmount',
-                        width: 150,
-                        title: '交货数量',
-                        sort: true
-                    },
-                    {
-                        field: 'cumulativeDeliveryAmount',
-                        width: 150,
-                        title: '累计交货数量',
-                        sort: true
-                    },
-                    {
-                        field: 'inComingMaterielDate',
-                        width: 200,
-                        title: '进料日期',
-                        sort: true,
-                        templet:function(deliveryPlan){return dateTimeFormat(deliveryPlan.deliveryDate);}
-                    },
-                    {
-                        field: 'giftBoxAmount',
-                        width: 150,
-                        title: '礼盒配套数',
-                        sort: true
-                    },
-                    {
-                        field: 'cumulativeGiftBoxAmount',
-                        width: 150,
-                        title: '累计礼盒配套数',
-                        sort: true
-                    },
-                    {
-                        field: 'cartonAmount',
-                        width: 150,
-                        title: '纸箱数',
-                        sort: true
-                    },
-                    {
-                        field: 'paperSeparatorAmount',
-                        width: 150,
-                        title: '纸隔板数',
-                        sort: true
-                    },
-                    {
-                        field: 'cumulativePaperSeparatorAmount',
-                        width: 150,
-                        title: '累计纸隔板数',
-                        sort: true
-                    },
-                    {
-                        field: 'deliveryType',
-                        width: 150,
-                        title: '交货计划类型',
-                        sort: true
-                    },
-                    {
-                        title: '操作',
-                        minWidth: 150,
-                        toolbar: '#deliveryPlanTableBar',
-                        align: "center"
-                    }
-                    ]
+                    {type: "checkbox", width: 50},
+                    {field: 'serialNumber', width: 120, title: '序号', sort: true},
+                    {field: 'inComingDate', width: 120, title: '日期', sort: true},
+                    {field: 'blueIslandMaterielNumber', width: 120, title: '蓝岸料号', sort: true},
+                    {field: 'supplierMaterielNumber', width: 120, title: '供应商料号编码', sort: true},
+                    {field: 'materielName', width: 120, title: '物料名称', sort: true},
+                    {field: 'description', width: 120, title: '描述', sort: true},
+                    {field: 'goodProducts', width: 120, title: '良品数', sort: true},
+                    {field: 'badProducts', width: 120, title: '不良品数', sort: true},
+                    {field: 'deliveryOrderNumber', width: 120, title: '送货单号', sort: true},
+                    {field: 'deliveryManufacturerCheck', width: 120, title: '交货厂商核对', sort: true},
+                    {field: 'blueIslandOrderNumber', width: 120, title: '蓝岸订单号', sort: true},
+                    {title: '操作', minWidth: 150, toolbar: '#materielFromSupplierTableBar', align: "center"}
                 ]
+            ]
         });
 
         /**
          * toolbar监听事件
          */
-        table.on('toolbar(deliveryPlanTableFilter)', function (obj) {
+        table.on('toolbar(materielFromSupplierTableFilter)', function (obj) {
             if (obj.event === 'add') {  // 监听添加操作
                 //示范一个公告层
                 layer.open({
@@ -105,7 +46,7 @@ $(document).ready(function () {
                     , btn: ['确定', '取消']
                     , btnAlign: 'c'//按钮排列：居中对齐
                     , moveType: 1 //拖拽模式，0或者1
-                    , content: '/backstage/manager/deliveryPlan/form/add'//跳转到想要的界面，这里是我自己项目的跳转界面
+                    , content: '/backstage/manager/materielFromSupplier/form/add'//跳转到想要的界面，这里是我自己项目的跳转界面
                     ,
                     btn1: function () {
                         alert("确定")
@@ -117,11 +58,11 @@ $(document).ready(function () {
 
                 })
             } else if (obj.event === 'delete') {  // 监听删除操作
-                var checkStatus = table.checkStatus('deliveryPlanTableList')
+                var checkStatus = table.checkStatus('materielFromSupplierTableList')
                     , data = checkStatus.data;
                 layer.alert(JSON.stringify(data));
             } else if (obj.event === 'exportFile') {  // 监听导出操作
-                downloadFile('/backstage/manager/deliveryPlan/export')
+                downloadFile('/backstage/manager/materielFromSupplier/export')
             } else if (obj.event === 'importFile') {  // 监听导入操作
                 //弹出一个小框框，选择文件
                 layer.open({
@@ -132,11 +73,11 @@ $(document).ready(function () {
                     content: "/backstage/common/importHtml",
                     btn: ['下载模板', '确定', '关闭'],
                     btn1: function (index, layero) {
-                        downloadFile('/backstage/manager/deliveryPlan/import/template');
+                        downloadFile('/backstage/manager/materielFromSupplier/import/template');
                     },
                     btn2: function (index, layero) {
                         var iframeWin = layero.find('iframe')[0]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
-                        iframeWin.contentWindow.importExcel('/backstage/manager/deliveryPlan/import', function (data) {
+                        iframeWin.contentWindow.importExcel('/backstage/manager/materielFromSupplier/import', function (data) {
                             if (data.success) {
                                 layer.success(data.msg);
                                 refresh();
@@ -156,11 +97,11 @@ $(document).ready(function () {
         });
 
         //表格数据工具栏监听器
-        table.on('checkbox(deliveryPlanTableFilter)', function (obj) {
+        table.on('checkbox(materielFromSupplierTableFilter)', function (obj) {
             console.log(obj)
         });
 
-        table.on('tool(deliveryPlanTableFilter)', function (obj) {
+        table.on('tool(materielFromSupplierTableFilter)', function (obj) {
             var data = obj.data;
             if (obj.event === 'follow') {
 

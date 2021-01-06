@@ -34,7 +34,7 @@ public class OtherOutWarehouseController {
     }
 
     @ResponseBody
-    @GetMapping("/data")
+    @PostMapping("/data")
     public JsonResult<OtherOutWarehouse> data(OtherOutWarehouse otherOutWarehouse){
         JsonResult result = new JsonResult();
         List<OtherOutWarehouse> list = otherOutWarehouseService.findList(otherOutWarehouse);

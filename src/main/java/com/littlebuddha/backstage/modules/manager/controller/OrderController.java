@@ -34,7 +34,7 @@ public class OrderController {
     }
 
     @ResponseBody
-    @GetMapping("/data")
+    @PostMapping("/data")
     public JsonResult<Order> data(Order order,String materielNumber){
         System.out.println("接收到料号为"+order.getMaterielNumber());
         JsonResult result = new JsonResult();

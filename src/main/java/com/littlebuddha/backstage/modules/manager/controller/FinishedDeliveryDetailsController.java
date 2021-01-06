@@ -34,7 +34,7 @@ public class FinishedDeliveryDetailsController {
     }
 
     @ResponseBody
-    @GetMapping("/data")
+    @PostMapping("/data")
     public JsonResult<FinishedDeliveryDetails> data(FinishedDeliveryDetails finishedDeliveryDetails){
         JsonResult result = new JsonResult();
         List<FinishedDeliveryDetails> list = finishedDeliveryDetailsService.findList(finishedDeliveryDetails);

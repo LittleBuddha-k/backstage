@@ -34,7 +34,7 @@ public class MaterielReturnFromManufacturerController {
     }
 
     @ResponseBody
-    @GetMapping("/data")
+    @PostMapping("/data")
     public JsonResult<MaterielReturnFromManufacturer> data(MaterielReturnFromManufacturer materielReturnFromManufacturer){
         JsonResult result = new JsonResult();
         List<MaterielReturnFromManufacturer> list = materielReturnFromManufacturerService.findList(materielReturnFromManufacturer);

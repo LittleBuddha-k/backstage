@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html"
+      xmlns:hidden="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>交货计划表单</title>
+    <link rel="stylesheet" href="/backstage/layui/lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="/backstage/layui/css/public.css" media="all">
+    <style>
+        .layui-btn:not(.layui-btn-lg ):not(.layui-btn-sm):not(.layui-btn-xs) {
+            height: 34px;
+            line-height: 34px;
+            padding: 0 8px;
+        }
+    </style>
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <form class="layui-form layui-form-pane" id="finishedDeliveryDetailsForm">
+            <input type="hidden" name="id" th:value="${finishedDeliveryDetails.getId()}">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">出库日期</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="deliveryDate" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">规格型号</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="specification" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">蓝岸完品编码</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="blueIslandFinishedProductCode" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">产品名称</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="productName" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">给捷荣的加工订单号</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="orderNumberForJierong" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">捷容送货单号</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="jierongDeliveryOrderNumber" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">出货数量</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="shipmentAmount" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">出货地址</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="shipmentAddress" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">接货人</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="receiver" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/backstage/layui/lib/jquery-3.4.1/jquery-3.4.1.min.js" charset="utf-8"></script>
+<script src="/backstage/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script src="/backstage/layui/js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+</body>
+</html>

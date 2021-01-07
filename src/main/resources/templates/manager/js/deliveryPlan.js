@@ -8,8 +8,17 @@ $(document).ready(function () {
         table.render({
             elem: '#deliveryPlanTableList',
             toolbar: '#toolbar',
+            defaultToolbar: ['filter', 'print', {
+                title: '提示' //标题
+                ,layEvent: 'LAYTABLE_TIPS' //事件名，用于 toolbar 事件中使用
+                ,icon: 'layui-icon-tips' //图标类名
+            }],
             url: '/backstage/manager/deliveryPlan/data', //数据接口
             method: 'post',
+            request: {
+            pageName: 'pageNumber', //页码的参数名称，默认：page
+            limitName: 'pageSize' //每页数据量的参数名，默认：limit
+            },
             page: true, //开启分页
             cols: [
                 [
@@ -183,6 +192,25 @@ $(document).ready(function () {
                     layer.close(index);
                 });
             }
+        });
+
+        // 监听搜索操作
+        form.on('submit(data-search-btn)', function (data) {
+            var result = JSON.stringify(data.field);
+            layer.alert(result, {
+                title: '最终的搜索信息'
+            });
+            //执行搜索重载
+            table.reload('currentTableId', {
+                page: {
+                    curr: 1
+                }
+                , where: {
+                    searchParams: result
+                }
+            }, 'data');
+
+            return false;
         });
     });
 

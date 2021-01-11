@@ -1,9 +1,7 @@
 package com.littlebuddha.backstage.modules.system.entity;
 
 import com.littlebuddha.backstage.common.base.DataEntity;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -12,31 +10,23 @@ import java.util.List;
  * @date 2020/7/7 9:31
  */
 public class Operator extends DataEntity<Operator> {
-    private String name;//姓名
-    private String password;//密码
-    private String salt;//盐值
-    private String picture;//图片
 
-    private String position;//职位
+    //基本信息
+    private String name;
+    private String login_name;
+    private String password;
+    private String picture;
+    private Department department;
+    private String workNumber;
+    private String loginFlag;
 
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private Date birthday;//出生日期
-
-    private String address;//地址
-    private String sex;//性别 性别 0-男 1-女
-    private String phone;//电话
-    private String email;//邮箱
-
-    private Integer usingStatus;//是否启用 0-未启用 1-已启用
-
-    //仅用于查询
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private Date beginDate;
-
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private Date endDate;
-
+    //角色
+    private Role role;
     private List<Role> roles;
+
+    //登錄ip
+    private String loginIp;
+    private String loginAddress;
 
     public String getName() {
         return name;
@@ -44,6 +34,14 @@ public class Operator extends DataEntity<Operator> {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getLogin_name() {
+        return login_name;
+    }
+
+    public void setLogin_name(String login_name) {
+        this.login_name = login_name;
     }
 
     public String getPassword() {
@@ -54,14 +52,6 @@ public class Operator extends DataEntity<Operator> {
         this.password = password;
     }
 
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-
     public String getPicture() {
         return picture;
     }
@@ -70,68 +60,36 @@ public class Operator extends DataEntity<Operator> {
         this.picture = picture;
     }
 
-    public Date getBirthday() {
-        return birthday;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
-    public String getAddress() {
-        return address;
+    public String getWorkNumber() {
+        return workNumber;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setWorkNumber(String workNumber) {
+        this.workNumber = workNumber;
     }
 
-    public String getSex() {
-        return sex;
+    public String getLoginFlag() {
+        return loginFlag;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setLoginFlag(String loginFlag) {
+        this.loginFlag = loginFlag;
     }
 
-    public String getPhone() {
-        return phone;
+    public Role getRole() {
+        return role;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Integer getUsingStatus() {
-        return usingStatus;
-    }
-
-    public void setUsingStatus(Integer usingStatus) {
-        this.usingStatus = usingStatus;
-    }
-
-    public Date getBeginDate() {
-        return beginDate;
-    }
-
-    public void setBeginDate(Date beginDate) {
-        this.beginDate = beginDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public List<Role> getRoles() {
@@ -140,5 +98,21 @@ public class Operator extends DataEntity<Operator> {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public String getLoginIp() {
+        return loginIp;
+    }
+
+    public void setLoginIp(String loginIp) {
+        this.loginIp = loginIp;
+    }
+
+    public String getLoginAddress() {
+        return loginAddress;
+    }
+
+    public void setLoginAddress(String loginAddress) {
+        this.loginAddress = loginAddress;
     }
 }

@@ -1,4 +1,4 @@
-package com.littlebuddha.backstage.common.base;
+package com.littlebuddha.backstage.modules.base;
 
 import java.util.List;
 

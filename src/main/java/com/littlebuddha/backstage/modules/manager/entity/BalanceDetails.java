@@ -1,7 +1,7 @@
 package com.littlebuddha.backstage.modules.manager.entity;
 
 import com.littlebuddha.backstage.common.anotations.ExcelField;
-import com.littlebuddha.backstage.common.base.DataEntity;
+import com.littlebuddha.backstage.modules.base.DataEntity;
 
 /**
  * 赛达信组装盘点汇总表

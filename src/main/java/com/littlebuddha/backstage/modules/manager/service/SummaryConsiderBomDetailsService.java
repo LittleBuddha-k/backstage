@@ -1,6 +1,6 @@
 package com.littlebuddha.backstage.modules.manager.service;
 
-import com.littlebuddha.backstage.common.base.CrudService;
+import com.littlebuddha.backstage.modules.base.CrudService;
 import com.littlebuddha.backstage.modules.manager.entity.SummaryConsiderBomDetails;
 import com.littlebuddha.backstage.modules.manager.mapper.SummaryConsiderBomDetailsMapper;
 import org.springframework.stereotype.Service;

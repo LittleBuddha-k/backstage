@@ -1,4 +1,4 @@
-package com.littlebuddha.backstage.common.base;
+package com.littlebuddha.backstage.modules.base;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

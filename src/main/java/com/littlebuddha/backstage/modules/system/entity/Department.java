@@ -1,6 +1,6 @@
 package com.littlebuddha.backstage.modules.system.entity;
 
-import com.littlebuddha.backstage.common.base.DataEntity;
+import com.littlebuddha.backstage.modules.base.DataEntity;
 
 import java.util.ArrayList;
 import java.util.List;

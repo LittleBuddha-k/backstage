@@ -1,6 +1,6 @@
 package com.littlebuddha.backstage.modules.manager.mapper;
 
-import com.littlebuddha.backstage.common.base.BaseMapper;
+import com.littlebuddha.backstage.modules.base.BaseMapper;
 import com.littlebuddha.backstage.modules.manager.entity.MaterielFromSupplier;
 import org.apache.ibatis.annotations.Mapper;
 

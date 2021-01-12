@@ -1,4 +1,4 @@
-package com.littlebuddha.backstage.common.base;
+package com.littlebuddha.backstage.modules.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.littlebuddha.backstage.common.utils.AutoId;

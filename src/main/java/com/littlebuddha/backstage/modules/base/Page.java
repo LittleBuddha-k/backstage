@@ -1,4 +1,4 @@
-package com.littlebuddha.backstage.common.base;
+package com.littlebuddha.backstage.modules.base;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

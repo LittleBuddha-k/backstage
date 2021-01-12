@@ -1,6 +1,6 @@
 package com.littlebuddha.backstage.modules.system.entity;
 
-import com.littlebuddha.backstage.common.base.DataEntity;
+import com.littlebuddha.backstage.modules.base.DataEntity;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class Operator extends DataEntity<Operator> {
     private String workNumber;
     private String loginFlag;
 
-    //角色
+    //角色---只當作外鍵存在
     private Role role;
     private List<Role> roles;
 

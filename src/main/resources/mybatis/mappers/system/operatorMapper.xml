@@ -4,32 +4,19 @@
     <sql id="operatorColumns">
         id AS "id",
         name AS "name",
+        login_name AS "loginName",
         password AS "password",
         salt AS "salt",
         picture AS "picture",
-        birthday AS "birthday",
-        address AS "address",
-        sex AS "sex",
-        age AS "age",
-        is_marry AS "isMarry",
-        hobby AS "hobby",
-        specialty AS "specialty",
-        primary_school AS "primarySchool",
-        middle_school AS "middleSchool",
-        high_school AS "highSchool",
-        university AS "university",
-        other_education AS "otherEducation",
-        skill AS "skill",
-        company AS "company.name",
-        resume AS "resume",
-        area AS "area.name",
-        phone AS "phone",
-        email AS "email",
+        department AS "department.id",
+        work_number AS "workNumber",
+        login_flag AS "loginFlag",
+        login_ip AS "loginIp",
+        login_address AS "loginAddress",
         create_by AS "createBy.id",
         create_date AS "createDate",
         update_by AS "updateBy.id",
         update_date AS "updateDate",
-        using_status AS "usingStatus",
         is_delete AS "isDelete",
         remarks AS "remarks"
     </sql>
@@ -65,30 +52,13 @@
             <if test="name != null and name != ''">
                 and a.name = #{name}
             </if>
-            <if test="birthday != null">
-                and a.birthday = #{birthday}
-            </if>
-            <if test="address != null and address != ''">
-                and a.address = #{address}
-            </if>
-            <if test="sex != null and sex != ''">
-                and a.sex = #{sex}
-            </if>
-            <if test="age != null and age != ''">
-                and a.age = #{age}
-            </if>
-            <if test="beginDate != null and endDate != null">
-                and a.create_date between = #{beginDate} and #{endDate}
-            </if>
         </where>
         <choose>
             <when test="page !=null and page.orderBy != null and page.orderBy != ''">
-                ORDER BY ${page.orderBy}
-                LIMIT #{page.start},#{page.length}
+
             </when>
             <otherwise>
-                ORDER BY a.create_date DESC
-                LIMIT #{page.start},#{page.length}
+
             </otherwise>
         </choose>
     </select>
@@ -99,10 +69,10 @@
         FROM system_operator a
         <choose>
             <when test="page !=null and page.orderBy != null and page.orderBy != ''">
-                ORDER BY ${page.orderBy}
+
             </when>
             <otherwise>
-                ORDER BY a.create_date DESC
+
             </otherwise>
         </choose>
     </select>
@@ -111,63 +81,37 @@
         INSERT INTO system_operator(
             id,
             name,
+            login_name,
             password,
             salt,
             picture,
-            birthday,
-            address,
-            sex,
-            age,
-            is_marry,
-            hobby,
-            specialty,
-            primary_school,
-            middle_school,
-            high_school,
-            university,
-            other_education,
-            skill,
-            company,
-            resume,
-            area,
-            phone,
-            email,
+            department,
+            work_number,
+            login_flag,
+            login_ip,
+            login_address,
             create_by,
             create_date,
             update_by,
             update_date,
-            using_status,
             is_delete,
             remarks
         )VALUES (
             #{id},
             #{name},
+            #{loginName},
             #{password},
             #{salt},
             #{picture},
-            #{birthday},
-            #{address},
-            #{sex},
-            #{age},
-            #{isMarry},
-            #{hobby},
-            #{specialty},
-            #{primarySchool},
-            #{middleSchool},
-            #{highSchool},
-            #{university},
-            #{otherEducation},
-            #{skill},
-            #{company.name},
-            #{resume},
-            #{area.name},
-            #{phone},
-            #{email},
+            #{department.id},
+            #{workNumber},
+            #{loginFlag},
+            #{loginIp},
+            #{loginAddress},
             #{createBy.id},
             #{createDate},
             #{updateBy.id},
             #{updateDate},
-            #{usingStatus},
             #{isDelete},
             #{remarks}
         )
@@ -176,32 +120,19 @@
     <update id="update">
         UPDATE system_operator SET
             name = #{name},
+            login_name = #{loginName},
             password = #{password},
             salt = #{salt},
             picture = #{picture},
-            birthday = #{birthday},
-            address = #{address},
-            sex = #{sex},
-            age = #{age},
-            is_marry = #{isMarry},
-            hobby = #{hobby},
-            specialty = #{specialty},
-            primary_school = #{primarySchool},
-            middle_school = #{middleSchool},
-            high_school = #{highSchool},
-            university = #{university},
-            other_education = #{otherEducation},
-            skill = #{skill},
-            company = #{company.name},
-            resume = #{resume},
-            area = #{area.name},
-            phone = #{phone},
-            email = #{email},
+            department = #{department.id},
+            work_number = #{workNumber},
+            login_flag = #{loginFlag},
+            login_ip = #{loginIp},
+            login_address = #{loginAddress},
             create_by = #{createBy.id},
             create_date = #{createDate},
             update_by = #{updateBy.id},
             update_date = #{updateDate},
-            using_status = #{usingStatus},
             is_delete = #{isDelete},
             remarks = #{remarks}
         WHERE id=#{id}

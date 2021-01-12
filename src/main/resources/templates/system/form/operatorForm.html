@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html"
+      xmlns:hidden="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>操作用戶表单</title>
+    <link rel="stylesheet" href="/backstage/layui/lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="/backstage/layui/css/public.css" media="all">
+    <style>
+        .layui-btn:not(.layui-btn-lg ):not(.layui-btn-sm):not(.layui-btn-xs) {
+            height: 34px;
+            line-height: 34px;
+            padding: 0 8px;
+        }
+    </style>
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <form class="layui-form layui-form-pane" id="operatorForm">
+            <input type="hidden" name="id" th:value="${operator.getId()}">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">用戶名稱</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="name" id="name" autocomplete="off"
+                               class="layui-input"
+                               th:value="${operator.getName()}">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">用戶登錄名</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="loginName" autocomplete="off"
+                               class="layui-input" th:value="${operator.getLoginName()}">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">部門</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="department.id" autocomplete="off" class="layui-input"
+                               th:value="${operator.getDepartment()}">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">工號</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="workNumber" autocomplete="off" class="layui-input"
+                               th:value="${operator.getWorkNumber()}">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/backstage/layui/lib/jquery-3.4.1/jquery-3.4.1.min.js" charset="utf-8"></script>
+<script src="/backstage/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script src="/backstage/layui/js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+</body>
+</html>

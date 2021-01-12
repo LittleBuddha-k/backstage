@@ -59,7 +59,7 @@ mybatis:
     map-underscore-to-camel-case: true
     # spring boot集成mybatis的方式打印sql
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-  mapper-locations: classpath:mybatis/mappers/*/*.xml
+  mapper-locations: classpath:mybatis/mappers/*/*Mapper.xml
 
 
 

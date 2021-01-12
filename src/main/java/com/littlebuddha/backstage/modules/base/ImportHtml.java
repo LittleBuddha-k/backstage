@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @date 2020/12/9 15:00
  */
 @Controller
-@RequestMapping("/common")
+@RequestMapping("/base")
 public class ImportHtml {
 
     @GetMapping("/importHtml")
     public String importHtml(){
 
-        return "common/importHtml";
+        return "base/importHtml";
     }
 }

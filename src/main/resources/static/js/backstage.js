@@ -5,12 +5,12 @@ function openSaveDialog(title,url,width,height) {
         auto = false;
     }
     top.layer.open({
-        type: 2,
-        area: [width, height],
+        type: 2,//使用iframe層
         title: title,
+        content: url,
+        area: [width, height],//窗口的寬高
         auto: auto,
         maxmin: true, //开启最大化最小化按钮
-        content: url,
         btn: ['确定', '关闭'],
         yes: function (index, layero) {
             var iframeWin = layero.find('iframe')[0]; //得到弹出的窗口对象，执行窗口内iframe页的方法：iframeWin.method();

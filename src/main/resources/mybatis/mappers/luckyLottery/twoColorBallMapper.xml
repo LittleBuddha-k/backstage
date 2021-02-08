@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.littlebuddha.backstage.modules.luckyLottery.mapper.TwoColorBallMapper">
+
+    <sql id="twoColorBallColumns">
+        a.id AS "id",
+        a.issue_number AS "issueNumber",
+        a.red_one AS "redOne",
+        a.red_two AS "redTwo",
+        a.red_three AS "redThree",
+        a.red_four AS "redFour",
+        a.red_five AS "redFive",
+        a.red_six AS "redSix",
+        a.blue_ball AS "blueBall",
+        a.happy_sunday AS "happySunday",
+        a.bonus_pool AS "bonusPool",
+        a.first_prize_winning_count AS "firstPrizeWinningCount",
+        a.first_prize_bonus AS "firstPrizeBonus",
+        a.second_prize_winning_count AS "secondPrizeWinningCount",
+        a.second_prize_bonus AS "secondPrizeBonus",
+        a.total_bets_money AS "totalBetsMoney",
+        a.draw_date AS "drawDate",
+        a.create_by AS "createBy.id",
+        a.create_date AS "createDate",
+        a.update_by AS "updateBy.id",
+        a.update_date AS "updateDate"
+    </sql>
+
+    <select id="get" resultType="com.littlebuddha.backstage.modules.luckyLottery.entity.TwoColorBall">
+        SELECT
+        <include refid="twoColorBallColumns"/>
+        FROM manager_lucky_lottery_two_color_ball a
+        WHERE a.id=#{id}
+    </select>
+
+    <select id="findList" resultType="com.littlebuddha.backstage.modules.luckyLottery.entity.TwoColorBall">
+        SELECT
+        <include refid="twoColorBallColumns"/>
+        FROM manager_lucky_lottery_two_color_ball a
+        <where>
+            a.del_flag = ${DEL_FLAG_NORMAL}
+            <if test="issueNumber != null and issueNumber != ''" >
+                and a.issue_number = #{issueNumber}
+            </if>
+        </where>
+        <choose>
+            <when test="page !=null and page != '' and limit !=null and limit != ''">
+                LIMIT #{page},#{limit}
+            </when>
+            <otherwise>
+                ORDER BY a.create_date DESC
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="findAllList" resultType="com.littlebuddha.backstage.modules.luckyLottery.entity.TwoColorBall">
+        SELECT
+        <include refid="twoColorBallColumns"/>
+        FROM manager_lucky_lottery_two_color_ball a
+    </select>
+
+    <select id="getTotalCount" resultType="int">
+        SELECT
+        Count(1)
+        FROM manager_lucky_lottery_two_color_ball a
+    </select>
+
+    <insert id="insert">
+        INSERT INTO manager_lucky_lottery_two_color_ball(
+            id,
+            issue_number,
+            red_one,
+            red_two,
+            red_three,
+            red_four,
+            red_five,
+            red_six,
+            blue_ball,
+            happy_sunday,
+            bonus_pool,
+            first_prize_winning_count,
+            first_prize_bonus,
+            second_prize_winning_count,
+            second_prize_bonus,
+            total_bets_money,
+            draw_date,
+            create_by,
+            create_date,
+            update_by,
+            update_date
+        )VALUES (
+            #{id},
+            #{issueNumber},
+            #{redOne},
+            #{redTwo},
+            #{redThree},
+            #{redFour},
+            #{redFive},
+            #{redSix},
+            #{blueBall},
+            #{happySunday},
+            #{bonusPool},
+            #{firstPrizeWinningCount},
+            #{firstPrizeBonus},
+            #{secondPrizeWinningCount},
+            #{secondPrizeBonus},
+            #{totalBetsMoney},
+            #{drawDate},
+            #{createBy.id},
+            #{createDate},
+            #{updateBy.id},
+            #{updateDate}
+        )
+    </insert>
+
+    <update id="update">
+        UPDATE manager_lucky_lottery_two_color_ball SET
+        issue_number = #{issueNumber},
+        red_one = #{redOne},
+        red_two = #{redTwo},
+        red_three = #{redThree},
+        red_four = #{redFour},
+        red_five = #{redFive},
+        red_six = #{redSix},
+        blue_ball = #{blueBall},
+        happy_sunday = #{happySunday},
+        bonus_pool = #{bonusPool},
+        first_prize_winning_count  = #{firstPrizeWinningCount},
+        first_prize_bonus  = #{firstPrizeBonus},
+        second_prize_winning_count  = #{secondPrizeWinningCount},
+        second_prize_bonus  = #{secondPrizeBonus},
+        total_bets_money  = #{totalBetsMoney},
+        draw_date  = #{drawDate},
+        create_by  = #{createBy.id},
+        create_date  = #{createDate},
+        update_by  = #{updateBy.id},
+        update_date = #{updateDate}
+        WHERE id=#{id}
+    </update>
+
+    <update id="recover">
+        UPDATE manager_lucky_lottery_two_color_ball SET is_delete = ${DEL_FLAG_NORMAL}
+        WHERE id=#{id}
+    </update>
+
+    <delete id="deleteByPhysics">
+        DELETE FROM manager_lucky_lottery_two_color_ball
+        WHERE id=#{id}
+    </delete>
+</mapper>

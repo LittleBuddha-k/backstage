@@ -303,12 +303,6 @@
           ]
         },
         {
-          "title": "统计列表",
-          "href": "/backstage/dataStatistics/page/list",
-          "icon": "fa fa-dot-circle-o",
-          "target": "_self"
-        },
-        {
           "title": "多级菜单",
           "href": "",
           "icon": "fa fa-meetup",
@@ -348,6 +342,20 @@
           "title": "失效菜单",
           "href": "/backstage/page/error.html",
           "icon": "fa fa-superpowers",
+          "target": "_self"
+        }
+      ]
+    },
+    {
+      "title": "福彩信息",
+      "icon": "fa fa-dot-circle-o",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "雙色球信息",
+          "href": "/backstage/luckyLottery/twoColorBall",
+          "icon": "fa fa-snowflake-o",
           "target": "_self"
         }
       ]

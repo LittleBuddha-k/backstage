@@ -21,13 +21,13 @@
 </div>
 <script src="/backstage/layui/lib/jquery-3.4.1/jquery-3.4.1.min.js" charset="utf-8"></script>
 <script src="/backstage/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
-<script src="/backstage/layui/js/backstage/backstage.js" charset="utf-8"></script>
+<script src="/backstage/js/backstage.js" charset="utf-8"></script>
 <script>
     function importExcel(url, fn) {
         var importForm =$("#importForm")[0];
         var data = new FormData(importForm);
         $.ajax({
-            url:'/backstage/manager/deliveryPlan/import',
+            url:url,
             type:'post',
             data:data,  // 直接丢对象
             // ajax传文件 一定要指定两个关键性的参数

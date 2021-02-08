@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html"
+      xmlns:hidden="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>交货计划表单</title>
+    <link rel="stylesheet" href="/backstage/layui/lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="/backstage/layui/css/public.css" media="all">
+    <style>
+        .layui-btn:not(.layui-btn-lg ):not(.layui-btn-sm):not(.layui-btn-xs) {
+            height: 34px;
+            line-height: 34px;
+            padding: 0 8px;
+        }
+    </style>
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <form class="layui-form layui-form-pane" id="twoColorBallForm">
+            <input type="hidden" name="id" th:value="${twoColorBall.getId()}">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">交货日期</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="deliveryDate" autocomplete="off" class="layui-input" th:value="${twoColorBall.getDeliveryDate()}">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">交货数量</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="deliveryAmount" autocomplete="off" class="layui-input" th:value="${twoColorBall.getDeliveryAmount()}">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">累计交货数量</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="cumulativeDeliveryAmount" autocomplete="off" class="layui-input" th:value="${twoColorBall.getCumulativeDeliveryAmount()}">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">进货日期</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="inComingMaterielDate" autocomplete="off" class="layui-input" th:value="${twoColorBall.getInComingMaterielDate()}">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">礼盒配套数</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="giftBoxAmount" autocomplete="off" class="layui-input" th:value="${twoColorBall.getGiftBoxAmount()}">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">累计礼盒配套数</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="cumulativeGiftBoxAmount" autocomplete="off" class="layui-input" th:value="${twoColorBall.getCumulativeGiftBoxAmount()}">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">纸箱数</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="cartonAmount" autocomplete="off" class="layui-input" th:value="${twoColorBall.getCartonAmount()}">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">纸隔板数</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="paperSeparatorAmount" autocomplete="off" class="layui-input" th:value="${twoColorBall.getPaperSeparatorAmount()}">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">累计纸隔板数</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="cumulativePaperSeparatorAmount" autocomplete="off" class="layui-input" th:value="${twoColorBall.getCumulativePaperSeparatorAmount()}">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">交货类型</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="deliveryType" autocomplete="off" class="layui-input" th:value="${twoColorBall.getDeliveryType()}">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/backstage/layui/lib/jquery-3.4.1/jquery-3.4.1.min.js" charset="utf-8"></script>
+<script src="/backstage/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script src="/backstage/layui/js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+</body>
+</html>

@@ -8,7 +8,6 @@ import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * swagger配置类
@@ -16,7 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @date 2021/2/23 10:35
  */
 @Configuration
-@EnableSwagger2
+/*@EnableSwagger2*/
 public class SwaggerConfig {
     @Bean
     public Docket createRestApi(){

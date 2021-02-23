@@ -10,14 +10,14 @@ $(document).ready(function () {
             toolbar: '#toolbar',
             defaultToolbar: ['filter', 'print', {
                 title: '提示' //标题
-                ,layEvent: 'LAYTABLE_TIPS' //事件名，用于 toolbar 事件中使用
-                ,icon: 'layui-icon-tips' //图标类名
+                , layEvent: 'LAYTABLE_TIPS' //事件名，用于 toolbar 事件中使用
+                , icon: 'layui-icon-tips' //图标类名
             }],
             url: '/backstage/luckyLottery/twoColorBall/data', //数据接口
             method: 'post',
             request: {
-            pageName: 'pageNumber', //页码的参数名称，默认：page
-            limitName: 'pageSize' //每页数据量的参数名，默认：limit
+                pageName: 'pageNumber', //页码的参数名称，默认：page
+                limitName: 'pageSize' //每页数据量的参数名，默认：limit
             },
             page: true, //开启分页
             cols: [
@@ -121,7 +121,9 @@ $(document).ready(function () {
                         width: 150,
                         title: '開獎日期',
                         sort: true,
-                        templet:function(twoColorBall){return dateTimeFormat(twoColorBall.drawDate);}
+                        templet: function (twoColorBall) {
+                            return dateTimeFormat(twoColorBall.drawDate);
+                        }
                     },
                     {
                         title: '操作',
@@ -129,8 +131,8 @@ $(document).ready(function () {
                         toolbar: '#twoColorBallTableBar',
                         align: "center"
                     }
-                    ]
                 ]
+            ]
         });
 
         /**

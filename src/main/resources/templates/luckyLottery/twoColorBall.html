@@ -21,69 +21,68 @@
                 <form class="layui-form layui-form-pane" id="searchForm">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">交货数量</label>
+                            <label class="layui-form-label">期號</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="deliveryAmount" id="deliveryAmount" autocomplete="off"
+                                <input type="text" name="issueNumber" id="issueNumber" autocomplete="off"
                                        class="layui-input"
-                                       th:value="${twoColorBall}">
+                                       th:value="${twoColorBall.getIssueNumber()}">
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">累计交货数量</label>
+                            <label class="layui-form-label">一號紅球</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="cumulativeDeliveryAmount" autocomplete="off"
-                                       class="layui-input" th:value="${twoColorBall}">
+                                <input type="text" name="redOne" autocomplete="off"
+                                       class="layui-input" th:value="${twoColorBall.getRedOne()}">
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">礼盒配套数</label>
+                            <label class="layui-form-label">二號紅球</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="giftBoxAmount" autocomplete="off" class="layui-input"
-                                       th:value="${twoColorBall}">
+                                <input type="text" name="redTwo" autocomplete="off" class="layui-input"
+                                       th:value="${twoColorBall.getRedTwo()}">
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">累计礼盒配套数</label>
+                            <label class="layui-form-label">三號紅球</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="cumulativeGiftBoxAmount" autocomplete="off" class="layui-input"
-                                       th:value="${twoColorBall}">
+                                <input type="text" name="redThree" autocomplete="off" class="layui-input"
+                                       th:value="${twoColorBall.getRedThree()}">
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">纸箱数</label>
+                            <label class="layui-form-label">四號紅球</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="cartonAmount" autocomplete="off" class="layui-input"
-                                       th:value="${twoColorBall}">
+                                <input type="text" name="redFour" autocomplete="off" class="layui-input"
+                                       th:value="${twoColorBall.getRedFour()}">
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">纸隔板数</label>
+                            <label class="layui-form-label">五號紅球</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="paperSeparatorAmount" autocomplete="off" class="layui-input"
-                                       th:value="${twoColorBall}">
+                                <input type="text" name="redFive" autocomplete="off" class="layui-input"
+                                       th:value="${twoColorBall.getRedFive()}">
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">累计纸隔板数</label>
+                            <label class="layui-form-label">六號紅球</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="cumulativePaperSeparatorAmount" autocomplete="off"
+                                <input type="text" name="redSix" autocomplete="off"
                                        class="layui-input"
-                                       th:value="${twoColorBall}">
+                                       th:value="${twoColorBall.getRedSix()}">
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">交货类型</label>
+                            <label class="layui-form-label">藍球</label>
                             <div class="layui-input-inline">
-                                <select name="deliveryType" lay-filter="aihao"
-                                        th:value="${twoColorBall}">
-                                    <option value=""></option>
-                                    <option value="lite">lite</option>
-                                    <option value="plus">plus</option>
-                                </select>
+                                <input type="text" name="blueBall" autocomplete="off"
+                                       class="layui-input"
+                                       th:value="${twoColorBall.getBlueBall()}">
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <button type="button" class="layui-btn layui-btn-primary" id="search" lay-submit lay-filter="data-search-btn"> 搜 索</button>
+                            <button type="button" class="layui-btn layui-btn-primary" id="search" lay-submit
+                                    lay-filter="data-search-btn"> 搜 索
+                            </button>
                         </div>
                         <div class="layui-inline">
                             <button type="reset" class="layui-btn layui-btn-primary"> 重 置</button>

@@ -45,10 +45,10 @@
         </where>
         <choose>
             <when test="page !=null and page != '' and limit !=null and limit != ''">
-                LIMIT #{page},#{limit}
+                ORDER BY a.issue_number DESC
             </when>
             <otherwise>
-                ORDER BY a.create_date DESC
+                ORDER BY a.issue_number DESC
             </otherwise>
         </choose>
     </select>

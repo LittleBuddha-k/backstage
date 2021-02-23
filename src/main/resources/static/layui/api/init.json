@@ -359,6 +359,12 @@
           "target": "_self"
         }
       ]
+    },
+    {
+      "title": "贴吧",
+      "icon": "fa fa-dot-circle-o",
+      "href": "/backstage/postBar",
+      "target": "_self"
     }
   ]
 }

@@ -60,6 +60,12 @@ mybatis:
     # spring boot集成mybatis的方式打印sql
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath:mybatis/mappers/*/*Mapper.xml
+# pagehelper
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
 
 
 

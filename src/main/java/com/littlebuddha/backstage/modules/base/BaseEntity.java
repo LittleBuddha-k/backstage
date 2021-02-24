@@ -1,6 +1,7 @@
 package com.littlebuddha.backstage.modules.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.github.pagehelper.Page;
 import com.littlebuddha.backstage.common.utils.UserUtils;
 import com.littlebuddha.backstage.modules.entity.system.Operator;
 

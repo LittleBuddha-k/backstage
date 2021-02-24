@@ -1,8 +1,8 @@
 package com.littlebuddha.backstage.modules.service.lockylottery;
 
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import com.littlebuddha.backstage.modules.base.CrudService;
-import com.littlebuddha.backstage.modules.base.Page;
 import com.littlebuddha.backstage.modules.entity.luckylottery.TwoColorBall;
 import com.littlebuddha.backstage.modules.mapper.lockylottery.TwoColorBallMapper;
 import org.springframework.stereotype.Service;

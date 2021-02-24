@@ -1,12 +1,12 @@
 package com.littlebuddha.backstage.modules.controller.luckylottery;
 
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import com.google.common.collect.Lists;
 import com.littlebuddha.backstage.common.excel.ExportExcel;
 import com.littlebuddha.backstage.common.excel.ImportExcel;
 import com.littlebuddha.backstage.common.utils.resultresponse.JsonResult;
 import com.littlebuddha.backstage.modules.base.BaseController;
-import com.littlebuddha.backstage.modules.base.Page;
 import com.littlebuddha.backstage.modules.entity.luckylottery.TwoColorBall;
 import com.littlebuddha.backstage.modules.service.lockylottery.TwoColorBallService;
 import org.springframework.beans.factory.annotation.Autowired;

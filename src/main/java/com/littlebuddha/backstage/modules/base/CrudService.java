@@ -1,5 +1,6 @@
 package com.littlebuddha.backstage.modules.base;
 
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -124,8 +125,8 @@ public abstract class CrudService<E extends DataEntity,M extends BaseMapper<E>> 
      * @param entity
      * @return
      */
-    public PageInfo<E> findPage(Page<E> page,E entity){
-        PageHelper.startPage(entity.getPage().getPageNumber(),entity.getPage().getPageSize());
+    public PageInfo<E> findPage(Page<E> page, E entity){
+        PageHelper.startPage(entity.getPage().getPageNum(),entity.getPage().getPageSize());
         entity.setPage(page);
         List<E> list = mapper.findList(entity);
         PageInfo<E> pageInfo = new PageInfo<E>(list);

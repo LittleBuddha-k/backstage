@@ -16,7 +16,7 @@ $(document).ready(function () {
             url: '/backstage/luckyLottery/twoColorBall/data', //数据接口
             method: 'post',
             request: {
-                pageName: 'page.pageNumber', //页码的参数名称，默认：page
+                pageName: 'page.pageNum', //页码的参数名称，默认：page
                 limitName: 'page.pageSize' //每页数据量的参数名，默认：limit
             },
             page: true, //开启分页

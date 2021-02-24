@@ -1,9 +1,9 @@
 package com.littlebuddha.backstage.common.config.shiro.realms;
 
-import com.littlebuddha.backstage.modules.system.entity.Operator;
-import com.littlebuddha.backstage.modules.system.mapper.MenuMapper;
-import com.littlebuddha.backstage.modules.system.mapper.OperatorMapper;
-import com.littlebuddha.backstage.modules.system.mapper.RoleMapper;
+import com.littlebuddha.backstage.modules.entity.system.Operator;
+import com.littlebuddha.backstage.modules.mapper.system.MenuMapper;
+import com.littlebuddha.backstage.modules.mapper.system.OperatorMapper;
+import com.littlebuddha.backstage.modules.mapper.system.RoleMapper;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;

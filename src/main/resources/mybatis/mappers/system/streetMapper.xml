@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.littlebuddha.backstage.modules.system.mapper.StreetMapper">
+<mapper namespace="com.littlebuddha.backstage.modules.mapper.system.StreetMapper">
     <sql id="streetColumns">
         id AS "id",
         code AS "code",
@@ -17,21 +17,21 @@
         tenant_code AS "tenantCode"
     </sql>
 
-    <select id="get" resultType="com.littlebuddha.backstage.modules.system.entity.Street">
+    <select id="get" resultType="com.littlebuddha.backstage.modules.entity.system.Street">
         SELECT
         <include refid="streetColumns"/>
         FROM system_street
         WHERE area_code=#{areaCode}
     </select>
 
-    <select id="findByAreaCode" resultType="com.littlebuddha.backstage.modules.system.entity.Street">
+    <select id="findByAreaCode" resultType="com.littlebuddha.backstage.modules.entity.system.Street">
         SELECT
         <include refid="streetColumns"/>
         FROM system_street
         WHERE id=#{id}
     </select>
 
-    <select id="findList" resultType="com.littlebuddha.backstage.modules.system.entity.Street">
+    <select id="findList" resultType="com.littlebuddha.backstage.modules.entity.system.Street">
         SELECT
         <include refid="streetColumns"/>
         FROM system_street a
@@ -59,7 +59,7 @@
         </choose>
     </select>
 
-    <select id="findAllList" resultType="com.littlebuddha.backstage.modules.system.entity.Street">
+    <select id="findAllList" resultType="com.littlebuddha.backstage.modules.entity.system.Street">
         SELECT
         <include refid="streetColumns"/>
         FROM system_street a

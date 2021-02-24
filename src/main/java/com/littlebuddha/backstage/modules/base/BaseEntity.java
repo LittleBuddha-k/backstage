@@ -2,7 +2,7 @@ package com.littlebuddha.backstage.modules.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.littlebuddha.backstage.common.utils.UserUtils;
-import com.littlebuddha.backstage.modules.system.entity.Operator;
+import com.littlebuddha.backstage.modules.entity.system.Operator;
 
 import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;

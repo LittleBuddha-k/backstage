@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.littlebuddha.backstage.modules.manager.mapper.BalanceDetailsMapper">
+<mapper namespace="com.littlebuddha.backstage.modules.mapper.manager.BalanceDetailsMapper">
 
     <sql id="balanceDetailsColumns">
         a.id AS "id",
@@ -38,14 +38,14 @@
         a.update_date AS "updateDate"
     </sql>
 
-    <select id="get" resultType="com.littlebuddha.backstage.modules.manager.entity.BalanceDetails">
+    <select id="get" resultType="com.littlebuddha.backstage.modules.entity.manager.BalanceDetails">
         SELECT
         <include refid="balanceDetailsColumns"/>
         FROM manager_balance_details a
         WHERE a.id=#{id}
     </select>
 
-    <select id="findList" resultType="com.littlebuddha.backstage.modules.manager.entity.BalanceDetails">
+    <select id="findList" resultType="com.littlebuddha.backstage.modules.entity.manager.BalanceDetails">
         SELECT
         <include refid="balanceDetailsColumns"/>
         FROM manager_balance_details a
@@ -59,7 +59,7 @@
         </choose>
     </select>
 
-    <select id="findAllList" resultType="com.littlebuddha.backstage.modules.manager.entity.BalanceDetails">
+    <select id="findAllList" resultType="com.littlebuddha.backstage.modules.entity.manager.BalanceDetails">
         SELECT
         <include refid="balanceDetailsColumns"/>
         FROM manager_balance_details a

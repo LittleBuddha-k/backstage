@@ -1,12 +1,12 @@
 package com.littlebuddha.backstage;
 
-import com.littlebuddha.backstage.modules.system.entity.Area;
-import com.littlebuddha.backstage.modules.system.entity.Menu;
-import com.littlebuddha.backstage.modules.system.entity.Operator;
-import com.littlebuddha.backstage.modules.system.mapper.AreaMapper;
-import com.littlebuddha.backstage.modules.system.mapper.MenuMapper;
-import com.littlebuddha.backstage.modules.system.mapper.OperatorMapper;
-import com.littlebuddha.backstage.modules.system.mapper.ProvinceMapper;
+import com.littlebuddha.backstage.modules.entity.system.Area;
+import com.littlebuddha.backstage.modules.entity.system.Menu;
+import com.littlebuddha.backstage.modules.entity.system.Operator;
+import com.littlebuddha.backstage.modules.mapper.system.AreaMapper;
+import com.littlebuddha.backstage.modules.mapper.system.MenuMapper;
+import com.littlebuddha.backstage.modules.mapper.system.OperatorMapper;
+import com.littlebuddha.backstage.modules.mapper.system.ProvinceMapper;
 import com.littlebuddha.backstage.test.Person;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

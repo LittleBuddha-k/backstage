@@ -1,7 +1,7 @@
 package com.littlebuddha.backstage.common.utils;
 
-import com.littlebuddha.backstage.modules.system.entity.Menu;
-import com.littlebuddha.backstage.modules.system.entity.Operator;
+import com.littlebuddha.backstage.modules.entity.system.Menu;
+import com.littlebuddha.backstage.modules.entity.system.Operator;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.UnavailableSecurityManagerException;
 import org.apache.shiro.session.InvalidSessionException;

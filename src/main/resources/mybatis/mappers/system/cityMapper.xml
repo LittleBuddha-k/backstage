@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.littlebuddha.backstage.modules.system.mapper.CityMapper">
+<mapper namespace="com.littlebuddha.backstage.modules.mapper.system.CityMapper">
     <sql id="cityColumns">
         id AS "id",
         code AS "code",
@@ -17,21 +17,21 @@
         tenant_code AS "tenantCode"
     </sql>
 
-    <select id="get" resultType="com.littlebuddha.backstage.modules.system.entity.City">
+    <select id="get" resultType="com.littlebuddha.backstage.modules.entity.system.City">
         SELECT
         <include refid="cityColumns"/>
         FROM system_city
         WHERE id=#{id}
     </select>
 
-    <select id="findByProvinceCode" resultType="com.littlebuddha.backstage.modules.system.entity.City">
+    <select id="findByProvinceCode" resultType="com.littlebuddha.backstage.modules.entity.system.City">
         SELECT
         <include refid="cityColumns"/>
         FROM system_city
         WHERE province_code=#{provinceCode}
     </select>
 
-    <select id="findList" resultType="com.littlebuddha.backstage.modules.system.entity.City">
+    <select id="findList" resultType="com.littlebuddha.backstage.modules.entity.system.City">
         SELECT
         <include refid="cityColumns"/>
         FROM system_city a
@@ -59,7 +59,7 @@
         </choose>
     </select>
 
-    <select id="findAllList" resultType="com.littlebuddha.backstage.modules.system.entity.City">
+    <select id="findAllList" resultType="com.littlebuddha.backstage.modules.entity.system.City">
         SELECT
         <include refid="cityColumns"/>
         FROM system_city a

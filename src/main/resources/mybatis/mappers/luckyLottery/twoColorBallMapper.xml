@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.littlebuddha.backstage.modules.luckyLottery.mapper.TwoColorBallMapper">
+<mapper namespace="com.littlebuddha.backstage.modules.mapper.lockylottery.TwoColorBallMapper">
 
     <sql id="twoColorBallColumns">
         a.id AS "id",
@@ -26,14 +26,14 @@
         a.update_date AS "updateDate"
     </sql>
 
-    <select id="get" resultType="com.littlebuddha.backstage.modules.luckyLottery.entity.TwoColorBall">
+    <select id="get" resultType="com.littlebuddha.backstage.modules.entity.luckylottery.TwoColorBall">
         SELECT
         <include refid="twoColorBallColumns"/>
         FROM manager_lucky_lottery_two_color_ball a
         WHERE a.id=#{id}
     </select>
 
-    <select id="findList" resultType="com.littlebuddha.backstage.modules.luckyLottery.entity.TwoColorBall">
+    <select id="findList" resultType="com.littlebuddha.backstage.modules.entity.luckylottery.TwoColorBall">
         SELECT
         <include refid="twoColorBallColumns"/>
         FROM manager_lucky_lottery_two_color_ball a
@@ -53,7 +53,7 @@
         </choose>
     </select>
 
-    <select id="findAllList" resultType="com.littlebuddha.backstage.modules.luckyLottery.entity.TwoColorBall">
+    <select id="findAllList" resultType="com.littlebuddha.backstage.modules.entity.luckylottery.TwoColorBall">
         SELECT
         <include refid="twoColorBallColumns"/>
         FROM manager_lucky_lottery_two_color_ball a

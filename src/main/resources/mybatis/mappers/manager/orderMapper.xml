@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.littlebuddha.backstage.modules.manager.mapper.OrderMapper">
+<mapper namespace="com.littlebuddha.backstage.modules.mapper.manager.OrderMapper">
 
     <sql id="orderColumns">
         a.id AS "id",
@@ -37,14 +37,14 @@
         a.update_date AS "updateDate"
     </sql>
 
-    <select id="get" resultType="com.littlebuddha.backstage.modules.manager.entity.Order">
+    <select id="get" resultType="com.littlebuddha.backstage.modules.entity.manager.Order">
         SELECT
         <include refid="orderColumns"/>
         FROM manager_order a
         WHERE a.id=#{id}
     </select>
 
-    <select id="findList" resultType="com.littlebuddha.backstage.modules.manager.entity.Order">
+    <select id="findList" resultType="com.littlebuddha.backstage.modules.entity.manager.Order">
         SELECT
         <include refid="orderColumns"/>
         FROM manager_order a
@@ -58,7 +58,7 @@
         </choose>
     </select>
 
-    <select id="findAllList" resultType="com.littlebuddha.backstage.modules.manager.entity.Order">
+    <select id="findAllList" resultType="com.littlebuddha.backstage.modules.entity.manager.Order">
         SELECT
         <include refid="orderColumns"/>
         FROM manager_order a

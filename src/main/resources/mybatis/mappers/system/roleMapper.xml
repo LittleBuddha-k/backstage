@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.littlebuddha.backstage.modules.system.mapper.RoleMapper">
+<mapper namespace="com.littlebuddha.backstage.modules.mapper.system.RoleMapper">
     <sql id="roleColumns">
         id AS "id",
         name AS "name",
@@ -14,7 +14,7 @@
         is_delete AS "isDelete"
     </sql>
 
-    <select id="get" resultType="com.littlebuddha.backstage.modules.system.entity.Role">
+    <select id="get" resultType="com.littlebuddha.backstage.modules.entity.system.Role">
         SELECT
         <include refid="roleColumns"/>
         FROM system_role a
@@ -26,7 +26,7 @@
         WHERE a.operator_id=#{id} AND a.role_id=b.id
     </select>
 
-    <select id="findList" resultType="com.littlebuddha.backstage.modules.system.entity.Role">
+    <select id="findList" resultType="com.littlebuddha.backstage.modules.entity.system.Role">
         SELECT
         <include refid="roleColumns"/>
         FROM system_role a
@@ -48,7 +48,7 @@
         </choose>
     </select>
 
-    <select id="findAllList" resultType="com.littlebuddha.backstage.modules.system.entity.Role">
+    <select id="findAllList" resultType="com.littlebuddha.backstage.modules.entity.system.Role">
         SELECT
         <include refid="roleColumns"/>
         FROM system_role a

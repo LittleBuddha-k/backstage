@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.littlebuddha.backstage.modules.manager.mapper.MaterielFromSupplierMapper">
+<mapper namespace="com.littlebuddha.backstage.modules.mapper.manager.MaterielFromSupplierMapper">
 
     <sql id="materielFromSupplierColumns">
         a.id AS "id",
@@ -22,14 +22,14 @@
         a.update_date AS "updateDate"
     </sql>
 
-    <select id="get" resultType="com.littlebuddha.backstage.modules.manager.entity.MaterielFromSupplier">
+    <select id="get" resultType="com.littlebuddha.backstage.modules.entity.manager.MaterielFromSupplier">
         SELECT
         <include refid="materielFromSupplierColumns"/>
         FROM manager_materiel_from_supplier a
         WHERE a.id=#{id}
     </select>
 
-    <select id="findList" resultType="com.littlebuddha.backstage.modules.manager.entity.MaterielFromSupplier">
+    <select id="findList" resultType="com.littlebuddha.backstage.modules.entity.manager.MaterielFromSupplier">
         SELECT
         <include refid="materielFromSupplierColumns"/>
         FROM manager_materiel_from_supplier a
@@ -43,7 +43,7 @@
         </choose>
     </select>
 
-    <select id="findAllList" resultType="com.littlebuddha.backstage.modules.manager.entity.MaterielFromSupplier">
+    <select id="findAllList" resultType="com.littlebuddha.backstage.modules.entity.manager.MaterielFromSupplier">
         SELECT
         <include refid="materielFromSupplierColumns"/>
         FROM manager_materiel_from_supplier a

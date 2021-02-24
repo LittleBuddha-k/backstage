@@ -24,7 +24,7 @@ public abstract class DataEntity<E> extends BaseEntity<E> implements Serializabl
     private Operator updateBy;
     private Date updateDate;
 
-    private Integer isDelete;//是否删除 0-未删除 1-已删除
+    private Integer delFlag;//是否删除 0-未删除 1-已删除
 
     private String remarks;
 
@@ -69,12 +69,12 @@ public abstract class DataEntity<E> extends BaseEntity<E> implements Serializabl
         this.updateDate = updateDate;
     }
 
-    public Integer getIsDelete() {
-        return isDelete;
+    public Integer getDelFlag() {
+        return delFlag;
     }
 
-    public void setIsDelete(Integer isDelete) {
-        this.isDelete = isDelete;
+    public void setDelFlag(Integer delFlag) {
+        this.delFlag = delFlag;
     }
 
     public String getRemarks() {

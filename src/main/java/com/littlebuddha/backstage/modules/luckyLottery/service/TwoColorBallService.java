@@ -1,6 +1,7 @@
 package com.littlebuddha.backstage.modules.luckyLottery.service;
 
 import com.littlebuddha.backstage.modules.base.CrudService;
+import com.littlebuddha.backstage.modules.base.Page;
 import com.littlebuddha.backstage.modules.luckyLottery.entity.TwoColorBall;
 import com.littlebuddha.backstage.modules.luckyLottery.mapper.TwoColorBallMapper;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,7 @@ public class TwoColorBallService extends CrudService<TwoColorBall, TwoColorBallM
     }
 
     @Override
-    public List<TwoColorBall> findAllList(TwoColorBall entity) {
-        return super.findAllList(entity);
+    public Page<TwoColorBall> findPage(Page<TwoColorBall> page, TwoColorBall entity) {
+        return super.findPage(page, entity);
     }
 }

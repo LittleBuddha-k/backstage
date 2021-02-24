@@ -24,11 +24,7 @@ public abstract class BaseEntity<E> implements Serializable {
      * 当前实体分页对象
      * @return
      */
-    private Page<E> pageObject;
-
-    private Integer page;
-
-    private Integer limit;
+    private Page<E> page;
 
     public String getId() {
         return id;
@@ -52,32 +48,16 @@ public abstract class BaseEntity<E> implements Serializable {
 
     @JsonIgnore
     @XmlTransient
-    public Page<E> getPageObject() {
-        if (pageObject == null){
-            pageObject = new Page<E>();
+    public Page<E> getPage() {
+        if (page == null){
+            page = new Page<E>();
         }
-        return pageObject;
-    }
-
-    public Page<E> setPageObject(Page<E> page) {
-        this.pageObject = page;
         return page;
     }
 
-    public Integer getPage() {
-        return page;
-    }
-
-    public void setPage(Integer page) {
+    public Page<E> setPage(Page<E> page) {
         this.page = page;
-    }
-
-    public Integer getLimit() {
-        return limit;
-    }
-
-    public void setLimit(Integer limit) {
-        this.limit = limit;
+        return page;
     }
 
     /**

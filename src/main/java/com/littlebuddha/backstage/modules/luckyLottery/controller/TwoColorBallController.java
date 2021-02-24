@@ -4,6 +4,8 @@ import com.google.common.collect.Lists;
 import com.littlebuddha.backstage.common.excel.ExportExcel;
 import com.littlebuddha.backstage.common.excel.ImportExcel;
 import com.littlebuddha.backstage.common.utils.resultresponse.JsonResult;
+import com.littlebuddha.backstage.modules.base.BaseController;
+import com.littlebuddha.backstage.modules.base.Page;
 import com.littlebuddha.backstage.modules.luckyLottery.entity.TwoColorBall;
 import com.littlebuddha.backstage.modules.luckyLottery.service.TwoColorBallService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
@@ -22,7 +25,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/luckyLottery/twoColorBall")
-public class TwoColorBallController {
+public class TwoColorBallController extends BaseController {
 
     @Autowired
     private TwoColorBallService twoColorBallService;
@@ -41,13 +44,9 @@ public class TwoColorBallController {
 
     @ResponseBody
     @PostMapping("/data")
-    public JsonResult data(TwoColorBall twoColorBall){
-        List<TwoColorBall> list = twoColorBallService.findList(twoColorBall);
-        JsonResult result = new JsonResult();
-        result.setCode(0);
-        result.setMsg("成功");
-        result.setData(list);
-        return result;
+    public JsonResult data(TwoColorBall twoColorBall, HttpServletRequest request,HttpServletResponse response){
+        Page<TwoColorBall> page = twoColorBallService.findPage(new Page<TwoColorBall>(), twoColorBall);
+        return getLayUiData(page);
     }
 
     @ResponseBody

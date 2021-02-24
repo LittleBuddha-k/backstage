@@ -44,7 +44,7 @@
             </if>
         </where>
         <choose>
-            <when test="page !=null and page != '' and limit !=null and limit != ''">
+            <when test="page !=null and page != ''">
                 ORDER BY a.issue_number DESC
             </when>
             <otherwise>

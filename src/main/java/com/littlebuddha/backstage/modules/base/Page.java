@@ -16,8 +16,8 @@ public class Page<E> {
     private Integer recordsFiltered;//总条数      recordsTotal和recordsFiltered必须都是总条数，不然分页只能是一页
     private List<E> data;//数据
 
-    private Integer start=0;
-    private Integer length=10;
+    private Integer pageNumber;
+    private Integer pageSize;
     private String orderBy = ""; // 标准查询有效， 实例： updatedate desc, name asc
 
     public Page() {
@@ -58,23 +58,23 @@ public class Page<E> {
         this.data = data;
     }
 
-    public Integer getStart() {
-        return start;
+    public Integer getPageNumber() {
+        return pageNumber;
     }
 
-    public void setStart(Integer start) {
-        this.start = start;
+    public void setPageNumber(Integer pageNumber) {
+        this.pageNumber = pageNumber;
     }
 
-    public Integer getLength() {
-        if(length == -1){
-            this.length = getRecordsTotal();
+    public Integer getPageSize() {
+        if(pageSize == -1){
+            this.pageSize = getRecordsTotal();
         }
-        return length;
+        return pageSize;
     }
 
-    public void setLength(Integer length) {
-        this.length = length;
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
     }
 
 

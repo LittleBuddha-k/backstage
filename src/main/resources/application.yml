@@ -66,6 +66,9 @@ pagehelper:
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
+#swagger属性配置
+swagger:
+  enabled: true
 
 
 

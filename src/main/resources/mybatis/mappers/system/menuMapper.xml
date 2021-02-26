@@ -3,22 +3,17 @@
 <mapper namespace="com.littlebuddha.backstage.modules.mapper.system.MenuMapper">
     <sql id="menuColumns">
         id AS "id",
-        name AS "name",
-        parent_id AS "parentId",
-        parent_ids AS "parentIds",
-        href AS "href",
-        is_show AS "isShow",
-        sort AS "sort",
-        menu_type AS "menuType",
-        permission AS "permission",
+        title AS "title",
         icon AS "icon",
+        href AS "href",
+        target AS "target",
         has_children AS "hasChildren",
         create_by AS "createBy.id",
         create_date AS "createDate",
         update_by AS "updateBy.id",
         update_date AS "updateDate",
         remarks AS "remarks",
-        is_delete AS "isDelete"
+        del_flag AS "delFlag"
     </sql>
 
     <select id="get" resultType="com.littlebuddha.backstage.modules.entity.system.Menu">

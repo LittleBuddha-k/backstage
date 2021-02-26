@@ -11,84 +11,19 @@ import java.util.List;
  */
 public class Menu extends DataEntity<Menu> {
 
-    private String name;
-    private String parentId;
-    private String parentIds;
-    private String href;
-    private Integer isShow;
-    private Integer sort;
-    private Integer menuType;
-    private String permission;
+    private String title;
     private String icon;
+    private String href;
+    private String target;
+    private boolean hasChildren;
+    private List<Menu> child;       //子集
 
-    private Operator operator;//外键  用于查询菜单列表的所属人的id
-
-    private Integer hasChildren;//是否存在子节点  0:无  1：有
-
-    private List<Menu> childrenMenus;//
-
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(String parentId) {
-        this.parentId = parentId;
-    }
-
-    public String getParentIds() {
-        return parentIds;
-    }
-
-    public void setParentIds(String parentIds) {
-        this.parentIds = parentIds;
-    }
-
-    public String getHref() {
-        return href;
-    }
-
-    public void setHref(String href) {
-        this.href = href;
-    }
-
-    public Integer getIsShow() {
-        return isShow;
-    }
-
-    public void setIsShow(Integer isShow) {
-        this.isShow = isShow;
-    }
-
-    public Integer getSort() {
-        return sort;
-    }
-
-    public void setSort(Integer sort) {
-        this.sort = sort;
-    }
-
-    public Integer getMenuType() {
-        return menuType;
-    }
-
-    public void setMenuType(Integer menuType) {
-        this.menuType = menuType;
-    }
-
-    public String getPermission() {
-        return permission;
-    }
-
-    public void setPermission(String permission) {
-        this.permission = permission;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getIcon() {
@@ -99,29 +34,35 @@ public class Menu extends DataEntity<Menu> {
         this.icon = icon;
     }
 
-
-
-    public Operator getOperator() {
-        return operator;
+    public String getHref() {
+        return href;
     }
 
-    public void setOperator(Operator operator) {
-        this.operator = operator;
+    public void setHref(String href) {
+        this.href = href;
     }
 
-    public Integer getHasChildren() {
+    public String getTarget() {
+        return target;
+    }
+
+    public void setTarget(String target) {
+        this.target = target;
+    }
+
+    public boolean isHasChildren() {
         return hasChildren;
     }
 
-    public void setHasChildren(Integer hasChildren) {
+    public void setHasChildren(boolean hasChildren) {
         this.hasChildren = hasChildren;
     }
 
-    public List<Menu> getChildrenMenus() {
-        return childrenMenus;
+    public List<Menu> getChild() {
+        return child;
     }
 
-    public void setChildrenMenus(List<Menu> childrenMenus) {
-        this.childrenMenus = childrenMenus;
+    public void setChild(List<Menu> child) {
+        this.child = child;
     }
 }

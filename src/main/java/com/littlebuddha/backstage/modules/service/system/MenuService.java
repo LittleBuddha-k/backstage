@@ -33,15 +33,8 @@ public class MenuService extends CrudService<Menu, MenuMapper> {
      * @return
      */
     public Menu findTheBiggestMenu(){
-        List<Menu> allMenus = super.findAllList(new Menu());
-        Menu theBiggestMenu = new Menu();
-        for (Menu menu : allMenus) {
-            if (menu.getParentId() == "0" || "0".equals(menu.getParentId())){
-                theBiggestMenu = menu;
-                break;
-            }
-        }
-        return theBiggestMenu;
+
+        return null;
     }
 
     /**

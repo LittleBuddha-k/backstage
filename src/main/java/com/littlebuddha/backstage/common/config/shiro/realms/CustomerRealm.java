@@ -13,6 +13,7 @@ import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -60,7 +61,8 @@ public class CustomerRealm extends AuthorizingRealm {
         //查询角色列表
         Set<String> roles = roleMapper.findRolesByOperator(principal);
         //查询权限列表
-        Set<String> permissions = menuMapper.findPermissionsByOperator(principal);
+        //Set<String> permissions = menuMapper.findPermissionsByOperator(principal);
+        Set<String> permissions = new HashSet<>();
         //todo查询权限,根据user的id查询权限表的权限
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
         //将上面查询到的权限列表赋值给SimpleAuthorizationInfo并返回

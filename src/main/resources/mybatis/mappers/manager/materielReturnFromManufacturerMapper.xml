@@ -32,8 +32,8 @@
         <include refid="materielReturnFromManufacturerColumns"/>
         FROM manager_materiel_return_from_manufacturer a
         <choose>
-            <when test="page !=null and page != '' and limit !=null and limit != ''">
-                LIMIT #{page},#{limit}
+            <when test="page !=null and page != ''">
+                ORDER BY ${page.orderBy}
             </when>
             <otherwise>
                 ORDER BY a.create_date DESC

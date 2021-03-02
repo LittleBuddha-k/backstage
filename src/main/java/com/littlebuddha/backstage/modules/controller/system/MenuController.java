@@ -24,7 +24,7 @@ public class MenuController {
     @GetMapping(value = {"", "/list"})
     public String list(Menu menu, Model model) {
         model.addAttribute("menu", menu);
-        return "system/Menu";
+        return "system/menu";
     }
 
     @ResponseBody

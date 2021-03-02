@@ -8,6 +8,12 @@
         href AS "href",
         target AS "target",
         has_children AS "hasChildren",
+        sort AS "sort",
+        parent AS "parent.id",
+        parent_ids AS "parentIds",
+        show_flag AS "showFlag",
+        type AS "type",
+        permission AS "permission",
         create_by AS "createBy.id",
         create_date AS "createDate",
         update_by AS "updateBy.id",
@@ -23,50 +29,23 @@
         WHERE id=#{id}
     </select>
 
-    <!--根据operatorid查询operator对应的权限-->
-    <select id="findPermissionsByOperator" resultType="java.lang.String">
-        SELECT DISTINCT a.permission FROM system_menu a,system_role_menu b,system_operator_role c
-        WHERE a.id=b.menu_id AND b.role_id=c.role_id
-        AND c.operator_id=#{id}
-    </select>
-
-    <select id="findMenuByOperator" resultType="com.littlebuddha.backstage.modules.entity.system.Menu">
-        SELECT
-        <include refid="menuColumns"/>
-        FROM system_menu a,system_role_menu b,system_operator_role c
-        <where>
-            a.id=b.menu_id AND b.role_id=c.role_id
-            <!-- 判断条件参数是否为空 -->
-            <if test="operator != null and operator != '' and operator.id != null and operator.id != ''">
-                and c.operator_id=#{operator.id}
-            </if>
-        </where>
-        <!-- 用分组去重多重身份的重复菜单 -->
-        GROUP BY a.name
-    </select>
-
     <select id="findList" resultType="com.littlebuddha.backstage.modules.entity.system.Menu">
         SELECT
         <include refid="menuColumns"/>
         FROM system_menu a
         <where>
-            a.is_delete = #{DEL_FLAG_NORMAL}
+            a.del_flag = #{DEL_FLAG_NORMAL}
             <!-- 判断条件参数是否为空 -->
-            <if test="name != null and name != ''">
+            <!--<if test="name != null and name != ''">
                 and a.name = #{name}
-            </if>
-            <if test="parentId != null and parentId != ''">
-                and a.parent_id = #{parentId}
-            </if>
+            </if>-->
         </where>
         <choose>
             <when test="page !=null and page.orderBy != null and page.orderBy != ''">
                 ORDER BY ${page.orderBy}
-                LIMIT #{page.start},#{page.length}
             </when>
             <otherwise>
-                ORDER BY a.create_date DESC
-                LIMIT #{page.start},#{page.length}
+                ORDER BY a.sort DESC
             </otherwise>
         </choose>
     </select>
@@ -76,93 +55,89 @@
         <include refid="menuColumns"/>
         FROM system_menu a
         <where>
-            a.is_delete = #{DEL_FLAG_NORMAL}
+            a.del_flag = #{DEL_FLAG_NORMAL}
         </where>
         <choose>
             <when test="page !=null and page.orderBy != null and page.orderBy != ''">
                 ORDER BY ${page.orderBy}
             </when>
             <otherwise>
-                ORDER BY a.create_date DESC
+                ORDER BY a.sort DESC
             </otherwise>
         </choose>
-    </select>
-
-    <select id="findByParentId" resultType="com.littlebuddha.backstage.modules.entity.system.Menu">
-        SELECT
-        <include refid="menuColumns"/>
-        FROM system_menu a
-        WHERE a.is_delete = #{DEL_FLAG_NORMAL} and a.parent_id = #{id}
     </select>
 
     <insert id="insert">
         INSERT INTO system_menu(
             id,
-            name,
-            parent_id,
-            parent_ids,
-            href,
-            is_show,
-            sort,
-            menu_type,
-            permission,
+            title,
             icon,
+            href,
+            target,
             has_children,
+            sort,
+            parent,
+            parent_ids,
+            show_flag,
+            type,
+            permission,
             create_by,
             create_date,
             update_by,
             update_date,
             remarks,
-            is_delete
+            del_flag
         )VALUES (
             #{id},
-            #{name},
-            #{parentId},
-            #{parentIds},
-            #{href},
-            #{isShow},
-            #{sort},
-            #{menuType},
-            #{permission},
+            #{title},
             #{icon},
+            #{href},
+            #{target},
             #{hasChildren},
+            #{sort},
+            #{parent.id},
+            #{parentIds},
+            #{showFlag},
+            #{type},
+            #{permission},
             #{createBy.id},
             #{createDate},
             #{updateBy.id},
             #{updateDate},
             #{remarks},
-            #{isDelete}
+            #{delFlag}
         )
     </insert>
 
     <update id="update">
         UPDATE system_menu SET
-            name = #{name},
-            parent_id = #{parentId},
-            parent_ids = #{parentIds},
-            href = #{href},
-            is_show = #{isShow},
-            sort = #{sort},
-            menu_type = #{menuType},
-            permission = #{permission},
+            title = #{title},
             icon = #{icon},
+            href = #{href},
+            target = #{target},
             has_children = #{hasChildren},
+            sort = #{sort},
+            parent = #{parent.id},
+            parent_ids = #{parent_ids},
+            show_flag = #{show_flag},
+            type = #{type},
+            permission = #{permission},
             create_by = #{createBy.id},
             create_date = #{createDate},
             update_by = #{updateBy.id},
             update_date = #{updateDate},
             remarks = #{remarks},
-            is_delete = #{isDelete}
+            del_flag = #{delFlag}
         WHERE id=#{id}
     </update>
 
     <update id="deleteByLogic">
-        UPDATE system_menu SET is_delete = 1
+        UPDATE system_menu SET del_flag = 1
         WHERE id=#{id}
     </update>
 
     <update id="recover">
-        UPDATE system_menu SET is_delete = 0
+        UPDATE system_menu SET del_flag = 0
         WHERE id=#{id}
     </update>
 

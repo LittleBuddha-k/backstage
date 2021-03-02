@@ -1,5 +1,6 @@
 package com.littlebuddha.backstage.modules.entity.system;
 
+import com.littlebuddha.backstage.common.anotations.ExcelField;
 import com.littlebuddha.backstage.modules.base.DataEntity;
 
 import java.util.List;
@@ -16,8 +17,17 @@ public class Menu extends DataEntity<Menu> {
     private String href;
     private String target;
     private boolean hasChildren;
-    private List<Menu> child;       //子集
+    private List<Menu> childrenList;       //子集
+    private String sort;            //排序
 
+    private Menu parent;            //父级menu
+    private String parentIds;       //所有父级id
+
+    private String showFlag;        //是否展示标识
+    private String type;            //类型----菜单 、 按钮
+    private String permission;      //权限标识
+
+    @ExcelField(title = "菜单名字",align = 2,sort = 1)
     public String getTitle() {
         return title;
     }
@@ -26,6 +36,7 @@ public class Menu extends DataEntity<Menu> {
         this.title = title;
     }
 
+    @ExcelField(title = "图标",align = 2,sort = 2)
     public String getIcon() {
         return icon;
     }
@@ -34,6 +45,7 @@ public class Menu extends DataEntity<Menu> {
         this.icon = icon;
     }
 
+    @ExcelField(title = "路径",align = 2,sort = 3)
     public String getHref() {
         return href;
     }
@@ -42,6 +54,7 @@ public class Menu extends DataEntity<Menu> {
         this.href = href;
     }
 
+    @ExcelField(title = "目标",align = 2,sort = 4)
     public String getTarget() {
         return target;
     }
@@ -50,7 +63,8 @@ public class Menu extends DataEntity<Menu> {
         this.target = target;
     }
 
-    public boolean isHasChildren() {
+    @ExcelField(title = "是否有子菜单",align = 2,sort = 5)
+    public boolean getHasChildren() {
         return hasChildren;
     }
 
@@ -58,11 +72,64 @@ public class Menu extends DataEntity<Menu> {
         this.hasChildren = hasChildren;
     }
 
-    public List<Menu> getChild() {
-        return child;
+    public List<Menu> getChildrenList() {
+        return childrenList;
     }
 
-    public void setChild(List<Menu> child) {
-        this.child = child;
+    public void setChildrenList(List<Menu> childrenList) {
+        this.childrenList = childrenList;
+    }
+
+    @ExcelField(title = "排序",align = 2,sort = 6)
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort;
+    }
+
+    public Menu getParent() {
+        return parent;
+    }
+
+    public void setParent(Menu parent) {
+        this.parent = parent;
+    }
+
+    @ExcelField(title = "父类ids",align = 2,sort = 7)
+    public String getParentIds() {
+        return parentIds;
+    }
+
+    public void setParentIds(String parentIds) {
+        this.parentIds = parentIds;
+    }
+
+    @ExcelField(title = "是否展示",align = 2,sort = 8)
+    public String getShowFlag() {
+        return showFlag;
+    }
+
+    public void setShowFlag(String showFlag) {
+        this.showFlag = showFlag;
+    }
+
+    @ExcelField(title = "菜单类型",align = 2,sort = 9)
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @ExcelField(title = "权限标识",align = 2,sort = 10)
+    public String getPermission() {
+        return permission;
+    }
+
+    public void setPermission(String permission) {
+        this.permission = permission;
     }
 }

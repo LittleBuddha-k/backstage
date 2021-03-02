@@ -1,7 +1,6 @@
 package com.littlebuddha.backstage;
 
 import com.littlebuddha.backstage.modules.entity.system.Area;
-import com.littlebuddha.backstage.modules.entity.system.Menu;
 import com.littlebuddha.backstage.modules.entity.system.Operator;
 import com.littlebuddha.backstage.modules.mapper.system.AreaMapper;
 import com.littlebuddha.backstage.modules.mapper.system.MenuMapper;
@@ -73,11 +72,11 @@ class BackstageApplicationTests {
         }
     }
 
-    @Test
+    /*@Test
     public void testMenuMapper(){
         List<Menu> menus = menuMapper.findAllList(new Menu());
         for (Menu menu : menus) {
             System.out.println(menu.getName());
         }
-    }
+    }*/
 }

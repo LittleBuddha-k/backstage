@@ -32,8 +32,8 @@
         <include refid="finishedDeliveryDetailsColumns"/>
         FROM manager_finished_delivery_details a
         <choose>
-            <when test="page !=null and page != '' and limit !=null and limit != ''">
-                LIMIT #{page},#{limit}
+            <when test="page !=null and page != ''">
+                ORDER BY ${page.orderBy}
             </when>
             <otherwise>
                 ORDER BY a.create_date DESC

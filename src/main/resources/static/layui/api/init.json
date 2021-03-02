@@ -10,7 +10,7 @@
   },
   "menuInfo": [
     {
-      "title": "系统设置",
+      "title": "常规管理",
       "icon": "fa fa-address-book",
       "href": "",
       "target": "_self",
@@ -44,18 +44,6 @@
         {
           "title": "菜单管理",
           "href": "/backstage/page/menu.html",
-          "icon": "fa fa-window-maximize",
-          "target": "_self"
-        },
-        {
-          "title": "部门管理",
-          "href": "/backstage/system/department/list",
-          "icon": "fa fa-window-maximize",
-          "target": "_self"
-        },
-        {
-          "title": "用户管理",
-          "href": "/backstage/system/operator/list",
           "icon": "fa fa-window-maximize",
           "target": "_self"
         },
@@ -154,7 +142,7 @@
       ]
     },
     {
-      "title": "业务管理",
+      "title": "组件管理",
       "icon": "fa fa-lemon-o",
       "href": "",
       "target": "_self",
@@ -204,7 +192,57 @@
       ]
     },
     {
-      "title": "管理平台",
+      "title": "其他管理",
+      "icon": "fa fa-slideshare",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "多级菜单",
+          "href": "",
+          "icon": "fa fa-meetup",
+          "target": "",
+          "child": [
+            {
+              "title": "按钮1",
+              "href": "/backstage/page/button.html?v=1",
+              "icon": "fa fa-calendar",
+              "target": "_self",
+              "child": [
+                {
+                  "title": "按钮2",
+                  "href": "/backstage/page/button.html?v=2",
+                  "icon": "fa fa-snowflake-o",
+                  "target": "_self",
+                  "child": [
+                    {
+                      "title": "按钮3",
+                      "href": "/backstage/page/button.html?v=3",
+                      "icon": "fa fa-snowflake-o",
+                      "target": "_self"
+                    },
+                    {
+                      "title": "表单4",
+                      "href": "/backstage/page/form.html?v=1",
+                      "icon": "fa fa-calendar",
+                      "target": "_self"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "失效菜单",
+          "href": "/backstage/page/error.html",
+          "icon": "fa fa-superpowers",
+          "target": "_self"
+        }
+      ]
+    },
+    {
+      "title": "蓝岸业务管理",
       "icon": "fa fa-slideshare",
       "href": "",
       "target": "_self",
@@ -301,48 +339,6 @@
               ]
             }
           ]
-        },
-        {
-          "title": "多级菜单",
-          "href": "",
-          "icon": "fa fa-meetup",
-          "target": "",
-          "child": [
-            {
-              "title": "按钮1",
-              "href": "/backstage/page/button.html?v=1",
-              "icon": "fa fa-calendar",
-              "target": "_self",
-              "child": [
-                {
-                  "title": "按钮2",
-                  "href": "/backstage/page/button.html?v=2",
-                  "icon": "fa fa-snowflake-o",
-                  "target": "_self",
-                  "child": [
-                    {
-                      "title": "按钮3",
-                      "href": "/backstage/page/button.html?v=3",
-                      "icon": "fa fa-snowflake-o",
-                      "target": "_self"
-                    },
-                    {
-                      "title": "表单4",
-                      "href": "/backstage/page/form.html?v=1",
-                      "icon": "fa fa-calendar",
-                      "target": "_self"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "title": "失效菜单",
-          "href": "/backstage/page/error.html",
-          "icon": "fa fa-superpowers",
-          "target": "_self"
         }
       ]
     },
@@ -365,6 +361,28 @@
       "icon": "fa fa-dot-circle-o",
       "href": "/backstage/postBar",
       "target": "_self"
+    },
+    {
+      "title": "系统设置",
+      "icon": "fa fa-dot-circle-o",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "系统管理",
+          "href": "",
+          "icon": "fa fa-snowflake-o",
+          "target": "_self",
+          "child": [
+            {
+              "title": "菜单设置",
+              "href": "/backstage/system/menu",
+              "icon": "fa fa-snowflake-o",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

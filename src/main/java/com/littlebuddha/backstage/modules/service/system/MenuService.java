@@ -28,41 +28,23 @@ public class MenuService extends CrudService<Menu, MenuMapper> {
         return pageInfo;
     }
 
-    /**
-     * 查询菜单中级别最高的那个菜单
-     * @return
-     */
-    public Menu findTheBiggestMenu(){
-
-        return null;
+    @Override
+    public int save(Menu entity) {
+        return super.save(entity);
     }
 
-    /**
-     * 通过父类id查询其子节点的菜单列表
-     * @return
-     */
-    public List<Menu> findByParentId(Menu menu){
-        List<Menu> menus = menuMapper.findByParentId(menu);
-        return menus;
+    @Override
+    public int deleteByPhysics(Menu entity) {
+        return super.deleteByPhysics(entity);
     }
 
-    /**
-     * 查找一级菜单
-     * @return
-     */
-    public List<Menu> findLevelOneMenus() {
-        Menu theBiggestMenu = findTheBiggestMenu();
-        List<Menu> levelOneMenus = findByParentId(theBiggestMenu);
-        return levelOneMenus;
+    @Override
+    public int deleteByLogic(Menu entity) {
+        return super.deleteByLogic(entity);
     }
 
-    /**
-     * 查找子节点列表
-     * @param parentMenu
-     * @return
-     */
-    public List<Menu> getChildren(Menu parentMenu) {
-        List<Menu> childrenMenus = menuMapper.findByParentId(parentMenu);
-        return childrenMenus;
+    @Override
+    public void recovery(Menu entity) {
+        super.recovery(entity);
     }
 }

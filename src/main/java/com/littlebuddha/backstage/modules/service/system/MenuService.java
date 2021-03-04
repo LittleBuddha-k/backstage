@@ -22,7 +22,7 @@ public class MenuService extends CrudService<Menu, MenuMapper> {
     public PageInfo<Menu> findPage(Page<Menu> page, Menu entity) {
         List<Menu> beforeSort = super.findList(entity);
         List<Menu> afterSort = new ArrayList<>();
-        List<Menu> sortList = TreeDataUtil.sortList(beforeSort, afterSort, "0");//将数据从级别最高的到最小分组来排序
+        List<Menu> sortList = TreeDataUtil.sortList(beforeSort, afterSort, "-1");//将数据从级别最高的到最小分组来排序
         List<Menu> setChildrenList = TreeDataUtil.setChildrenList(sortList);//为有子节的menu设置子数据
         PageInfo<Menu> pageInfo = new PageInfo<Menu>(setChildrenList);
         return pageInfo;

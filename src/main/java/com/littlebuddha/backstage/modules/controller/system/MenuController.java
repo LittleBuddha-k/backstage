@@ -1,8 +1,11 @@
 package com.littlebuddha.backstage.modules.controller.system;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import com.google.common.collect.Lists;
 import com.littlebuddha.backstage.common.excel.ExportExcel;
 import com.littlebuddha.backstage.common.utils.resultresponse.JsonResult;
+import com.littlebuddha.backstage.modules.base.BaseController;
 import com.littlebuddha.backstage.modules.entity.system.Menu;
 import com.littlebuddha.backstage.modules.service.system.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +19,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/system/menu")
-public class MenuController {
+public class MenuController extends BaseController {
 
     @Autowired
     private MenuService menuService;
@@ -28,9 +31,11 @@ public class MenuController {
     }
 
     @ResponseBody
-    @PostMapping("/data")
+    @GetMapping("/data")
     public JsonResult<Menu> data(Menu menu) {
-        return null;
+        PageInfo<Menu> page = menuService.findPage(new Page<Menu>(), menu);
+        JsonResult layUiData = getLayUiData(page);
+        return layUiData;
     }
 
     @GetMapping("/form/{mode}")

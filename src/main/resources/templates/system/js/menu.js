@@ -5,19 +5,19 @@ $(document).ready(function () {
         var treetable = layui.treetable;
 
         //menu树形表格
-        layer.load(2);
         treetable.render({
             treeColIndex: 1,
             treeSpid: -1,
-            treeIdName: 'authorityId',
+            treeIdName: 'id',
             treePidName: 'parentId',
             elem: '#menuTableList',
-            url: '/backstage/layui/api/menus.json',
+            url: '/backstage/system/menu/data',
+            toolbar: '#toolbar',
             page: false,
             cols: [
                 [
                     {
-                        type: "checkbox",
+                        type: "numbers",
                         width: 50
                     },
                     {
@@ -57,10 +57,13 @@ $(document).ready(function () {
                         sort: true
                     },
                     {
-                        field: 'parent',
+                        field: 'parent.id',
                         width: 150,
                         title: '父节点',
-                        sort: true
+                        sort: true,
+                        templet: function (menu) {
+                            return menu.parent.id;
+                        }
                     },
                     {
                         field: 'parentIds',
@@ -87,17 +90,31 @@ $(document).ready(function () {
                         sort: true
                     },
                     {
-                        title: '操作',
-                        minWidth: 150,
-                        toolbar: '#menuTableBar',
-                        align: "center"
-                    }
-            ]
+                        templet: '#menuTableBar',
+                        width: 400,
+                        align: 'center',
+                        title: '操作'}
+                ]
             ],
             done: function () {
-                layer.closeAll('loading');
+
+            }
+        });
+
+        //监听工具条
+        table.on('tool(menuTableList)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+
+            if (layEvent === 'addChild') {
+                layer.msg('删除' + data.id);
+            } else if (layEvent === 'edit') {
+                layer.msg('修改' + data.id);
             }
         });
     });
+})
 
+$("#add").click(function () {
+    openSaveDialog("菜单表单","/backstage/system/menu/form/add","60%","60%")
 })

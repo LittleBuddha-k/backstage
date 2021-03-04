@@ -2,6 +2,7 @@ package com.littlebuddha.backstage.modules.entity.system;
 
 import com.littlebuddha.backstage.common.anotations.ExcelField;
 import com.littlebuddha.backstage.modules.base.DataEntity;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class Menu extends DataEntity<Menu> {
     private String sort;            //排序
 
     private Menu parent;            //父级menu
+    private String parentId;        //父节点id
     private String parentIds;       //所有父级id
 
     private String showFlag;        //是否展示标识
@@ -95,6 +97,17 @@ public class Menu extends DataEntity<Menu> {
 
     public void setParent(Menu parent) {
         this.parent = parent;
+    }
+
+    public String getParentId() {
+        if(this.parent != null && StringUtils.isNotBlank(parent.getId())){
+            this.parentId = parent.getId();
+        }
+        return parentId;
+    }
+
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
     }
 
     @ExcelField(title = "父类ids",align = 2,sort = 7)

@@ -91,27 +91,19 @@
                 </form>
             </div>
         </fieldset>
-
-        <!--表格工具栏-->
-        <script type="text/html" id="toolbar">
-            <div class="layui-btn-container">
-                <button class="layui-btn layui-btn-sm layui-btn-normal data-add-btn" lay-event="add"> 添加</button>
-                <button class="layui-btn layui-btn-sm layui-btn-danger data-delete-btn" lay-event="delete"> 删除</button>
-                <button class="layui-btn layui-btn-sm layui-btn-warm data-edit-btn" lay-event="edit"> 编辑</button>
-                <button class="layui-btn layui-btn-sm layui-btn-normal data-view-btn" lay-event="view"> 查看</button>
-                <button class="layui-btn layui-btn-sm layui-btn-normal data-export-btn" lay-event="exportFile"> 导出
-                </button>
-                <button class="layui-btn layui-btn-sm layui-btn-normal data-import-btn" lay-event="importFile"> 导入
-                </button>
+        <div style="margin-top: 20px">
+            <div class="layui-btn-group">
+                <button class="layui-btn layui-btn-normal layui-btn-sm" id="add"> 新建</button>
+                <button class="layui-btn layui-btn-danger layui-btn-sm" id="export"> 导出</button>
+                <button class="layui-btn layui-btn-danger layui-btn-sm" id="import"> 导入</button>
             </div>
-        </script>
-
-        <table class="layui-table" id="menuTableList" lay-filter="menuTableFilter"></table>
-
+            <table class="layui-table" id="menuTableList" lay-filter="menuTableFilter"></table>
+        </div>
         <!--表格数据工具栏-->
         <script type="text/html" id="menuTableBar">
-            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="follow">追踪</a>
-            <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="details">详情</a>
+            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="addChild">添加下级菜单</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="view">查看</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
         </script>
     </div>
 </div>

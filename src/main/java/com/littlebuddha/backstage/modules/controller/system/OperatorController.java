@@ -23,7 +23,7 @@ public class OperatorController {
     @GetMapping(value = {"","/list"})
     public String list(Operator operator, Model model){
         model.addAttribute("operator",operator);
-        return "system/operator";
+        return "modules/system/operator";
     }
 
     @ResponseBody
@@ -41,6 +41,6 @@ public class OperatorController {
     public String form(@PathVariable(name = "mode")String mode,Operator operator,Model model){
         model.addAttribute("mode",mode);
         model.addAttribute("operator",operator);
-        return "system/form/operatorForm";
+        return "modules/system/form/operatorForm";
     }
 }

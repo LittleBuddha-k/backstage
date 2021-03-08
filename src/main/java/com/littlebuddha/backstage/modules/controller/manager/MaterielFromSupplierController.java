@@ -30,7 +30,7 @@ public class MaterielFromSupplierController {
     @GetMapping(value = {"","/list"})
     public String list(MaterielFromSupplier materielFromSupplier, Model model){
         model.addAttribute("materielFromSupplier",materielFromSupplier);
-        return "manager/materielFromSupplier";
+        return "modules/manager/materielFromSupplier";
     }
 
     @ResponseBody
@@ -49,7 +49,7 @@ public class MaterielFromSupplierController {
     public String form(MaterielFromSupplier materielFromSupplier, @PathVariable(name = "mode")String mode, Model model){
         model.addAttribute("materielFromSupplier",materielFromSupplier);
         model.addAttribute("mode",mode);
-        return "manager/form/materielFromSupplierForm";
+        return "modules/manager/form/materielFromSupplierForm";
     }
 
     @ResponseBody

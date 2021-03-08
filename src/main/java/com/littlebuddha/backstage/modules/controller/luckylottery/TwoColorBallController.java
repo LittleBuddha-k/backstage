@@ -40,7 +40,7 @@ public class TwoColorBallController extends BaseController {
     @GetMapping(value = {"","/list"})
     public String list(TwoColorBall twoColorBall, Model model){
         model.addAttribute("twoColorBall",twoColorBall);
-        return "luckyLottery/twoColorBall";
+        return "modules/luckyLottery/twoColorBall";
     }
 
     @ResponseBody

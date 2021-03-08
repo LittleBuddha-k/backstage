@@ -30,7 +30,7 @@ public class OrderController {
     @GetMapping(value = {"","/list"})
     public String list(Order order, Model model){
         model.addAttribute("order",order);
-        return "manager/order";
+        return "modules/manager/order";
     }
 
     @ResponseBody
@@ -50,7 +50,7 @@ public class OrderController {
     public String form(Order order, @PathVariable(name = "mode")String mode, Model model){
         model.addAttribute("order",order);
         model.addAttribute("mode",mode);
-        return "manager/form/orderForm";
+        return "modules/manager/form/orderForm";
     }
 
     @ResponseBody

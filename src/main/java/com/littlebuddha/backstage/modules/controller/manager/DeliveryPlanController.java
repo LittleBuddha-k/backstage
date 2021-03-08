@@ -29,7 +29,7 @@ public class DeliveryPlanController {
     @GetMapping(value = {"", "/list"})
     public String list(DeliveryPlan deliveryPlan, Model model) {
         model.addAttribute("deliveryPlan", deliveryPlan);
-        return "manager/deliveryPlan";
+        return "modules/manager/deliveryPlan";
     }
 
     @ResponseBody
@@ -48,7 +48,7 @@ public class DeliveryPlanController {
     public String form(DeliveryPlan deliveryPlan,@PathVariable(name = "mode")String mode, Model model){
         model.addAttribute("deliveryPlan",deliveryPlan);
         model.addAttribute("mode",mode);
-        return "manager/form/deliveryPlanForm";
+        return "modules/manager/form/deliveryPlanForm";
     }
 
     @ResponseBody

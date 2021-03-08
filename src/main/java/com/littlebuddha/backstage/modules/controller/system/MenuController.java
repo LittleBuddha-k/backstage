@@ -27,7 +27,7 @@ public class MenuController extends BaseController {
     @GetMapping(value = {"", "/list"})
     public String list(Menu menu, Model model) {
         model.addAttribute("menu", menu);
-        return "system/menu";
+        return "modules/system/menu";
     }
 
     @ResponseBody
@@ -42,7 +42,7 @@ public class MenuController extends BaseController {
     public String form(Menu menu, @PathVariable(name = "mode")String mode, Model model){
         model.addAttribute("menu",menu);
         model.addAttribute("mode",mode);
-        return "system/form/menuForm";
+        return "modules/system/form/menuForm";
     }
 
     @ResponseBody

@@ -30,7 +30,7 @@ public class BalanceDetailsController {
     @GetMapping(value = {"","/list"})
     public String list(BalanceDetails balanceDetails, Model model){
         model.addAttribute("balanceDetails",balanceDetails);
-        return "manager/balanceDetails";
+        return "modules/manager/balanceDetails";
     }
 
     @ResponseBody
@@ -49,7 +49,7 @@ public class BalanceDetailsController {
     public String form(BalanceDetails balanceDetails, @PathVariable(name = "mode")String mode, Model model){
         model.addAttribute("balanceDetails",balanceDetails);
         model.addAttribute("mode",mode);
-        return "manager/form/balanceDetailsForm";
+        return "modules/manager/form/balanceDetailsForm";
     }
 
     @ResponseBody

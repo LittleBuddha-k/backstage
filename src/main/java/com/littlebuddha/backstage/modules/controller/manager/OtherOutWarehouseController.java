@@ -30,7 +30,7 @@ public class OtherOutWarehouseController {
     @GetMapping(value = {"","/list"})
     public String list(OtherOutWarehouse otherOutWarehouse, Model model){
         model.addAttribute("otherOutWarehouse",otherOutWarehouse);
-        return "manager/otherOutWarehouse";
+        return "modules/manager/otherOutWarehouse";
     }
 
     @ResponseBody
@@ -49,7 +49,7 @@ public class OtherOutWarehouseController {
     public String form(OtherOutWarehouse otherOutWarehouse, @PathVariable(name = "mode")String mode, Model model){
         model.addAttribute("otherOutWarehouse",otherOutWarehouse);
         model.addAttribute("mode",mode);
-        return "manager/form/otherOutWarehouseForm";
+        return "modules/manager/form/otherOutWarehouseForm";
     }
 
     @ResponseBody

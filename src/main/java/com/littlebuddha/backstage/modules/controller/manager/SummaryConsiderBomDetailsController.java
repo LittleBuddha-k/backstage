@@ -30,7 +30,7 @@ public class SummaryConsiderBomDetailsController {
     @GetMapping(value = {"","/list"})
     public String list(SummaryConsiderBomDetails summaryConsiderBomDetails, Model model){
         model.addAttribute("summaryConsiderBomDetails",summaryConsiderBomDetails);
-        return "manager/summaryConsiderBomDetails";
+        return "modules/manager/summaryConsiderBomDetails";
     }
 
     @ResponseBody
@@ -49,7 +49,7 @@ public class SummaryConsiderBomDetailsController {
     public String form(SummaryConsiderBomDetails summaryConsiderBomDetails, @PathVariable(name = "mode")String mode, Model model){
         model.addAttribute("summaryConsiderBomDetails",summaryConsiderBomDetails);
         model.addAttribute("mode",mode);
-        return "manager/form/summaryConsiderBomDetailsForm";
+        return "modules/manager/form/summaryConsiderBomDetailsForm";
     }
 
     @ResponseBody
